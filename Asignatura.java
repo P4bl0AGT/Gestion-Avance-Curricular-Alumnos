@@ -46,6 +46,6 @@ public class Asignatura
         if(creditos >= 0)
             this.creditos = creditos;
         else
-            this.creditos = "nulo";
+            this.creditos = 0;
     }
 }
