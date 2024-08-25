@@ -48,4 +48,12 @@ public class Asignatura
         else
             this.creditos = 0;
     }
+
+    //GETTERS
+    public String getNombre(){return nombre;}
+    public String getCodigo(){return codigo;}
+    public String getProfesor(){return profesor;}
+    public int getCreditos(){return creditos;}
+
+    //METODOS
 }
