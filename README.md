@@ -1,1 +1,1 @@
-# P4bl0AGT-Gestion-Avance-Curricular-Alumnos
+#Gestion-Avance-Curricular-Alumnos
