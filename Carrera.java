@@ -6,16 +6,18 @@ public class Carrera {
     private String id;
     private String nombre;
     private int semestres;
-    private ArrayList<Asignatura> listaAsignaturas;
+    private ArrayList listaAsignaturas;
+    private int avance;
 
     //Constructor
     public Carrera() {}
 
-    public Carrera(String id, String nombre, int semestres, ArrayList<Asignatura> listaAsignaturas) {
+    public Carrera(String id, String nombre, int semestres, ArrayList listaAsignaturas, int avance) {
         setId(id);
         setNombre(nombre);
         setSemestres(semestres);
         setListaAsignaturas(listaAsignaturas);
+        setAvance(avance);
     }
 
     //Setters
@@ -40,8 +42,16 @@ public class Carrera {
             this.semestres = 0;
     }
 
-    public void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
+    public void setListaAsignaturas(ArrayList listaAsignaturas) {
         this.listaAsignaturas = listaAsignaturas;
+    }
+
+    public void setAvance(int avance)
+    {
+        if(avance >= 0)
+            this.avance = avance;
+        else
+            this.avance = 0;
     }
 
     //Getters
@@ -57,8 +67,13 @@ public class Carrera {
         return semestres;
     }
 
-    public ArrayList<Asignatura> getListaAsignaturas() {
+    public ArrayList getListaAsignaturas() {
         return listaAsignaturas;
+    }
+
+    public int getAvanca()
+    {
+        return avance;
     }
 
     //Metodos
@@ -66,10 +81,13 @@ public class Carrera {
         System.out.println("Id: " + id);
         System.out.println("Nombre: " + nombre);
         System.out.println("Semestres: " + semestres);
+        System.out.println("Avance: " + avance);
         System.out.println("Asignaturas: ");
-        for (Asignatura aux:listaAsignaturas) {
-            System.out.println("    " + aux.getNombre());
+        for (Object aux:listaAsignaturas) {
+            Asignatura asignatura = (Asignatura) aux;
+            System.out.println("    " + asignatura.getNombre());
         }
+        
     }
 
 }
