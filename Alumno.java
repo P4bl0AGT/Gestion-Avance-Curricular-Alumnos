@@ -1,46 +1,45 @@
 import java.util.ArrayList;
 
-public class ClaseAlumno{
+public class Alumno{
 
     /* ATRIBUTOS */
 
-    private String nombreAlumno;
-    private String apellidoAlumno;
+    private String nombre;
+    private String apellido;
     private int edad;
     private String rut;
-    private ArrayList carrera;
+    private Carrera carrera;
 
 
-    public ClaseAlumno(String nombreAlumno, String apellidoAlumno, int edad, String rut, ArrayList carrera){
+    public Alumno(String nombre, String apellido, int edad, String rut, Carrera carrera){
 
-        this.nombreAlumno = nombreAlumno;
-        this.apellidoAlumno = apellidoAlumno;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.edad = edad;
         this.rut = rut;
         this.carrera = carrera;
-
     }
     
     /* GETTER */
     
-    public String getNombreAlumno(){return nombreAlumno;}
-    public String getApellidoAlumno(){return apellidoAlumno;}
+    public String getNombre(){return nombre;}
+    public String getApellido(){return apellido;}
     public int getEdad(){return edad;}
     public String getRut(){return rut;}
-    public ArrayList getCarrera(){return carrera;}
+    public Carrera getCarrera(){return carrera;}
 
     /*SETTER */
 
-    public void setNombreAlumno(String nombreAlumno){
+    public void setNombre(String nombre){
 
-        if(nombreAlumno != null){this.nombreAlumno = nombreAlumno;}
-        else{this.nombreAlumno = "SIN DATOS";}
+        if(nombre != null){this.nombre = nombre;}
+        else{this.nombre = "SIN DATOS";}
     }
 
-    public void setApellidoAlumno(String apellidoAlumno){
+    public void setApellido(String apellido){
 
-        if(apellidoAlumno != null){this.apellidoAlumno = apellidoAlumno;}
-        else{this.apellidoAlumno = "SIN DATOS";}
+        if(apellido != null){this.apellido = apellido;}
+        else{this.apellido = "SIN DATOS";}
     }
 
     public void setEdad(int edad){
@@ -55,22 +54,22 @@ public class ClaseAlumno{
         else{this.rut = "SIN DATOS";}
     }
 
-    public void setCarrera(ArrayList carrera){
+    public void setCarrera(Carrera carrera){
         
         if(carrera != null ){this.carrera = carrera;}
-        else{this.carrera = new ArrayList();}
     }
 
     /*METODOS */
 
-    public void mostrarDatos(String nombreAlumno, String apellidoAlumno, int edad, String rut, ArrayList carrera){
+    public void mostrarDatos(){ 
 
-        System.out.println("Nombre del Alumno: " + nombreAlumno);
-        System.out.println("Apellido del Alumno: " + apellidoAlumno);
+        System.out.println("Nombre del Alumno: " + nombre);
+        System.out.println("Apellido del Alumno: " + apellido);
         System.out.println("Edad del Alumno: " + edad);
         System.out.println("Rut del Alumno: " + rut);
-        System.out.println("Carrera del alumno: "+ carrera);
+        System.out.println("Carrera del alumno: "+ carrera.getNombre());
 
     }
 
 }
+
