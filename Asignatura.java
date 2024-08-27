@@ -5,6 +5,7 @@ public class Asignatura
     private String codigo;
     private String profesor;
     private int creditos;
+    private boolean estado; //false = no aprobada/no tomada, true = aprobada.
 
     //CONSTRUCTOR
     public Asignatura(){}
@@ -14,6 +15,7 @@ public class Asignatura
         setCodigo(codigo);
         setProfesor(profesor);
         setCreditos(creditos);
+        this.estado = false;
     }
 
     //SETTERS
@@ -49,11 +51,22 @@ public class Asignatura
             this.creditos = 0;
     }
 
+    public void setEstado(){this.estado = true;}
+
     //GETTERS
     public String getNombre(){return nombre;}
     public String getCodigo(){return codigo;}
     public String getProfesor(){return profesor;}
     public int getCreditos(){return creditos;}
+    public boolean getEstado(){return estado;}
 
     //METODOS
+    public void mostrar()
+    {
+        System.out.println("Nombre asignatura: ");
+        System.out.println("Codigo asignatura: ");
+        System.out.println("Profesor asignatura: ");
+        System.out.println("Creditos asignatura: ");
+        System.out.println("Estado asignatura: ");
+    }
 }
