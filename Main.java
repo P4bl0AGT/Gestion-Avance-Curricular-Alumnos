@@ -1,15 +1,17 @@
 import java.io.*;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException{
+
+        //Instituto
+        Instituto instituto = new Instituto();
 
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
 
         //leer
         System.out.println("== Leer alumno ==");
         for (int i = 0 ; i < 3 ; i++) {
-            leerAlumno(lector);                 //temporal
+            leerAlumno(lector, instituto);
         }
 
     
@@ -17,7 +19,7 @@ public class Main {
 }
 
 
-public static void leerAlumno(BufferedReader lector) throws IOException {
+public static void leerAlumno(BufferedReader lector, Instituto instituto) throws IOException {
     System.out.print("Ingrese nombre: ");
     String nombre = lector.readLine();
 
@@ -30,10 +32,12 @@ public static void leerAlumno(BufferedReader lector) throws IOException {
     System.out.print("Ingrese rut: ");
     String rut = lector.readLine();
 
-    System.out.print("Ingrese carrera: "); //Temporal
+    System.out.print("Ingrese carrera: ");
     int carrera = Integer.parseInt(lector.readLine());
 
-    Alumno a = new Alumno(nombre, apellido, edad, rut, carrera);            //falta agregar a lista mapa
+    Alumno alumno = new Alumno(nombre, apellido, edad, rut, carrera);
+
+    instituto.agregarAlumno(alumno);
 
     System.out.println("********************");
  }
