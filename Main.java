@@ -33,6 +33,8 @@ public class Main {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         //CARRERAS
         ArrayList carreras = Datos.cargarCarreras();
+        //OPCION
+       
 
         //leer
         System.out.println("== Leer alumno ==");
