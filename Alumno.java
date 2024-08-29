@@ -6,10 +6,10 @@ public class Alumno{
     private String apellido;
     private int edad;
     private String rut;
-    private int carrera;
+    private Carrera carrera;
 
 
-    public Alumno(String nombre, String apellido, int edad, String rut, int carrera){
+    public Alumno(String nombre, String apellido, int edad, String rut, Carrera carrera){
 
         this.nombre = nombre;
         this.apellido = apellido;
@@ -24,7 +24,7 @@ public class Alumno{
     public String getApellido(){return apellido;}
     public int getEdad(){return edad;}
     public String getRut(){return rut;}
-    public int getCarrera(){return carrera;}
+    public Carrera getCarrera(){return carrera;}
 
     /*SETTER */
 
@@ -52,10 +52,10 @@ public class Alumno{
         else{this.rut = "SIN DATOS";}
     }
 
-    public void setCarrera(int carrera){
+    public void setCarrera(Carrera carrera){
         
-        if(carrera != 0 ){this.carrera = carrera;}
-        else{this.carrera = 0;}
+        if(carrera != null ){this.carrera = carrera;}
+        else{this.carrera = null;}
     }
 
     /*METODOS */
