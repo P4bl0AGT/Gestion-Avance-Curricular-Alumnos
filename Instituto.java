@@ -23,4 +23,13 @@ public class Instituto
             cantidadAlumnos++;
         }
     }
+
+    public void mostrarAlumnos()
+    {
+        for(int i = 0 ; i < listaAlumnos.size() ; i++)
+        {
+            Alumno alumnoActual = (Alumno) listaAlumnos.get(i);
+            alumnoActual.mostrarAlumno();
+        }
+    }
 }

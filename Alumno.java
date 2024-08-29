@@ -60,14 +60,13 @@ public class Alumno{
 
     /*METODOS */
 
-    public void mostrarDatos(){ 
+    public void mostrarAlumno(){ 
 
         System.out.println("Nombre del Alumno: " + nombre);
         System.out.println("Apellido del Alumno: " + apellido);
         System.out.println("Edad del Alumno: " + edad);
         System.out.println("Rut del Alumno: " + rut);
         System.out.println("Carrera del alumno: "+ carrera);
-
     }
 
 }
