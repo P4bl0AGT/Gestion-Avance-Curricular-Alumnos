@@ -71,7 +71,7 @@ public class Carrera {
         return listaAsignaturas;
     }
 
-    public int getAvanca()
+    public int getAvance()
     {
         return avance;
     }
@@ -87,7 +87,5 @@ public class Carrera {
             Asignatura asignatura = (Asignatura) aux;
             System.out.println("    " + asignatura.getNombre());
         }
-        
     }
-
 }

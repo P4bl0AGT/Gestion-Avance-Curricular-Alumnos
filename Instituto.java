@@ -26,10 +26,13 @@ public class Instituto
 
     public void mostrarAlumnos()
     {
+        System.out.println("Lista alumnos");
+        System.out.println("* * * * * * *");
         for(int i = 0 ; i < listaAlumnos.size() ; i++)
         {
             Alumno alumnoActual = (Alumno) listaAlumnos.get(i);
             alumnoActual.mostrarAlumno();
+            System.out.println("");
         }
     }
 }
