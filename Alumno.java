@@ -66,7 +66,7 @@ public class Alumno{
         System.out.println("Apellido del Alumno: " + apellido);
         System.out.println("Edad del Alumno: " + edad);
         System.out.println("Rut del Alumno: " + rut);
-        System.out.println("Carrera del alumno: "+ carrera);
+        System.out.println("Carrera del alumno: "+ carrera.getNombre());
     }
 
 }
