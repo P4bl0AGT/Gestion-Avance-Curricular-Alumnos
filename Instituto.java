@@ -31,7 +31,7 @@ public class Instituto
         for(int i = 0 ; i < listaAlumnos.size() ; i++)
         {
             Alumno alumnoActual = (Alumno) listaAlumnos.get(i);
-            alumnoActual.mostrarAlumno();
+            alumnoActual.mostrarSimple();
             System.out.println("");
         }
     }

@@ -61,7 +61,7 @@ public class Asignatura
     public boolean getEstado(){return estado;}
 
     //METODOS
-    public void mostrar()
+    public void mostrarDetalle()
     {
         System.out.println("Nombre asignatura: ");
         System.out.println("Codigo asignatura: ");

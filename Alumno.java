@@ -7,6 +7,7 @@ public class Alumno{
     private int edad;
     private String rut;
     private Carrera carrera;
+    private int creditosAprobados;
 
 
     public Alumno(String nombre, String apellido, int edad, String rut, Carrera carrera){
@@ -16,6 +17,7 @@ public class Alumno{
         this.edad = edad;
         this.rut = rut;
         this.carrera = carrera;
+        this.creditosAprobados = 0;
     }
     
     /* GETTER */
@@ -25,6 +27,7 @@ public class Alumno{
     public int getEdad(){return edad;}
     public String getRut(){return rut;}
     public Carrera getCarrera(){return carrera;}
+    public int getCreditosAprobados(){return creditosAprobados;}
 
     /*SETTER */
 
@@ -58,16 +61,24 @@ public class Alumno{
         else{this.carrera = null;}
     }
 
+    public void setCreditosAprobados(int edad){
+
+        if(edad > 0){this.edad = edad;}
+        else{this.edad = 0;}
+    }
+
     /*METODOS */
 
-    public void mostrarAlumno(){ 
-
+    public void mostrarDetalle()
+    { 
         System.out.println("Nombre del Alumno: " + nombre);
         System.out.println("Apellido del Alumno: " + apellido);
         System.out.println("Edad del Alumno: " + edad);
         System.out.println("Rut del Alumno: " + rut);
         System.out.println("Carrera del alumno: "+ carrera.getNombre());
     }
+
+    public void mostrarSimple(){System.out.println("Nombre Completo: " + nombre + " " + apellido +  " | Carrera: " + carrera.getNombre());}
 
 }
 

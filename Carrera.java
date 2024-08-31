@@ -7,17 +7,17 @@ public class Carrera {
     private String nombre;
     private int semestres;
     private ArrayList listaAsignaturas;
-    private int avance;
+    private int creditosTotales;
 
     //Constructor
     public Carrera() {}
 
-    public Carrera(String id, String nombre, int semestres, ArrayList listaAsignaturas, int avance) {
+    public Carrera(String id, String nombre, int semestres, ArrayList listaAsignaturas, int creditosTotales) {
         setId(id);
         setNombre(nombre);
         setSemestres(semestres);
         setListaAsignaturas(listaAsignaturas);
-        setAvance(avance);
+        setCreditosTotales(creditosTotales);
     }
 
     //Setters
@@ -46,12 +46,12 @@ public class Carrera {
         this.listaAsignaturas = listaAsignaturas;
     }
 
-    public void setAvance(int avance)
+    public void setCreditosTotales(int creditosTotales)
     {
-        if(avance >= 0)
-            this.avance = avance;
+        if(creditosTotales >= 0)
+            this.creditosTotales = creditosTotales;
         else
-            this.avance = 0;
+            this.creditosTotales = 0;
     }
 
     //Getters
@@ -71,17 +71,17 @@ public class Carrera {
         return listaAsignaturas;
     }
 
-    public int getAvance()
+    public int getCreditosTotales()
     {
-        return avance;
+        return creditosTotales;
     }
 
     //Metodos
-    public void mostrar() {
+    public void mostrarDetalle() {
         System.out.println("Id: " + id);
         System.out.println("Nombre: " + nombre);
         System.out.println("Semestres: " + semestres);
-        System.out.println("Avance: " + avance);
+        System.out.println("Creditos Totales: " + creditosTotales);
         System.out.println("Asignaturas: ");
         for (Object aux:listaAsignaturas) {
             Asignatura asignatura = (Asignatura) aux;
