@@ -63,10 +63,12 @@ public class Asignatura
     //METODOS
     public void mostrarDetalle()
     {
-        System.out.println("Nombre asignatura: ");
-        System.out.println("Codigo asignatura: ");
-        System.out.println("Profesor asignatura: ");
-        System.out.println("Creditos asignatura: ");
-        System.out.println("Estado asignatura: ");
+        System.out.println("Nombre asignatura: " + nombre);
+        System.out.println("Codigo asignatura: " + codigo);
+        System.out.println("Profesor asignatura: " + profesor);
+        System.out.println("Creditos asignatura: " + creditos);
+        System.out.println("Estado asignatura: " + estado);
     }
+
+    public void mostrarSimple(){System.out.println("Nombre Asignatura: " + nombre + " | Profesor : " + profesor);}
 }

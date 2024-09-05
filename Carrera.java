@@ -88,4 +88,6 @@ public class Carrera {
             System.out.println("    " + asignatura.getNombre());
         }
     }
+
+    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres);}
 }
