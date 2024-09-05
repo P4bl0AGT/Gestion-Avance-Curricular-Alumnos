@@ -57,6 +57,14 @@ public class Main {
         ArrayList listaCarreras = Datos.cargarCarreras();
         //OPCION
 
+        //ALUMNOS INICIALES
+        Alumno alumno = new Alumno("Cristian", "Mejias", 99, "18.854.182-0", (Carrera)listaCarreras.get(0));
+        instituto.agregarAlumno(alumno);
+        alumno = new Alumno("Cristobal", "Rubilar", 0, "21.711.065-3", (Carrera)listaCarreras.get(1));
+        instituto.agregarAlumno(alumno);
+        alumno = new Alumno("Pablo", "Aguilera", 50, "21.712.853-6", (Carrera)listaCarreras.get(2));
+        instituto.agregarAlumno(alumno);
+
         while (true) {
             mostrarMenu();
 
