@@ -1,15 +1,16 @@
 public class Asignatura
 {
     //ATRIBUTOS
-    private String nombre;
     private String codigo;
+    private String nombre;
     private String profesor;
     private int creditos;
     private boolean estado; //false = no aprobada/no tomada, true = aprobada.
 
+
     //CONSTRUCTOR
     public Asignatura(){}
-    public Asignatura(String nombre, String codigo, String profesor, int creditos)
+    public Asignatura(String codigo, String nombre, String profesor, int creditos)
     {
         setNombre(nombre);
         setCodigo(codigo);
@@ -19,46 +20,56 @@ public class Asignatura
     }
 
     //SETTERS
-    public void setNombre(String nombre)
-    {
+    public void setNombre(String nombre) {
         if(nombre != null)
             this.nombre = nombre;
         else
             this.nombre = "nulo";
     }
 
-    public void setCodigo(String codigo)
-    {
+    public void setCodigo(String codigo) {
         if(codigo != null)
             this.codigo = codigo;
         else
             this.codigo = "nulo";
     }
 
-    public void setProfesor(String profesor)
-    {
+    public void setProfesor(String profesor) {
         if(profesor != null)
             this.profesor = profesor;
         else
             this.profesor = "no hay profesor a cargo";
     }
 
-    public void setCreditos(int creditos)
-    {
+    public void setCreditos(int creditos) {
         if(creditos >= 0)
             this.creditos = creditos;
         else
             this.creditos = 0;
     }
 
-    public void setEstado(){this.estado = true;}
+    public void setEstado(boolean estado){
+        this.estado = true;
+    }
+
 
     //GETTERS
-    public String getNombre(){return nombre;}
-    public String getCodigo(){return codigo;}
-    public String getProfesor(){return profesor;}
-    public int getCreditos(){return creditos;}
-    public boolean getEstado(){return estado;}
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
 
     //METODOS
     public void mostrarDetalle()

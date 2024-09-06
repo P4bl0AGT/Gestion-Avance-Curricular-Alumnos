@@ -1,9 +1,8 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
 
-    public static void leerAlumno(BufferedReader lector, Instituto instituto, ArrayList<Carrera> listaCarreras) throws IOException {
+    public static void leerAlumno(BufferedReader lector, Instituto instituto) throws IOException {
         System.out.print("Ingrese nombre: ");
         String nombre = lector.readLine();
     
@@ -17,24 +16,92 @@ public class Main {
         String rut = lector.readLine();
     
         System.out.println("Ingrese carrera: ");
-        for (int i = 0; i < listaCarreras.size(); i++) {
-            System.out.println("  » [" + i +"] " + listaCarreras.get(i).getNombre());
+        int talla = instituto.getListaCarreras().size();
+        for (int i = 0; i < talla; i++) {
+            System.out.println("  » [" + i +"] " + instituto.getListaCarreras().get(i).getNombre());
         }
-        int indice = Integer.parseInt(lector.readLine());
+        
+        //validar lectura
+        int indice = -1;
+        while (indice < 0 || indice >= talla) {
+            indice = Integer.parseInt(lector.readLine());
+        }
+
+        Carrera carrera = instituto.getListaCarreras().get(indice);
     
-        Alumno alumno = new Alumno(nombre, apellido, edad, rut, listaCarreras.get(indice));
+        Alumno alumno = new Alumno(nombre, apellido, rut, edad, carrera);
     
         instituto.agregarAlumno(alumno);
     
         System.out.println("********************");
     }
+
+
+    public static void leerCarrera(BufferedReader lector, Instituto instituto) throws IOException {
+
+        System.out.print("Ingrese id: ");
+        String id = lector.readLine();
+    
+        System.out.print("Ingrese nombre: ");
+        String nombre = lector.readLine();
+    
+        System.out.print("Ingrese semestres: ");
+        int semestres = Integer.parseInt(lector.readLine());
+    
+        System.out.print("Ingrese creditos: ");
+        int creditos = Integer.parseInt(lector.readLine());
+
+        Carrera carrera = new Carrera(id, nombre, semestres, creditos);
+    
+        System.out.print("Ingrese total asignaturas: ");
+        int talla = Integer.parseInt(lector.readLine());
+
+        //validar lectura
+        while (talla < 1) {
+            System.out.print("Reingrese: ");
+            talla = Integer.parseInt(lector.readLine());
+        }
+        
+        //leer cada asignatura de la carrera actual
+        for (int i = 0; i < talla; i++) {
+            leerAsignatura(lector, carrera, i+1);
+        }
+    
+        instituto.agregarCarrera(carrera);
+    
+        System.out.println("********************");
+    }
+
+    public static void leerAsignatura(BufferedReader lector, Carrera carrera, int i) throws IOException {
+        System.out.println("== Asignatura: " + i + "==");
+        System.out.print("Ingrese codigo: ");
+        String codigo = lector.readLine();
+    
+        System.out.print("Ingrese nombre: ");
+        String nombre = lector.readLine();
+
+        System.out.print("Ingrese profesor: ");
+        String profesor = lector.readLine();
+    
+        System.out.print("Ingrese creditos: ");
+        int creditos = Integer.parseInt(lector.readLine());
+
+        Asignatura asignatura = new Asignatura(codigo, nombre, profesor, creditos);
+
+        carrera.getListaAsignaturas().add(asignatura);
+    }
     
     public static void mostrarMenu() {
-        System.out.println("╔════════════════════════╗");
-        System.out.println("║   [1] Agregar alumno   ║");
-        System.out.println("║   [2] Mostrar alumno   ║");
-        System.out.println("║   [0] Salir            ║");
-        System.out.println("╚════════════════════════╝");
+        System.out.println("╔═════════════════════════════════╗");
+        System.out.println("║   [1] Agregar alumno            ║");
+        System.out.println("║   [2] Mostrar alumnos           ║");
+        System.out.println("║   [3] Agregar carrera           ║");
+        System.out.println("║   [4] Mostrar carreras          ║");
+        System.out.println("║   [5] Buscar alumno rut         ║");
+        System.out.println("║   [6] Buscar carrera id         ║");
+        System.out.println("║   [7] Buscar alumnos carrera    ║");
+        System.out.println("║   [0] Salir                     ║");
+        System.out.println("╚═════════════════════════════════╝");
     }
 
     public static void limpiarPantalla() {
@@ -49,21 +116,20 @@ public class Main {
     
     public static void main(String[] args) throws IOException{
 
-        //Instituto
+        //Instituto clase principal
         Instituto instituto = new Instituto();
-        //LECTOR
+        
+        //Lector
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        //CARRERAS
-        ArrayList listaCarreras = Datos.cargarCarreras();
-        //OPCION
+        
+        //Cargar
+        BufferedReader lectorCarreras = new BufferedReader(new FileReader("datos/carreras.csv"));
+        instituto.cargarCsvCarreras(lectorCarreras);
+        lectorCarreras.close();
+        BufferedReader lectorAlumnos = new BufferedReader(new FileReader("datos/alumnos.csv"));
+        instituto.cargarCsvAlumnos(lectorAlumnos);
+        lectorAlumnos.close();
 
-        //ALUMNOS INICIALES
-        Alumno alumno = new Alumno("Cristian", "Mejias", 99, "18.854.182-0", (Carrera)listaCarreras.get(0));
-        instituto.agregarAlumno(alumno);
-        alumno = new Alumno("Cristobal", "Rubilar", 0, "21.711.065-3", (Carrera)listaCarreras.get(1));
-        instituto.agregarAlumno(alumno);
-        alumno = new Alumno("Pablo", "Aguilera", 50, "21.712.853-6", (Carrera)listaCarreras.get(2));
-        instituto.agregarAlumno(alumno);
 
         while (true) {
             mostrarMenu();
@@ -73,12 +139,36 @@ public class Main {
             System.out.println("");
 
             if (opcion == 1) {
-                leerAlumno(lector, instituto, listaCarreras);
-            } else if (opcion == 2) {
+                leerAlumno(lector, instituto);
+            } 
+            else if (opcion == 2) {
                 instituto.mostrarAlumnos();
-            } else if (opcion == 0) {
+                System.out.println("");
+            }
+            else if (opcion == 3) {
+                leerCarrera(lector, instituto);
+            } 
+            else if (opcion == 4) {
+                instituto.mostrarCarreras();
+                System.out.println("");
+            }
+            else if (opcion == 5) {
+                instituto.buscarAlumnosRut(lector);
+                System.out.println("");
+            } 
+            else if (opcion == 6) {
+                instituto.buscarCarreradId(lector);
+                System.out.println("");
+            } 
+            else if (opcion == 7) {
+                instituto.buscarAlumnosPorCarrera(lector);
+                System.out.println("");
+            } 
+            else if (opcion == 0) {
+                lector.close();
                 System.exit(0);
-            } else {
+            } 
+            else {
                 System.out.println("Opcion no valida");
                 System.out.println("");
             }

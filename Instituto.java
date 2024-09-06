@@ -1,88 +1,208 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Instituto
 {
-    ArrayList listaAlumnos;
-    HashMap mapaAlumnos;
-    int cantidadAlumnos;
+    //ATRIBUTOS
+    private ArrayList<Alumno> listaAlumnos;
+    private HashMap<String,Alumno> mapaAlumnos;
+    private ArrayList<Carrera> listaCarreras;
+    private HashMap<String,Carrera> mapaCarreras;
 
-    public Instituto()
-    {
-        listaAlumnos = new ArrayList();
-        mapaAlumnos = new HashMap();
-        cantidadAlumnos = 0;
+
+    //CONSTRUCTOR
+    public Instituto() {
+        listaAlumnos = new ArrayList<>();
+        mapaAlumnos = new HashMap<>();
+        listaCarreras = new ArrayList<>();
+        mapaCarreras = new HashMap<>();
     }
 
-    public void agregarAlumno(Alumno nuevoAlumno)
-    {
+
+    //SETTERS
+    public void setListaAlumnos(ArrayList<Alumno> listaAlumnos) {
+        this.listaAlumnos = listaAlumnos;
+    }
+
+    public void setListaCarreras(ArrayList<Carrera> listaCarreras) {
+        this.listaCarreras = listaCarreras;
+    }
+
+    public void setMapaAlumnos(HashMap<String, Alumno> mapaAlumnos) {
+        this.mapaAlumnos = mapaAlumnos;
+    }
+
+    public void setMapaCarreras(HashMap<String, Carrera> mapaCarreras) {
+        this.mapaCarreras = mapaCarreras;
+    }
+
+
+    //GETTERS
+    public HashMap<String, Alumno> getMapaAlumnos() {
+        return mapaAlumnos;
+    }
+
+    public ArrayList<Alumno> getListaAlumnos() {
+        return listaAlumnos;
+    }
+
+    public HashMap<String, Carrera> getMapaCarreras() {
+        return mapaCarreras;
+    }
+
+    public ArrayList<Carrera> getListaCarreras() {
+        return listaCarreras;
+    }
+
+
+    //METODOS
+    public void agregarAlumno(Alumno nuevoAlumno) {
         if(mapaAlumnos.get(nuevoAlumno.getRut()) == null)
         {
             listaAlumnos.add(nuevoAlumno);
             mapaAlumnos.put(nuevoAlumno.getRut(), nuevoAlumno);
-            cantidadAlumnos++;
         }
     }
 
-    public void mostrarAlumnos()
-    {
-        System.out.println("Lista alumnos");
+    public void agregarCarrera(Carrera nuevaCarrera) {
+        if(mapaCarreras.get(nuevaCarrera.getId()) == null)
+        {
+            listaCarreras.add(nuevaCarrera);
+            mapaCarreras.put(nuevaCarrera.getId(), nuevaCarrera);
+        }
+    }
+
+    public void mostrarAlumnos() {
+        System.out.println("Lista Alumnos");
         System.out.println("* * * * * * *");
         for(int i = 0 ; i < listaAlumnos.size() ; i++)
         {
             Alumno alumnoActual = (Alumno) listaAlumnos.get(i);
             alumnoActual.mostrarSimple();
-            System.out.println("");
         }
     }
 
-    public void buscarAlumnosRut(HashMap mapaAlumnos, BufferedReader lector)throws IOException{
-    
-        
-        System.out.println("PORFAVOR INGRESAR EL RUT DEL ALUMNO A BUSCAR");
+    public void mostrarCarreras() {
+        System.out.println("Lista Carreras");
+        System.out.println("* * * * * * *");
+        for(int i = 0 ; i < listaCarreras.size() ; i++)
+        {
+            Carrera carreraActual = (Carrera) listaCarreras.get(i);
+            carreraActual.mostrarSimple();
+        }
+    }
+
+    public void buscarAlumnosRut(BufferedReader lector) throws IOException {
+        System.out.println("Porfavor ingresar el RUT del alumno a buscar");
         String rut = lector.readLine();
 
-        if(mapaAlumnos.get(rut) != null){
-
-            Alumno alumnoBuscado = (Alumno)mapaAlumnos.get(rut);
+        Alumno alumnoBuscado = mapaAlumnos.get(rut);
+        if(alumnoBuscado != null)
             alumnoBuscado.mostrarDetalle();
-        }
-        else{
-            System.out.println("No se encuentra alumnos con el rut ingresado");
-        }
-        
+        else
+            System.out.println("No se encuentra el alumno con el rut ingresado");
     }
 
-    public void buscarAlumnosCarrera(ArrayList listaAlumnos,BufferedReader lector)throws IOException{
-    
-        System.out.println("PORFAVOR INGRESAR la Carrera a buscar: ");
+    public void buscarCarreradId(BufferedReader lector) throws IOException {
+        System.out.println("Porfavor ingresar el ID de la carrera a buscar");
+        String id = lector.readLine();
+
+        Carrera carreraBuscada = mapaCarreras.get(id);
+        if(carreraBuscada != null)
+            carreraBuscada.mostrarDetalle();
+        else
+            System.out.println("No se encuentra la carrera con el id ingresado");
+    }
+
+    public void buscarAlumnosPorCarrera(BufferedReader lector)throws IOException{
+        System.out.println("Porfavor ingresar la Carrera a buscar: ");
         String carrera = lector.readLine();
         Alumno alumnoCarrera;
         boolean hayAlumnosCarrera = false;
         
-        if (cantidadAlumnos != 0)
-        {
+        if (listaAlumnos.size() != 0) {
             for (int i = 0; i < listaAlumnos.size() ; i++)
             {
-                alumnoCarrera = (Alumno)listaAlumnos.get(i);
+                alumnoCarrera = listaAlumnos.get(i);
 
-                if (alumnoCarrera.getCarrera().getNombre().equals(carrera))
-                {
+                if (alumnoCarrera.getCarrera().getNombre().equals(carrera)) {
                     alumnoCarrera.mostrarDetalle();
+                    System.out.println("");
                     hayAlumnosCarrera = true;
                 }
             }
 
-            if (!hayAlumnosCarrera)System.out.println("NO HAY ALUMNOS INSCRITOS EN ESTA CARRERA");
-
+            if (!hayAlumnosCarrera)
+                System.out.println("No hay alumnos inscritos en la carrera");
         }
-        else{
-            System.out.println("NO HAY ALUMNOS INSCRITOS EN EL INSTITUTO");
+        else
+            System.out.println("No hay alumnos inscritos en el instituto");
+    }
+
+    public void cargarCsvCarreras(BufferedReader lectorCsv) throws IOException{
+        String linea;
+
+        while((linea = lectorCsv.readLine()) != null) {
+            
+            if (linea.trim().startsWith("#")) {
+                
+                //leer carreras
+                linea = lectorCsv.readLine();
+                String[] datosCarrera = linea.split(",");
+                String idCarrera = datosCarrera[0];
+                String nombreCarrera = datosCarrera[1];
+                int semestresCarrera = Integer.parseInt(datosCarrera[2]);
+                int creditosCarrera = Integer.parseInt(datosCarrera[3]);
+
+                Carrera carrera = new Carrera(idCarrera, nombreCarrera, semestresCarrera, creditosCarrera);
+
+                //leer asignaturas
+                for (int i = 0; i < 10; i++) {
+                    linea = lectorCsv.readLine();
+                    String[] datosAsignatura = linea.split(",");
+
+
+                    String codigoAsignatura = datosAsignatura[0];
+                    String nombreAsignatura = datosAsignatura[1];
+                    String profesorAsignatura = datosAsignatura[2];
+                    int creditosAsignatura = Integer.parseInt(datosAsignatura[3].trim());
+
+                    Asignatura asignatura = new Asignatura(codigoAsignatura, nombreAsignatura, profesorAsignatura, creditosAsignatura);
+
+                    carrera.getListaAsignaturas().add(asignatura);
+                }
+
+                //agregar carrera a mapa y lista de clase instituto
+                listaCarreras.add(carrera);
+                mapaCarreras.put(carrera.getId(), carrera);
+            }
         }
+    }
 
+    public void cargarCsvAlumnos(BufferedReader lectorCsv) throws IOException{
+        String linea;
+        int talla = listaCarreras.size();
+        int posRandom;
 
+        while((linea = lectorCsv.readLine()) != null) {
+            String[] datos = linea.split(",");
+            String nombre = datos[0];
+            String apellido = datos[1];
+            String rut = datos[2];
+            int edad = Integer.parseInt(datos[3].trim());
 
+            Alumno alumno = new Alumno(nombre, apellido, rut, edad);
+            
+            Random random = new Random();
+            posRandom = random.nextInt(talla);  // entre [0 y talla[
+            alumno.setCarrera(listaCarreras.get(posRandom));
+
+            //agregar alumno a mapa y lista de clase instituto
+            listaAlumnos.add(alumno);
+            mapaAlumnos.put(alumno.getRut(), alumno);
+        }
     }
 
 }

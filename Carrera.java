@@ -2,25 +2,27 @@ import java.util.ArrayList;
 
 public class Carrera {
 
-    //Atributos
+    //ATRIBUTOS
     private String id;
     private String nombre;
     private int semestres;
-    private ArrayList listaAsignaturas;
     private int creditosTotales;
+    private ArrayList<Asignatura> listaAsignaturas;
 
-    //Constructor
+
+    //CONSTRUCTOR
     public Carrera() {}
 
-    public Carrera(String id, String nombre, int semestres, ArrayList listaAsignaturas, int creditosTotales) {
-        setId(id);
-        setNombre(nombre);
-        setSemestres(semestres);
-        setListaAsignaturas(listaAsignaturas);
-        setCreditosTotales(creditosTotales);
+    public Carrera(String id, String nombre, int semestres, int creditosTotales) {
+        this.id = id;
+        this.nombre = nombre;
+        this.semestres = semestres;
+        this.creditosTotales = creditosTotales;
+        listaAsignaturas = new ArrayList<Asignatura>();
     }
 
-    //Setters
+
+    //SETTERS
     public void setId(String id) {
         if(id != null)
             this.id = id;
@@ -42,19 +44,19 @@ public class Carrera {
             this.semestres = 0;
     }
 
-    public void setListaAsignaturas(ArrayList listaAsignaturas) {
+    public void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
         this.listaAsignaturas = listaAsignaturas;
     }
 
-    public void setCreditosTotales(int creditosTotales)
-    {
+    public void setCreditosTotales(int creditosTotales) {
         if(creditosTotales >= 0)
             this.creditosTotales = creditosTotales;
         else
             this.creditosTotales = 0;
     }
 
-    //Getters
+
+    //GETTERS
     public String getId() {
         return id;
     }
@@ -67,27 +69,28 @@ public class Carrera {
         return semestres;
     }
 
-    public ArrayList getListaAsignaturas() {
+    public ArrayList<Asignatura> getListaAsignaturas() {
         return listaAsignaturas;
     }
 
-    public int getCreditosTotales()
-    {
+    public int getCreditosTotales() {
         return creditosTotales;
     }
 
-    //Metodos
+
+    //METODOS
     public void mostrarDetalle() {
         System.out.println("Id: " + id);
         System.out.println("Nombre: " + nombre);
         System.out.println("Semestres: " + semestres);
         System.out.println("Creditos Totales: " + creditosTotales);
         System.out.println("Asignaturas: ");
-        for (Object aux:listaAsignaturas) {
-            Asignatura asignatura = (Asignatura) aux;
-            System.out.println("    " + asignatura.getNombre());
+        System.out.print("    | ");
+        for (Asignatura asignaturaActual:listaAsignaturas) {
+            System.out.print(asignaturaActual.getNombre() + " | ");
         }
+        System.out.println("");
     }
 
-    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres);}
+    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + ".");}
 }

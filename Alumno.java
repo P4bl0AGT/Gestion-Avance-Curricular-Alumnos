@@ -1,74 +1,104 @@
 public class Alumno{
 
-    /* ATRIBUTOS */
-
+    //ATRIBUTOS
     private String nombre;
     private String apellido;
-    private int edad;
     private String rut;
-    private Carrera carrera;
+    private int edad;
     private int creditosAprobados;
+    private Carrera carrera;
 
 
-    public Alumno(String nombre, String apellido, int edad, String rut, Carrera carrera){
-
+    //CONSTRUCTOR
+    public Alumno(String nombre, String apellido,String rut, int edad, Carrera carrera) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.rut = rut;
         this.carrera = carrera;
-        this.creditosAprobados = 0;
+        creditosAprobados = 0;
+    }
+
+    public Alumno(String nombre, String apellido, String rut, int edad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rut = rut;
+        this.edad = edad;
+        creditosAprobados = 0;
     }
     
-    /* GETTER */
+
+    //GETTERS
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
     
-    public String getNombre(){return nombre;}
-    public String getApellido(){return apellido;}
-    public int getEdad(){return edad;}
-    public String getRut(){return rut;}
-    public Carrera getCarrera(){return carrera;}
-    public int getCreditosAprobados(){return creditosAprobados;}
-
-    /*SETTER */
-
-    public void setNombre(String nombre){
-
-        if(nombre != null){this.nombre = nombre;}
-        else{this.nombre = "SIN DATOS";}
+    public int getEdad() {
+        return edad;
     }
 
-    public void setApellido(String apellido){
-
-        if(apellido != null){this.apellido = apellido;}
-        else{this.apellido = "SIN DATOS";}
+    public String getRut() {
+        return rut;
     }
 
-    public void setEdad(int edad){
-
-        if(edad > 0){this.edad = edad;}
-        else{this.edad = 0;}
+    public Carrera getCarrera() {
+        return carrera;
     }
 
-    public void setRut(String rut){
-
-        if(rut != null){this.rut = rut;}
-        else{this.rut = "SIN DATOS";}
+    public int getCreditosAprobados() {
+        return creditosAprobados;
     }
 
-    public void setCarrera(Carrera carrera){
-        
-        if(carrera != null ){this.carrera = carrera;}
-        else{this.carrera = null;}
+
+    //SETTERS
+    public void setNombre(String nombre) {
+        if(nombre != null)
+            this.nombre = nombre;
+        else
+            this.nombre = "nulo";
+    }
+
+    public void setApellido(String apellido) {
+        if(apellido != null)
+            this.apellido = apellido;
+        else
+            this.apellido = "nulo";
+    }
+
+    public void setEdad(int edad) {
+        if(edad > 0)
+            this.edad = edad;
+        else
+            this.edad = 0;
+    }
+
+    public void setRut(String rut) {
+        if(rut != null)
+            this.rut = rut;
+        else
+            this.rut = "nulo";
+    }
+
+    public void setCarrera(Carrera carrera) {
+        if(carrera != null ) 
+            this.carrera = carrera;
+        else
+            this.carrera = null;
     }
 
     public void setCreditosAprobados(int edad){
-
-        if(edad > 0){this.edad = edad;}
-        else{this.edad = 0;}
+        if(edad > 0)
+            this.edad = edad;
+        else
+            this.edad = 0;
     }
 
-    /*METODOS */
 
+    //METODOS 
     public void mostrarDetalle()
     { 
         System.out.println("Nombre del Alumno: " + nombre);
