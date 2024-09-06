@@ -70,6 +70,10 @@ public class Asignatura
         return profesor;
     }
 
+    public boolean getEstado(){
+        return estado;
+    }
+
 
     //METODOS
     public void mostrarDetalle()

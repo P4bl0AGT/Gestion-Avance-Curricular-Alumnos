@@ -26,8 +26,8 @@ public class Main {
         while (indice < 0 || indice >= talla) {
             indice = Integer.parseInt(lector.readLine());
         }
-
-        Carrera carrera = instituto.getListaCarreras().get(indice);
+        
+        Carrera carrera = instituto.getListaCarreras().get(indice).copiarCarrera();
     
         Alumno alumno = new Alumno(nombre, apellido, rut, edad, carrera);
     

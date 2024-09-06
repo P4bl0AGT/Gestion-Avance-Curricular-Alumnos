@@ -93,4 +93,32 @@ public class Carrera {
     }
 
     public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + ".");}
+
+    public Carrera copiarCarrera()
+    {
+        String idCopia = getId();
+        String nombre = getNombre();
+        int semestres = getSemestres();
+        int  creditosTotales = getCreditosTotales();
+        ArrayList<Asignatura> listaCopiaAsignaturas = new ArrayList<Asignatura>(); 
+
+        for (int i = 0 ; i < listaAsignaturas.size(); i++)
+        {
+
+            Asignatura copiaAsignatura = listaAsignaturas.get(i);
+            String codigo = copiaAsignatura.getCodigo();
+            String nombreAsignatura = copiaAsignatura.getNombre();
+            String profesor = copiaAsignatura.getProfesor();
+            int creditos = copiaAsignatura.getCreditos();
+            Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAsignatura, profesor, creditos);
+
+            listaCopiaAsignaturas.add(nuevaAsignatura);
+        }
+
+        Carrera nuevaCarrera = new Carrera(idCopia, nombre, semestres, creditosTotales);
+        nuevaCarrera.setListaAsignaturas(listaCopiaAsignaturas);
+
+        return nuevaCarrera;
+
+    }
 }
