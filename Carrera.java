@@ -92,6 +92,7 @@ public class Carrera {
         System.out.println("");
     }
 
+<<<<<<< HEAD
     public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + ".");}
 
     public Carrera copiarCarrera()
@@ -121,4 +122,7 @@ public class Carrera {
         return nuevaCarrera;
 
     }
+=======
+    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + " | Id: " + id);}
+>>>>>>> 26ca05791f64c3f00388595510bd38c14b6d153b
 }
