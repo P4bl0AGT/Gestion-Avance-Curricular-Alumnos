@@ -92,5 +92,5 @@ public class Carrera {
         System.out.println("");
     }
 
-    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + ".");}
+    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + " | Id: " + id);}
 }

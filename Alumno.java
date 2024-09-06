@@ -108,7 +108,7 @@ public class Alumno{
         System.out.println("Carrera del alumno: "+ carrera.getNombre());
     }
 
-    public void mostrarSimple(){System.out.println("Nombre Completo: " + nombre + " " + apellido +  " | Carrera: " + carrera.getNombre());}
+    public void mostrarSimple(){System.out.println("Nombre Completo: " + nombre + " " + apellido +  " | Carrera: " + carrera.getNombre() + " | Rut: " + rut);}
 
 }
 
