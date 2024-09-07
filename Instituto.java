@@ -80,7 +80,7 @@ public class Instituto
         for(int i = 0 ; i < listaAlumnos.size() ; i++)
         {
             Alumno alumnoActual = (Alumno) listaAlumnos.get(i);
-            alumnoActual.mostrarSimple();
+            alumnoActual.mostrar(true);
         }
     }
 
@@ -90,7 +90,7 @@ public class Instituto
         for(int i = 0 ; i < listaCarreras.size() ; i++)
         {
             Carrera carreraActual = (Carrera) listaCarreras.get(i);
-            carreraActual.mostrarSimple();
+            carreraActual.mostrar(true);
         }
     }
 
@@ -100,7 +100,7 @@ public class Instituto
 
         Alumno alumnoBuscado = mapaAlumnos.get(rut);
         if(alumnoBuscado != null)
-            alumnoBuscado.mostrarDetalle();
+            alumnoBuscado.mostrar();
         else
             System.out.println("No se encuentra el alumno con el rut ingresado");
     }
@@ -111,7 +111,7 @@ public class Instituto
 
         Carrera carreraBuscada = mapaCarreras.get(id);
         if(carreraBuscada != null)
-            carreraBuscada.mostrarDetalle();
+            carreraBuscada.mostrar();
         else
             System.out.println("No se encuentra la carrera con el id ingresado");
     }
@@ -128,7 +128,7 @@ public class Instituto
                 alumnoCarrera = listaAlumnos.get(i);
 
                 if (alumnoCarrera.getCarrera().getNombre().equals(carrera)) {
-                    alumnoCarrera.mostrarDetalle();
+                    alumnoCarrera.mostrar();
                     System.out.println("");
                     hayAlumnosCarrera = true;
                 }

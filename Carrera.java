@@ -77,9 +77,8 @@ public class Carrera {
         return creditosTotales;
     }
 
-
     //METODOS
-    public void mostrarDetalle() {
+    public void mostrar() {
         System.out.println("Id: " + id);
         System.out.println("Nombre: " + nombre);
         System.out.println("Semestres: " + semestres);
@@ -92,7 +91,8 @@ public class Carrera {
         System.out.println("");
     }
 
-    public void mostrarSimple(){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + " | ID: " + id);}
+    public void mostrar(boolean simple){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + " | ID: " + id);}
+    
 
     public Carrera copiarCarrera()
     {

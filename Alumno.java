@@ -100,7 +100,7 @@ public class Alumno{
 
 
     //METODOS 
-    public void mostrarDetalle()
+    public void mostrar()
     { 
         System.out.println("Nombre del Alumno: " + nombre);
         System.out.println("Apellido del Alumno: " + apellido);
@@ -109,7 +109,7 @@ public class Alumno{
         System.out.println("Carrera del alumno: "+ carrera.getNombre());
     }
 
-    public void mostrarSimple(){System.out.println("Nombre Completo: " + nombre + " " + apellido +  " | Carrera: " + carrera.getNombre() + " | Rut: " + rut);}
+    public void mostrar(boolean simple){System.out.println("Nombre Completo: " + nombre + " " + apellido +  " | Carrera: " + carrera.getNombre() + " | Rut: " + rut);}
 
 }
 
