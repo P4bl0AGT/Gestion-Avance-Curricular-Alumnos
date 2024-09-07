@@ -44,9 +44,10 @@ public class Carrera {
             this.semestres = 0;
     }
 
-    public void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
-        this.listaAsignaturas = listaAsignaturas;
+    public void setAsignatura(Asignatura asignatura) {
+        listaAsignaturas.add(asignatura);
     }
+    
 
     public void setCreditosTotales(int creditosTotales) {
         if(creditosTotales >= 0)
@@ -69,9 +70,10 @@ public class Carrera {
         return semestres;
     }
 
-    public ArrayList<Asignatura> getListaAsignaturas() {
-        return listaAsignaturas;
+    public Asignatura getAsignatura(int i) {
+        return listaAsignaturas.get(i);
     }
+
 
     public int getCreditosTotales() {
         return creditosTotales;
@@ -92,7 +94,13 @@ public class Carrera {
     }
 
     public void mostrar(boolean simple){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + " | ID: " + id);}
-    
+
+
+    public int cantidadAsignaturas() {
+        return listaAsignaturas.size();
+    }
+
+
 
     public Carrera copiarCarrera()
     {
@@ -100,11 +108,9 @@ public class Carrera {
         String nombre = getNombre();
         int semestres = getSemestres();
         int  creditosTotales = getCreditosTotales();
-        ArrayList<Asignatura> listaCopiaAsignaturas = new ArrayList<Asignatura>(); 
+        Carrera nuevaCarrera = new Carrera(idCopia, nombre, semestres, creditosTotales);
 
-        for (int i = 0 ; i < listaAsignaturas.size(); i++)
-        {
-
+        for (int i = 0 ; i < listaAsignaturas.size(); i++) {
             Asignatura copiaAsignatura = listaAsignaturas.get(i);
             String codigo = copiaAsignatura.getCodigo();
             String nombreAsignatura = copiaAsignatura.getNombre();
@@ -112,11 +118,8 @@ public class Carrera {
             int creditos = copiaAsignatura.getCreditos();
             Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAsignatura, profesor, creditos);
 
-            listaCopiaAsignaturas.add(nuevaAsignatura);
+            nuevaCarrera.setAsignatura(nuevaAsignatura);
         }
-
-        Carrera nuevaCarrera = new Carrera(idCopia, nombre, semestres, creditosTotales);
-        nuevaCarrera.setListaAsignaturas(listaCopiaAsignaturas);
 
         return nuevaCarrera;
 
