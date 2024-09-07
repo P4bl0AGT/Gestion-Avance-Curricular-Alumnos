@@ -76,7 +76,7 @@ public class Asignatura
 
 
     //METODOS
-    public void mostrarDetalle()
+    public void mostrar()
     {
         System.out.println("Nombre asignatura: " + nombre);
         System.out.println("Codigo asignatura: " + codigo);
@@ -85,5 +85,5 @@ public class Asignatura
         System.out.println("Estado asignatura: " + estado);
     }
 
-    public void mostrarSimple(){System.out.println("Nombre Asignatura: " + nombre + " | Profesor : " + profesor);}
+    public void mostrar(boolean simple){System.out.println("Nombre Asignatura: " + nombre + " | Profesor : " + profesor);}
 }
