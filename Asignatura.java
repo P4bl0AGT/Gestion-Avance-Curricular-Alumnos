@@ -84,6 +84,6 @@ public class Asignatura
         System.out.println("Creditos asignatura: " + creditos);
         System.out.println("Estado asignatura: " + estado);
     }
-
+    
     public void mostrar(boolean simple){System.out.println("Nombre Asignatura: " + nombre + " | Profesor : " + profesor);}
 }
