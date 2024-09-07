@@ -1,3 +1,4 @@
+
 public class Alumno{
 
     //ATRIBUTOS
@@ -90,11 +91,11 @@ public class Alumno{
             this.carrera = null;
     }
 
-    public void setCreditosAprobados(int edad){
-        if(edad > 0)
-            this.edad = edad;
+    public void setCreditosAprobados(int creditosAprobados){
+        if(creditosAprobados > 0)
+            this.creditosAprobados = creditosAprobados;
         else
-            this.edad = 0;
+            this.creditosAprobados = 0;
     }
 
 

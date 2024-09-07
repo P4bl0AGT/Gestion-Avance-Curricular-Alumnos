@@ -205,4 +205,85 @@ public class Instituto
         }
     }
 
-}
+    public void actualizacionEstado(BufferedReader lector)throws IOException{
+        
+        int creditosAprobados = 0;
+        System.out.println("Hola podrias darme el rut del Alumno al cual actualizar su estado");
+        String rut = lector.readLine();
+
+        Alumno alumnoBuscado = mapaAlumnos.get(rut);
+
+        if (alumnoBuscado == null){
+            System.out.println("Alumno NO encontrado");
+            return;
+        }
+        System.out.println("Alumno : " + alumnoBuscado.getNombre() + " " + alumnoBuscado.getApellido());
+        
+        Carrera carreraAlumno = alumnoBuscado.getCarrera();
+
+        System.out.println("Deseas actualizar los estados de asignaturas");
+        System.out.println("1.- SI");
+        System.out.println("2.- NO");
+        String opcion = lector.readLine();
+
+        if (Integer.parseInt(opcion) == 2)
+        {
+            System.out.println("Muchas Gracias");
+            return;
+        }
+        else{
+
+            for (int i = 0 ; i < carreraAlumno.getListaAsignaturas().size() ; i++)
+            {
+                Asignatura asignatura = carreraAlumno.getListaAsignaturas().get(i);
+
+                System.out.println("Porfavor selecciona una opcion para ver si cursaste o ya aprobaste la asignatura de : " + asignatura.getNombre());
+                System.out.println("1.- APROBADO");
+                System.out.println("2.- PENDIENTE");
+                String estadoActualizado = lector.readLine();
+
+                if (Integer.parseInt(estadoActualizado) == 1)
+                {
+                    asignatura.setEstado(true);
+                    creditosAprobados += asignatura.getCreditos();
+                }
+                
+            }   
+
+            System.out.println("Tus estados de asignatura han sido actualizados con exito");
+        }
+        alumnoBuscado.setCreditosAprobados(creditosAprobados);
+
+    }
+
+    public void mostrarEstadoAsignaturas(BufferedReader lector)throws IOException{
+                
+        System.out.println("Hola podrias darme el rut del Alumno al cual actualizar su estado");
+        String rut = lector.readLine();
+
+        Alumno alumnoBuscado = mapaAlumnos.get(rut);
+
+        if (alumnoBuscado == null){
+            System.out.println("Alumno NO encontrado");
+            return;
+        }
+        System.out.println("Alumno : " + alumnoBuscado.getNombre() + " " + alumnoBuscado.getApellido());
+        
+        Carrera carreraAlumno = alumnoBuscado.getCarrera();
+
+        for (int i = 0 ; i < carreraAlumno.getListaAsignaturas().size() ; i++)
+            {
+                Asignatura asignatura = carreraAlumno.getListaAsignaturas().get(i);
+                
+                if(asignatura.getEstado() == true)
+                {
+                    System.out.println("La asignatura " + asignatura.getNombre() + " ya la has APROBADO felicidades");
+                }
+                else{
+                    System.out.println("La asignatura " + asignatura.getNombre() + " aun esta PENDIENTE");
+                }   
+            }   
+            System.out.println("Creditos totales: " + alumnoBuscado.getCreditosAprobados());
+        }
+
+    }

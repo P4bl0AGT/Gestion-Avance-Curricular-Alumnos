@@ -100,6 +100,8 @@ public class Main {
         System.out.println("║   [5] Buscar alumno rut         ║");
         System.out.println("║   [6] Buscar carrera id         ║");
         System.out.println("║   [7] Buscar alumnos carrera    ║");
+        System.out.println("║   [8] Actualizar Estado         ║");
+        System.out.println("║   [9] Mostrar Estado Asignatura ║"); 
         System.out.println("║   [0] Salir                     ║");
         System.out.println("╚═════════════════════════════════╝");
     }
@@ -164,6 +166,14 @@ public class Main {
                 instituto.buscarAlumnosPorCarrera(lector);
                 System.out.println("");
             } 
+            else if (opcion == 8){
+                instituto.actualizacionEstado(lector);
+                System.out.println("");
+            }
+            else if (opcion == 9){
+                instituto.mostrarEstadoAsignaturas(lector);
+                System.out.println("");
+            }
             else if (opcion == 0) {
                 lector.close();
                 System.exit(0);
