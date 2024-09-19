@@ -126,10 +126,10 @@ public class Main {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         
         //Cargar
-        BufferedReader lectorCarreras = new BufferedReader(new FileReader("datos/carreras.csv"));
+        BufferedReader lectorCarreras = new BufferedReader(new FileReader("src/main/java/datos/carreras.csv"));
         instituto.cargarCsvCarreras(lectorCarreras);
         lectorCarreras.close();
-        BufferedReader lectorAlumnos = new BufferedReader(new FileReader("datos/alumnos.csv"));
+        BufferedReader lectorAlumnos = new BufferedReader(new FileReader("src/main/java/datos/alumnos.csv"));
         instituto.cargarCsvAlumnos(lectorAlumnos);
         lectorAlumnos.close();
 
@@ -141,57 +141,58 @@ public class Main {
             int opcion = Integer.parseInt(lector.readLine());
             System.out.println("");
 
-            if (opcion == 1) {
-                limpiarPantalla();
-                leerAlumno(lector, instituto);
-            } 
-            else if (opcion == 2) {
-                limpiarPantalla();
-                instituto.mostrarAlumnos();
-                System.out.println("");
-            }
-            else if (opcion == 3) {
-                limpiarPantalla();
-                leerCarrera(lector, instituto);
-            } 
-            else if (opcion == 4) {
-                limpiarPantalla();
-                instituto.mostrarCarreras();
-                System.out.println("");
-            }
-            else if (opcion == 5) {
-                limpiarPantalla();
-                instituto.buscarAlumnosRut(lector);
-                System.out.println("");
-            } 
-            else if (opcion == 6) {
-                limpiarPantalla();
-                instituto.buscarCarreradId(lector);
-                System.out.println("");
-            } 
-            else if (opcion == 7) {
-                limpiarPantalla();
-                instituto.buscarAlumnosPorCarrera(lector);
-                System.out.println("");
-            } 
-            else if (opcion == 8){
-                limpiarPantalla();
-                instituto.actualizacionEstado(lector);
-                System.out.println("");
-            }
-            else if (opcion == 9){
-                limpiarPantalla();
-                instituto.mostrarEstadoAsignaturas(lector);
-                System.out.println("");
-            }
-            else if (opcion == 0) {
-                limpiarPantalla();
-                lector.close();
-                System.exit(0);
-            } 
-            else {
-                System.out.println("Opcion no valida");
-                System.out.println("");
+            switch (opcion) {
+                case 1:
+                    limpiarPantalla();
+                    leerAlumno(lector, instituto);
+                    break;
+                case 2:
+                    limpiarPantalla();
+                    instituto.mostrarAlumnos();
+                    System.out.println("");
+                    break;
+                case 3:
+                    limpiarPantalla();
+                    leerCarrera(lector, instituto);
+                    break;
+                case 4:
+                    limpiarPantalla();
+                    instituto.mostrarCarreras();
+                    System.out.println("");
+                    break;
+                case 5:
+                    limpiarPantalla();
+                    instituto.buscarAlumnosRut(lector);
+                    System.out.println("");
+                    break;
+                case 6:
+                    limpiarPantalla();
+                    instituto.buscarCarreradId(lector);
+                    System.out.println("");
+                    break;
+                case 7:
+                    limpiarPantalla();
+                    instituto.buscarAlumnosPorCarrera(lector);
+                    System.out.println("");
+                    break;
+                case 8:
+                    limpiarPantalla();
+                    instituto.actualizacionEstado(lector);
+                    System.out.println("");
+                    break;
+                case 9:
+                    limpiarPantalla();
+                    instituto.mostrarEstadoAsignaturas(lector);
+                    System.out.println("");
+                    break;
+                case 0:
+                    limpiarPantalla();
+                    lector.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Opcion no valida");
+                    System.out.println("");
+                    break;
             }
             presionaParaContinuar(lector);
             limpiarPantalla();
