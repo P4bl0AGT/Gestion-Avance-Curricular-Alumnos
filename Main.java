@@ -16,9 +16,9 @@ public class Main {
         String rut = lector.readLine();
     
         System.out.println("Ingrese carrera: ");
-        int talla = instituto.getListaCarreras().size();
+        int talla = instituto.cantidadCarreras();
         for (int i = 0; i < talla; i++) {
-            System.out.println("  » [" + i +"] " + instituto.getListaCarreras().get(i).getNombre());
+            System.out.println("  » [" + i +"] " + instituto.getCarrera(i).getNombre());
         }
         
         //validar lectura
@@ -27,7 +27,7 @@ public class Main {
             indice = Integer.parseInt(lector.readLine());
         }
         
-        Carrera carrera = instituto.getListaCarreras().get(indice).copiarCarrera();
+        Carrera carrera = instituto.getCarrera(indice).copiarCarrera();
     
         Alumno alumno = new Alumno(nombre, apellido, rut, edad, carrera);
     
@@ -88,7 +88,7 @@ public class Main {
 
         Asignatura asignatura = new Asignatura(codigo, nombre, profesor, creditos);
 
-        carrera.getListaAsignaturas().add(asignatura);
+        carrera.setAsignatura(asignatura);
     }
     
     public static void mostrarMenu() {

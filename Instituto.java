@@ -22,38 +22,22 @@ public class Instituto
 
 
     //SETTERS
-    public void setListaAlumnos(ArrayList<Alumno> listaAlumnos) {
-        this.listaAlumnos = listaAlumnos;
+    public void setAlumno(Alumno alumno) {
+        listaAlumnos.add(alumno);
+        mapaAlumnos.put(alumno.getRut(), alumno);
+    }
+    
+    public void setCarrera(Carrera carrera) {
+        listaCarreras.add(carrera);
+        mapaCarreras.put(carrera.getId(), carrera);
     }
 
-    public void setListaCarreras(ArrayList<Carrera> listaCarreras) {
-        this.listaCarreras = listaCarreras;
+    public Alumno getAlumno(int i) {
+        return listaAlumnos.get(i);
     }
 
-    public void setMapaAlumnos(HashMap<String, Alumno> mapaAlumnos) {
-        this.mapaAlumnos = mapaAlumnos;
-    }
-
-    public void setMapaCarreras(HashMap<String, Carrera> mapaCarreras) {
-        this.mapaCarreras = mapaCarreras;
-    }
-
-
-    //GETTERS
-    public HashMap<String, Alumno> getMapaAlumnos() {
-        return mapaAlumnos;
-    }
-
-    public ArrayList<Alumno> getListaAlumnos() {
-        return listaAlumnos;
-    }
-
-    public HashMap<String, Carrera> getMapaCarreras() {
-        return mapaCarreras;
-    }
-
-    public ArrayList<Carrera> getListaCarreras() {
-        return listaCarreras;
+    public Carrera getCarrera(int i) {
+        return listaCarreras.get(i);
     }
 
 
@@ -66,12 +50,20 @@ public class Instituto
         }
     }
 
+    public int cantidadAlumnos() {
+        return listaAlumnos.size();
+    }
+
     public void agregarCarrera(Carrera nuevaCarrera) {
         if(mapaCarreras.get(nuevaCarrera.getId()) == null)
         {
             listaCarreras.add(nuevaCarrera);
             mapaCarreras.put(nuevaCarrera.getId(), nuevaCarrera);
         }
+    }
+
+    public int cantidadCarreras() {
+        return listaCarreras.size();
     }
 
     public void mostrarAlumnos() {
@@ -171,7 +163,7 @@ public class Instituto
 
                     Asignatura asignatura = new Asignatura(codigoAsignatura, nombreAsignatura, profesorAsignatura, creditosAsignatura);
 
-                    carrera.getListaAsignaturas().add(asignatura);
+                    carrera.setAsignatura(asignatura);
                 }
 
                 //agregar carrera a mapa y lista de clase instituto
@@ -233,9 +225,9 @@ public class Instituto
         }
         else{
 
-            for (int i = 0 ; i < carreraAlumno.getListaAsignaturas().size() ; i++)
+            for (int i = 0 ; i < carreraAlumno.cantidadAsignaturas() ; i++)
             {
-                Asignatura asignatura = carreraAlumno.getListaAsignaturas().get(i);
+                Asignatura asignatura = carreraAlumno.getAsignatura(i);
 
                 System.out.println("Porfavor selecciona una opcion para ver si cursaste o ya aprobaste la asignatura de : " + asignatura.getNombre());
                 System.out.println("1.- APROBADO");
@@ -271,9 +263,9 @@ public class Instituto
         
         Carrera carreraAlumno = alumnoBuscado.getCarrera();
 
-        for (int i = 0 ; i < carreraAlumno.getListaAsignaturas().size() ; i++)
+        for (int i = 0 ; i < carreraAlumno.cantidadAsignaturas() ; i++)
             {
-                Asignatura asignatura = carreraAlumno.getListaAsignaturas().get(i);
+                Asignatura asignatura = carreraAlumno.getAsignatura(i);
                 
                 if(asignatura.getEstado() == true)
                 {
