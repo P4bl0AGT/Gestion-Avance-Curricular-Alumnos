@@ -117,6 +117,7 @@ public class Main {
     }
     
     public static void main(String[] args) throws IOException{
+        limpiarPantalla();
 
         //Instituto clase principal
         Instituto instituto = new Instituto();
@@ -134,47 +135,57 @@ public class Main {
 
 
         while (true) {
+            limpiarPantalla();
             mostrarMenu();
-
             System.out.print("Seleccionar opcion: ");
             int opcion = Integer.parseInt(lector.readLine());
             System.out.println("");
 
             if (opcion == 1) {
+                limpiarPantalla();
                 leerAlumno(lector, instituto);
             } 
             else if (opcion == 2) {
+                limpiarPantalla();
                 instituto.mostrarAlumnos();
                 System.out.println("");
             }
             else if (opcion == 3) {
+                limpiarPantalla();
                 leerCarrera(lector, instituto);
             } 
             else if (opcion == 4) {
+                limpiarPantalla();
                 instituto.mostrarCarreras();
                 System.out.println("");
             }
             else if (opcion == 5) {
+                limpiarPantalla();
                 instituto.buscarAlumnosRut(lector);
                 System.out.println("");
             } 
             else if (opcion == 6) {
+                limpiarPantalla();
                 instituto.buscarCarreradId(lector);
                 System.out.println("");
             } 
             else if (opcion == 7) {
+                limpiarPantalla();
                 instituto.buscarAlumnosPorCarrera(lector);
                 System.out.println("");
             } 
             else if (opcion == 8){
+                limpiarPantalla();
                 instituto.actualizacionEstado(lector);
                 System.out.println("");
             }
             else if (opcion == 9){
+                limpiarPantalla();
                 instituto.mostrarEstadoAsignaturas(lector);
                 System.out.println("");
             }
             else if (opcion == 0) {
+                limpiarPantalla();
                 lector.close();
                 System.exit(0);
             } 
