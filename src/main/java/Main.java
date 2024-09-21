@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Ingrese carrera: ");
         int talla = instituto.cantidadCarreras();
         for (int i = 0; i < talla; i++) {
-            System.out.println("  » [" + i +"] " + instituto.getCarrera(i).getNombre());
+            System.out.println("  » [" + i +"] " + instituto.obtenerCarrera(i).getNombre());
         }
         
         //validar lectura
@@ -27,7 +27,7 @@ public class Main {
             indice = Integer.parseInt(lector.readLine());
         }
         
-        Carrera carrera = instituto.getCarrera(indice).copiarCarrera();
+        Carrera carrera = instituto.obtenerCarrera(indice).inscribirCarrera();
     
         Alumno alumno = new Alumno(nombre, apellido, rut, edad, carrera);
     
@@ -47,11 +47,8 @@ public class Main {
     
         System.out.print("Ingrese semestres: ");
         int semestres = Integer.parseInt(lector.readLine());
-    
-        System.out.print("Ingrese creditos: ");
-        int creditos = Integer.parseInt(lector.readLine());
 
-        Carrera carrera = new Carrera(id, nombre, semestres, creditos);
+        Carrera carrera = new Carrera(id, nombre, semestres);
     
         System.out.print("Ingrese total asignaturas: ");
         int talla = Integer.parseInt(lector.readLine());
@@ -79,16 +76,13 @@ public class Main {
     
         System.out.print("Ingrese nombre: ");
         String nombre = lector.readLine();
-
-        System.out.print("Ingrese profesor: ");
-        String profesor = lector.readLine();
     
         System.out.print("Ingrese creditos: ");
         int creditos = Integer.parseInt(lector.readLine());
 
-        Asignatura asignatura = new Asignatura(codigo, nombre, profesor, creditos);
+        Asignatura asignatura = new Asignatura(codigo, nombre, creditos);
 
-        carrera.setAsignatura(asignatura);
+        carrera.agregarAsignatura(asignatura);
     }
     
     public static void mostrarMenu() {
@@ -126,12 +120,9 @@ public class Main {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         
         //Cargar
-        BufferedReader lectorCarreras = new BufferedReader(new FileReader("src/main/java/datos/carreras.csv"));
-        instituto.cargarCsvCarreras(lectorCarreras);
-        lectorCarreras.close();
-        BufferedReader lectorAlumnos = new BufferedReader(new FileReader("src/main/java/datos/alumnos.csv"));
-        instituto.cargarCsvAlumnos(lectorAlumnos);
-        lectorAlumnos.close();
+        Datos datos = new Datos();
+        datos.cargarCsvCarreras(instituto);
+        datos.cargarCsvAlumnos(instituto);
 
 
         while (true) {

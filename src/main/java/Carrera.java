@@ -1,23 +1,20 @@
 import java.util.ArrayList;
 
 public class Carrera {
-
     //ATRIBUTOS
     private String id;
     private String nombre;
     private int semestres;
-    private int creditosTotales;
     private ArrayList<Asignatura> listaAsignaturas;
 
 
     //CONSTRUCTOR
     public Carrera() {}
 
-    public Carrera(String id, String nombre, int semestres, int creditosTotales) {
+    public Carrera(String id, String nombre, int semestres) {
         this.id = id;
         this.nombre = nombre;
         this.semestres = semestres;
-        this.creditosTotales = creditosTotales;
         listaAsignaturas = new ArrayList<Asignatura>();
     }
 
@@ -44,18 +41,6 @@ public class Carrera {
             this.semestres = 0;
     }
 
-    public void setAsignatura(Asignatura asignatura) {
-        listaAsignaturas.add(asignatura);
-    }
-    
-
-    public void setCreditosTotales(int creditosTotales) {
-        if(creditosTotales >= 0)
-            this.creditosTotales = creditosTotales;
-        else
-            this.creditosTotales = 0;
-    }
-
 
     //GETTERS
     public String getId() {
@@ -70,58 +55,66 @@ public class Carrera {
         return semestres;
     }
 
-    public Asignatura getAsignatura(int i) {
-        return listaAsignaturas.get(i);
-    }
-
-
-    public int getCreditosTotales() {
-        return creditosTotales;
-    }
 
     //METODOS
     public void mostrar() {
         System.out.println("Id: " + id);
         System.out.println("Nombre: " + nombre);
         System.out.println("Semestres: " + semestres);
-        System.out.println("Creditos Totales: " + creditosTotales);
         System.out.println("Asignaturas: ");
-        System.out.print("    | ");
         for (Asignatura asignaturaActual:listaAsignaturas) {
-            System.out.print(asignaturaActual.getNombre() + " | ");
+            System.out.print("  ");
+            asignaturaActual.mostrar(true);
         }
         System.out.println("");
     }
 
-    public void mostrar(boolean simple){System.out.println("Nombre: " + nombre + " | Semestres " + semestres + " | ID: " + id);}
+    public void mostrar(boolean simple) {
+        System.out.println(" | " + id + " | " + nombre + " | " + semestres + " | ");
+    }
 
 
     public int cantidadAsignaturas() {
         return listaAsignaturas.size();
     }
 
+    public void agregarAsignatura(Asignatura asignatura) {
+        listaAsignaturas.add(asignatura);
+    }
 
+    public Asignatura obtenerAsignatura(int i) {
+        return listaAsignaturas.get(i);
+    }
 
-    public Carrera copiarCarrera()
+    public int cantidadCreditos() {
+        int total = 0;
+        for (Asignatura aux:listaAsignaturas)
+            total += aux.getCreditos();
+        return total;
+    }
+
+    public AsignaturaInscrita incribirAsignatura(Asignatura asignatura) {
+        String codigo = asignatura.getCodigo();
+        String nombre = asignatura.getNombre();
+        int creditos = asignatura.getCreditos();
+        int estado = 0;
+        int nota = 0;
+        AsignaturaInscrita inscrita = new AsignaturaInscrita(codigo, nombre, creditos, estado, nota);
+        return inscrita;
+    }
+
+    public Carrera inscribirCarrera()
     {
-        String idCopia = getId();
+        String id = getId();
         String nombre = getNombre();
         int semestres = getSemestres();
-        int  creditosTotales = getCreditosTotales();
-        Carrera nuevaCarrera = new Carrera(idCopia, nombre, semestres, creditosTotales);
+        Carrera nuevaCarrera = new Carrera(id, nombre, semestres);
 
-        for (int i = 0 ; i < listaAsignaturas.size(); i++) {
-            Asignatura copiaAsignatura = listaAsignaturas.get(i);
-            String codigo = copiaAsignatura.getCodigo();
-            String nombreAsignatura = copiaAsignatura.getNombre();
-            String profesor = copiaAsignatura.getProfesor();
-            int creditos = copiaAsignatura.getCreditos();
-            Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAsignatura, profesor, creditos);
-
-            nuevaCarrera.setAsignatura(nuevaAsignatura);
+        for (Asignatura aux:listaAsignaturas) {
+            AsignaturaInscrita nuevaAsignatura = incribirAsignatura(aux);
+            nuevaCarrera.agregarAsignatura(nuevaAsignatura);
         }
 
         return nuevaCarrera;
-
     }
 }
