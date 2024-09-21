@@ -156,7 +156,7 @@ public class Instituto
                 System.out.println("1.- EN CURSO");
                 System.out.println("2.- COMPLETADO");
                 int estadoActualizado = Integer.parseInt(lector.readLine());
-
+                if(estadoActualizado == 2) creditosAprobados += asignaturaInscrita.getCreditos();
                 asignaturaInscrita.setEstado(estadoActualizado);
             }   
 
