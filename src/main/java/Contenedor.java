@@ -1,7 +1,8 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-//Generics K = key --- T = type
+//Generics || K = key || T = type ||
 public class Contenedor<K, T> {
 
     //ATRIBUTOS
@@ -44,7 +45,11 @@ public class Contenedor<K, T> {
         return null;
     }
 
-    public int cantidadElementos() {
+    public int talla() {
         return lista.size();
+    }
+
+    public Iterator<T> iterador() {
+        return lista.iterator();
     }
 }

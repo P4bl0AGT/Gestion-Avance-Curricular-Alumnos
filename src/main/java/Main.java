@@ -2,41 +2,7 @@ import java.io.*;
 
 public class Main {
 
-    public static void leerAlumno(BufferedReader lector, Instituto instituto) throws IOException {
-        System.out.print("Ingrese nombre: ");
-        String nombre = lector.readLine();
-    
-        System.out.print("Ingrese apellido: ");
-        String apellido = lector.readLine();
-    
-        System.out.print("Ingrese edad: ");
-        int edad = Integer.parseInt(lector.readLine());
-    
-        System.out.print("Ingrese rut: ");
-        String rut = lector.readLine();
-    
-        System.out.println("Ingrese carrera: ");
-        int talla = instituto.cantidadCarreras();
-        for (int i = 0; i < talla; i++) {
-            System.out.println("  » [" + i +"] " + instituto.obtenerCarrera(i).getNombre());
-        }
-        
-        //validar lectura
-        int indice = -1;
-        while (indice < 0 || indice >= talla) {
-            indice = Integer.parseInt(lector.readLine());
-        }
-        
-        Carrera carrera = instituto.obtenerCarrera(indice).inscribirCarrera();
-    
-        Alumno alumno = new Alumno(nombre, apellido, rut, edad, carrera);
-    
-        instituto.agregarAlumno(alumno);
-    
-        System.out.println("********************");
-    }
-
-
+    //LECTURAS
     public static void leerCarrera(BufferedReader lector, Instituto instituto) throws IOException {
 
         System.out.print("Ingrese id: ");
@@ -69,6 +35,61 @@ public class Main {
         System.out.println("********************");
     }
 
+    public static void leerProfesor(BufferedReader lector, Instituto instituto) throws IOException {
+        System.out.print("Ingrese nombre: ");
+        String nombre = lector.readLine();
+    
+        System.out.print("Ingrese apellido: ");
+        String apellido = lector.readLine();
+    
+        System.out.print("Ingrese edad: ");
+        int edad = Integer.parseInt(lector.readLine());
+    
+        System.out.print("Ingrese rut: ");
+        String rut = lector.readLine();
+    
+        Profesor profesor = new Profesor(nombre, apellido, rut, edad);
+    
+        instituto.agregarProfesor(profesor);
+    
+        System.out.println("********************");
+    }
+    
+    public static void leerAlumno(BufferedReader lector, Instituto instituto) throws IOException {
+        System.out.print("Ingrese nombre: ");
+        String nombre = lector.readLine();
+    
+        System.out.print("Ingrese apellido: ");
+        String apellido = lector.readLine();
+    
+        System.out.print("Ingrese edad: ");
+        int edad = Integer.parseInt(lector.readLine());
+    
+        System.out.print("Ingrese rut: ");
+        String rut = lector.readLine();
+    
+        System.out.println("Ingrese carrera: ");
+        int talla = instituto.cantidadCarreras();
+        for (int i = 0; i < talla; i++) {
+            System.out.println("  » [" + i +"] " + instituto.obtenerCarrera(i).getNombre());
+        }
+        
+        //validar lectura
+        int indice = -1;
+        while (indice < 0 || indice >= talla) {
+            indice = Integer.parseInt(lector.readLine());
+        }
+        
+        Carrera carrera = instituto.obtenerCarrera(indice);
+    
+        Alumno alumno = new Alumno(nombre, apellido, rut, edad);
+        alumno.inscribirCarrera(carrera);
+    
+        instituto.agregarAlumno(alumno);
+    
+        System.out.println("********************");
+    }
+    
     public static void leerAsignatura(BufferedReader lector, Carrera carrera, int i) throws IOException {
         System.out.println("== Asignatura: " + i + "==");
         System.out.print("Ingrese codigo: ");
@@ -85,20 +106,224 @@ public class Main {
         carrera.agregarAsignatura(asignatura);
     }
     
-    public static void mostrarMenu() {
+
+    //MENUS
+    public static void menuPrincipal() {
         System.out.println("╔═════════════════════════════════╗");
-        System.out.println("║   [1] Agregar alumno            ║");
-        System.out.println("║   [2] Mostrar alumnos           ║");
-        System.out.println("║   [3] Agregar carrera           ║");
-        System.out.println("║   [4] Mostrar carreras          ║");
-        System.out.println("║   [5] Buscar alumno rut         ║");
-        System.out.println("║   [6] Buscar carrera id         ║");
-        System.out.println("║   [7] Buscar alumnos carrera    ║");
-        System.out.println("║   [8] Actualizar Estado         ║");
-        System.out.println("║   [9] Mostrar Estado Asignatura ║"); 
+        System.out.println("║   [1] Carreras                  ║");
+        System.out.println("║   [2] Profesores                ║");
+        System.out.println("║   [3] Alumnos                   ║");
+        System.out.println("║   [4] Varios                    ║");
+        System.out.println("║                                 ║");
         System.out.println("║   [0] Salir                     ║");
         System.out.println("╚═════════════════════════════════╝");
     }
+
+    public static void menuCarreras() {
+        System.out.println("╔═════════════════════════════════╗");
+        System.out.println("║   [1] Agregar Carrera           ║");
+        System.out.println("║   [2] Mostrar Carreras          ║");
+        System.out.println("║   [3] Buscar Carrera ID         ║");
+        System.out.println("║   [4] Eliminar Carrera          ║");
+        System.out.println("║   [3]                           ║");
+        System.out.println("║   [0] Salir                     ║");
+        System.out.println("╚═════════════════════════════════╝");
+    }
+
+    public static void menuProfesores() {
+        System.out.println("╔═════════════════════════════════╗");
+        System.out.println("║   [1] Agregar Profesor          ║");
+        System.out.println("║   [2] Mostrar Profesores        ║");
+        System.out.println("║   [3] Buscar Profesor RUT       ║");
+        System.out.println("║   [4] Eliminar Profesor         ║");
+        System.out.println("║   [5] Agregar asignatura        ║");
+        System.out.println("║   [6] Eliminar asignatura       ║");
+        System.out.println("║   [7]                           ║");
+        System.out.println("║   [0] Salir                     ║");
+        System.out.println("╚═════════════════════════════════╝");
+    }
+
+    public static void menuAlumnos() {
+        System.out.println("╔═════════════════════════════════╗");
+        System.out.println("║   [1] Agregar Alumno            ║");
+        System.out.println("║   [2] Mostrar Alumnos           ║");
+        System.out.println("║   [3] Buscar Alumno RUT         ║");
+        System.out.println("║   [4] Eliminar Alumno           ║");
+        System.out.println("║   [5] Buscar Alumno CARRERA     ║");
+        System.out.println("║   [6] Actualizar Asignaturas    ║");
+        System.out.println("║   [7] Estado Asignaturas        ║");
+        System.out.println("║   [8]                           ║");
+        System.out.println("║   [0] Salir                     ║");
+        System.out.println("╚═════════════════════════════════╝");
+    }
+
+    public static void menuVarios() {
+        System.out.println("╔═════════════════════════════════╗");
+        System.out.println("║   [1] IMPLEMENTAR               ║");
+        System.out.println("║   [2] IMPLEMENTAR               ║");
+        System.out.println("║   [3]                           ║");
+        System.out.println("║   [0] Salir                     ║");
+        System.out.println("╚═════════════════════════════════╝");
+    }
+
+
+    //OPCIONES
+    public static void opcionesCarrera(BufferedReader lector, Instituto instituto) throws IOException{
+
+        while (true) {
+            limpiarPantalla();
+            menuCarreras();
+            System.out.print("Seleccionar opcion: ");
+            int opcion = Integer.parseInt(lector.readLine());
+            System.out.println("");
+
+            switch (opcion) {
+                case 1:
+                    limpiarPantalla();
+                    leerCarrera(lector, instituto);
+                    break;
+                case 2:
+                    limpiarPantalla();
+                    instituto.mostrarCarreras();
+                    System.out.println("");
+                    break;
+                case 3:
+                    limpiarPantalla();
+                    instituto.buscarCarreradId(lector);
+                    System.out.println("");
+                    break;
+                case 4:
+                    limpiarPantalla();
+                    instituto.eliminarCarrera(lector);
+                    System.out.println("");
+                    break;
+                case 0:
+                    limpiarPantalla();
+                    return;
+                default:
+                    System.out.println("Opcion no valida");
+                    System.out.println("");
+                    break;
+            }
+            presionaParaContinuar(lector);
+            limpiarPantalla();
+        }
+
+    }
+
+    public static void opcionesProfesor(BufferedReader lector, Instituto instituto) throws IOException{
+
+        while (true) {
+            limpiarPantalla();
+            menuProfesores();
+            System.out.print("Seleccionar opcion: ");
+            int opcion = Integer.parseInt(lector.readLine());
+            System.out.println("");
+
+            switch (opcion) {
+                case 1:
+                    limpiarPantalla();
+                    leerProfesor(lector, instituto);
+                    break;
+                case 2:
+                    limpiarPantalla();
+                    instituto.mostrarProfesores();
+                    System.out.println("");
+                    break;
+                case 3:
+                    limpiarPantalla();
+                    instituto.buscarProfesoresRut(lector);
+                    System.out.println("");
+                    break;
+                case 4:
+                    limpiarPantalla();
+                    instituto.eliminarProfesor(lector);
+                    System.out.println("");
+                    break;
+                case 5:
+                    limpiarPantalla();
+                    instituto.agregarAsignaturaProfe(lector);
+                    System.out.println("");
+                    break;
+                case 6:
+                    limpiarPantalla();
+                    instituto.eliminarAsignaturaProfe(lector);
+                    System.out.println("");
+                    break;
+                case 0:
+                    limpiarPantalla();
+                    return;
+                default:
+                    System.out.println("Opcion no valida");
+                    System.out.println("");
+                    break;
+            }
+            presionaParaContinuar(lector);
+            limpiarPantalla();
+        }
+
+    }
+
+    public static void opcionesAlumno(BufferedReader lector, Instituto instituto) throws IOException{
+
+        while (true) {
+            limpiarPantalla();
+            menuAlumnos();
+            System.out.print("Seleccionar opcion: ");
+            int opcion = Integer.parseInt(lector.readLine());
+            System.out.println("");
+
+            switch (opcion) {
+                case 1:
+                    limpiarPantalla();
+                    leerAlumno(lector, instituto);
+                    break;
+                case 2:
+                    limpiarPantalla();
+                    instituto.mostrarAlumnos();
+                    System.out.println("");
+                    break;
+                case 3:
+                    limpiarPantalla();
+                    instituto.buscarAlumnosRut(lector);
+                    System.out.println("");
+                    break;
+                case 4:
+                    limpiarPantalla();
+                    instituto.eliminarAlumno(lector);
+                    System.out.println("");
+                    break;
+                case 5:
+                    limpiarPantalla();
+                    instituto.buscarAlumnosPorCarrera(lector);
+                    System.out.println("");
+                    break;
+                case 6:
+                    limpiarPantalla();
+                    instituto.actualizacionEstado(lector);
+                    System.out.println("");
+                    break;
+                case 7:
+                    limpiarPantalla();
+                    instituto.mostrarEstadoAsignaturas(lector);
+                    System.out.println("");
+                    break;
+                case 0:
+                    limpiarPantalla();
+                    return;
+                default:
+                    System.out.println("Opcion no valida");
+                    System.out.println("");
+                    break;
+            }
+            presionaParaContinuar(lector);
+            limpiarPantalla();
+        }
+
+    }
+
+
+
 
     public static void limpiarPantalla() {
         System.out.print("\033[H\033[2J");
@@ -123,11 +348,12 @@ public class Main {
         Datos datos = new Datos();
         datos.cargarCsvCarreras(instituto);
         datos.cargarCsvAlumnos(instituto);
+        datos.cargarCsvProfesores(instituto);
 
 
         while (true) {
             limpiarPantalla();
-            mostrarMenu();
+            menuPrincipal();
             System.out.print("Seleccionar opcion: ");
             int opcion = Integer.parseInt(lector.readLine());
             System.out.println("");
@@ -135,51 +361,29 @@ public class Main {
             switch (opcion) {
                 case 1:
                     limpiarPantalla();
-                    leerAlumno(lector, instituto);
+                    opcionesCarrera(lector, instituto);
                     break;
                 case 2:
                     limpiarPantalla();
-                    instituto.mostrarAlumnos();
-                    System.out.println("");
+                    menuProfesores();
+                    opcionesProfesor(lector, instituto);
                     break;
                 case 3:
                     limpiarPantalla();
-                    leerCarrera(lector, instituto);
+                    menuAlumnos();
+                    opcionesAlumno(lector, instituto);
                     break;
                 case 4:
                     limpiarPantalla();
-                    instituto.mostrarCarreras();
-                    System.out.println("");
-                    break;
-                case 5:
-                    limpiarPantalla();
-                    instituto.buscarAlumnosRut(lector);
-                    System.out.println("");
-                    break;
-                case 6:
-                    limpiarPantalla();
-                    instituto.buscarCarreradId(lector);
-                    System.out.println("");
-                    break;
-                case 7:
-                    limpiarPantalla();
-                    instituto.buscarAlumnosPorCarrera(lector);
-                    System.out.println("");
-                    break;
-                case 8:
-                    limpiarPantalla();
-                    instituto.actualizacionEstado(lector);
-                    System.out.println("");
-                    break;
-                case 9:
-                    limpiarPantalla();
-                    instituto.mostrarEstadoAsignaturas(lector);
-                    System.out.println("");
+                    menuVarios();
+                    //Falta implementar
+                    //opcionesvARIAS(lector, instituto);
                     break;
                 case 0:
                     limpiarPantalla();
                     lector.close();
                     System.exit(0);
+                    //Falta agregar persistencia de datos
                 default:
                     System.out.println("Opcion no valida");
                     System.out.println("");

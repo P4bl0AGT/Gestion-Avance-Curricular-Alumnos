@@ -1,4 +1,3 @@
-
 public class Alumno extends Persona{
 
     //ATRIBUTOS
@@ -46,7 +45,8 @@ public class Alumno extends Persona{
     }
 
 
-    //METODOS 
+    //METODOS
+    @Override
     public void mostrar() {
         System.out.println("Nombre del Alumno: " + getNombre());
         System.out.println("Apellido del Alumno: " + getApellido());
@@ -56,8 +56,39 @@ public class Alumno extends Persona{
         System.out.println("Creditos aprovados: "+ creditosAprobados);
     }
 
+    @Override
     public void mostrar(boolean simple) {
         System.out.println(" | " + getNombre() + " | " + getRut() + " | " + carrera.getNombre() + " | ");
     }
+
+
+    /*
+    public AsignaturaInscrita incribirAsignatura(Asignatura asignatura) {
+        String codigo = asignatura.getCodigo();
+        String nombre = asignatura.getNombre();
+        int creditos = asignatura.getCreditos();
+        Enums.estadoAsignatura estado = Enums.estadoAsignatura.INSCRITO;
+        int nota = 0;
+        AsignaturaInscrita inscrita = new AsignaturaInscrita(codigo, nombre, creditos, estado, nota);
+        return inscrita;
+    }
+    */
+
+
+    //cuidado con asignatura y asignaturainscrita en contenedor
+    public void inscribirCarrera(Carrera carrera) {
+
+        Carrera nuevaCarrera = carrera.copiaParaInscribir();
+
+        for (int i = 0; i < carrera.cantidadAsignaturas(); i++) {
+            Asignatura asignaturaActual = carrera.obtenerAsignatura(i);
+            AsignaturaInscrita inscrita = new AsignaturaInscrita();
+            inscrita.modificarParaInscribir(asignaturaActual);
+
+            nuevaCarrera.agregarAsignatura(inscrita);
+        }
+        setCarrera(nuevaCarrera);
+    }
+
 }
 

@@ -1,18 +1,27 @@
 public class AsignaturaInscrita extends Asignatura{
     //ATRIBUTOS
-    private int estado;
+    private Enums.estadoAsignatura estado;
     private int nota;
 
 
     //CONSTRUCTOR
-    public AsignaturaInscrita(String codigo, String nombre, int creditos, int estado, int nota) {
+    public AsignaturaInscrita() {};
+
+    public AsignaturaInscrita(String codigo, String nombre, int creditos, Enums.estadoAsignatura estado, int nota) {
         super(codigo, nombre, creditos);
         this.estado = estado;
         this.nota = nota;
     }
 
+    public AsignaturaInscrita(String codigo, String nombre, int creditos) {
+        super(codigo, nombre, creditos);
+        this.estado = Enums.estadoAsignatura.INSCRITO;
+        this.nota = 0;
+    }
+
+
     //SETTERS
-    public void setEstado(int estado) {
+    public void setEstado(Enums.estadoAsignatura estado) {
         this.estado = estado;
     }
 
@@ -26,12 +35,13 @@ public class AsignaturaInscrita extends Asignatura{
         return nota;
     }
 
-    public int getEstado() {
+    public Enums.estadoAsignatura getEstado() {
         return estado;
     }
 
 
     //METODOS
+    @Override
     public void mostrar() {
         System.out.println("Nombre asignatura: " + getNombre());
         System.out.println("Codigo asignatura: " + getCodigo());
@@ -40,8 +50,34 @@ public class AsignaturaInscrita extends Asignatura{
         System.out.println("Nota: " + nota);
     }
 
+    @Override
     public void mostrar(boolean simple) { 
         System.out.println(" | " + getCodigo() + " | " + estado +  " | ");
+    }
+
+    public void inscribir() {
+        estado = Enums.estadoAsignatura.INSCRITO;
+    }
+
+    public void aprobar() {
+        estado = Enums.estadoAsignatura.APROBADO;
+    }
+
+    public void reprobar() {
+        estado = Enums.estadoAsignatura.REPROBADO;
+    }
+
+    public void modificarParaInscribir(Asignatura asignatura) {
+        setCodigo(asignatura.getCodigo());
+        setNombre(asignatura.getNombre());
+        setCreditos(asignatura.getCreditos());
+        inscribir();
+        nota = -1;
+    }
+
+    public void modificarNotaEstado(Enums.estadoAsignatura estado, int nota) {
+        this.estado = estado;
+        this.nota = nota;
     }
     
 }

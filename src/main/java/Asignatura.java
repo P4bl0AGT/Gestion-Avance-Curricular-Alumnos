@@ -63,4 +63,5 @@ public class Asignatura
     public void mostrar(boolean simple){ 
         System.out.println(" | " + codigo + " | ");
     }
+
 }

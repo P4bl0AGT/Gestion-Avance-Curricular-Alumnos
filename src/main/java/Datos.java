@@ -64,10 +64,39 @@ public class Datos {
             
             Random random = new Random();
             posRandom = random.nextInt(talla);  // entre [0 y talla[
-            alumno.setCarrera(instituto.obtenerCarrera(posRandom));
+
+            alumno.inscribirCarrera(instituto.obtenerCarrera(posRandom));
 
             //agregar alumno a mapa y lista de clase instituto
             boolean flag = instituto.agregarAlumno(alumno);
+            if (!flag)
+                System.out.println("No fue posible cargar datos");
+        }
+        lectorCsv.close();
+    }
+
+    public void cargarCsvProfesores(Instituto instituto) throws IOException{
+        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/profesores.csv"));
+        String linea;
+        int cantidadCarreras = instituto.cantidadCarreras();
+        int posRandom;
+
+        while((linea = lectorCsv.readLine()) != null) {
+            String[] datos = linea.split(",");
+            String nombre = datos[0];
+            String apellido = datos[1];
+            String rut = datos[2];
+            int edad = Integer.parseInt(datos[3].trim());
+
+            Profesor profesor = new Profesor(nombre, apellido, rut, edad);
+            
+            Random random = new Random();
+            posRandom = random.nextInt(cantidadCarreras);  // entre [0 y talla[
+
+            profesor.agregarAsignatura(instituto.obtenerCarrera(posRandom).obtenerAsignatura(0));
+
+            //agregar PROFE a mapa y lista de clase instituto
+            boolean flag = instituto.agregarProfesor(profesor);
             if (!flag)
                 System.out.println("No fue posible cargar datos");
         }

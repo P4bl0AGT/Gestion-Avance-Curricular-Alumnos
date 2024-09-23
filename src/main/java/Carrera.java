@@ -1,11 +1,11 @@
-import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Carrera {
     //ATRIBUTOS
     private String id;
     private String nombre;
     private int semestres;
-    private ArrayList<Asignatura> listaAsignaturas;
+    private Contenedor<String, Asignatura> asignaturas;
 
 
     //CONSTRUCTOR
@@ -15,7 +15,7 @@ public class Carrera {
         this.id = id;
         this.nombre = nombre;
         this.semestres = semestres;
-        listaAsignaturas = new ArrayList<Asignatura>();
+        asignaturas = new Contenedor<>();
     }
 
 
@@ -62,9 +62,10 @@ public class Carrera {
         System.out.println("Nombre: " + nombre);
         System.out.println("Semestres: " + semestres);
         System.out.println("Asignaturas: ");
-        for (Asignatura asignaturaActual:listaAsignaturas) {
-            System.out.print("  ");
-            asignaturaActual.mostrar(true);
+        Iterator<Asignatura> iterador = asignaturas.iterador();
+        while (iterador.hasNext()) {
+            Asignatura aux = iterador.next();
+            aux.mostrar();
         }
         System.out.println("");
     }
@@ -75,46 +76,37 @@ public class Carrera {
 
 
     public int cantidadAsignaturas() {
-        return listaAsignaturas.size();
+        return asignaturas.talla();
     }
 
-    public void agregarAsignatura(Asignatura asignatura) {
-        listaAsignaturas.add(asignatura);
+    public boolean agregarAsignatura(Asignatura asignatura) {
+        return asignaturas.agregar(asignatura.getCodigo(), asignatura);
     }
 
     public Asignatura obtenerAsignatura(int i) {
-        return listaAsignaturas.get(i);
+        return asignaturas.obtener(i);
+    }
+
+    public Asignatura obtenerAsignatura(String codigo) {
+        return asignaturas.obtener(codigo);
     }
 
     public int cantidadCreditos() {
         int total = 0;
-        for (Asignatura aux:listaAsignaturas)
+        Iterator<Asignatura> iterador = asignaturas.iterador();
+        while (iterador.hasNext()) {
+            Asignatura aux = iterador.next();
             total += aux.getCreditos();
+        }
         return total;
     }
 
-    public AsignaturaInscrita incribirAsignatura(Asignatura asignatura) {
-        String codigo = asignatura.getCodigo();
-        String nombre = asignatura.getNombre();
-        int creditos = asignatura.getCreditos();
-        int estado = 0;
-        int nota = 0;
-        AsignaturaInscrita inscrita = new AsignaturaInscrita(codigo, nombre, creditos, estado, nota);
-        return inscrita;
-    }
+    public Carrera copiaParaInscribir() {
+        String idCopia = id;
+        String nombreCopia = nombre;
+        int semestresCopia = semestres;
 
-    public Carrera inscribirCarrera()
-    {
-        String id = getId();
-        String nombre = getNombre();
-        int semestres = getSemestres();
-        Carrera nuevaCarrera = new Carrera(id, nombre, semestres);
-
-        for (Asignatura aux:listaAsignaturas) {
-            AsignaturaInscrita nuevaAsignatura = incribirAsignatura(aux);
-            nuevaCarrera.agregarAsignatura(nuevaAsignatura);
-        }
-
-        return nuevaCarrera;
+        Carrera copia = new Carrera(idCopia, nombreCopia, semestresCopia);
+        return copia;
     }
 }

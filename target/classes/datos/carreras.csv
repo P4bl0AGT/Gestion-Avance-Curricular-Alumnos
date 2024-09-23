@@ -1,72 +1,72 @@
 #-------------------------------------------------------------------
 MAT,MATEMATICAS,8
-Álgebra Lineal,MAT101,4
-Geometría Analítica,MAT102,3
-Cálculo Diferencial,MAT103,5
-Cálculo Integral,MAT104,4
-Ecuaciones Diferenciales,MAT105,5
-Probabilidad y Estadística,MAT106,4
-Teoría de Números,MAT107,3
-Matemáticas Discretas,MAT108,4
-Optimización,MAT109,3
-Análisis Matemático,MAT110,5
+MAT101,Álgebra Lineal,4
+MAT102,Geometría Analítica,3
+MAT103,Cálculo Diferencial,5
+MAT104,Cálculo Integral,4
+MAT105,Ecuaciones Diferenciales,5
+MAT106,Probabilidad y Estadística,4
+MAT107,Teoría de Números,3
+MAT108,Matemáticas Discretas,4
+MAT109,Optimización,3
+MAT110,Análisis Matemático,5
 #-------------------------------------------------------------------
 FIS,FISICA,7
-Mecánica Clásica,FIS201,4
-Electromagnetismo,FIS202,5
-Termodinámica,FIS203,4
-Óptica,FIS204,3
-Física Moderna,FIS205,5
-Relatividad Especial,FIS206,4
-Física Cuántica,FIS207,5
-Matemáticas para la Física,FIS208,4
-Astrofísica,FIS209,3
-Laboratorio de Física,FIS210,4
+FIS201,Mecánica Clásica,4
+FIS202,Electromagnetismo,5
+FIS203,Termodinámica,4
+FIS204,Óptica,3
+FIS205,Física Moderna,5
+FIS206,Relatividad Especial,4
+FIS207,Física Cuántica,5
+FIS208,Matemáticas para la Física,4
+FIS209,Astrofísica,3
+FIS210,Laboratorio de Física,4
 #-------------------------------------------------------------------
 PROG,PROGRAMACION,11
-Introducción a la Programación,PROG101,3
-Estructuras de Datos,PROG102,4
-Algoritmos,PROG103,4
-Programación Orientada a Objetos,PROG104,3
-Desarrollo Web,PROG105,3
-Base de Datos,PROG106,4
-Programación de Aplicaciones Móviles,PROG107,3
-Arquitectura de Computadoras,PROG108,3
-Redes y Comunicaciones,PROG109,2
-Seguridad Informática,PROG110,4
+PROG101,Introducción a la Programación,3
+PROG102,Estructuras de Datos,4
+PROG103,Algoritmos,4
+PROG104,Programación Orientada a Objetos,3
+PROG105,Desarrollo Web,3
+PROG106,Base de Datos,4
+PROG107,Programación de Aplicaciones Móviles,3
+PROG108,Arquitectura de Computadoras,3
+PROG109,Redes y Comunicaciones,2
+PROG110,Seguridad Informática,4
 #-------------------------------------------------------------------
 ING,INGENIERIA,12
-Matemáticas Aplicadas,ING101,4
-Física General,ING102,4
-Química General,ING103,3
-Estática,ING104,4
-Dinámica,ING105,4
-Electrónica Básica,ING106,3
-Termodinámica,ING107,4
-Control Automático,ING108,3
-Metodología de la Investigación,ING109,2
-Gestión de Proyectos,ING110,3
+ING101,Matemáticas Aplicadas,4
+ING102,Física General,4
+ING103,Química General,3
+ING104,Estática,4
+ING105,Dinámica,4
+ING106,Electrónica Básica,3
+ING107,Termodinámica,4
+ING108,Control Automático,3
+ING109,Metodología de la Investigación,2
+ING110,Gestión de Proyectos,3
 #-------------------------------------------------------------------
 QUI,QUIMICA,8
-Química General,QUI101,4
-Química Orgánica I,QUI102,4
-Química Inorgánica,QUI103,3
-Química Física,QUI104,4
-Química Orgánica II,QUI105,4
-Bioquímica,QUI106,3
-Análisis Instrumental,QUI107,4
-Química Ambiental,QUI108,3
-Metodología de Laboratorio,QUI109,2
-Química de Polímeros,QUI110,4
+QUI101,Química General,4
+QUI102,Química Orgánica I,4
+QUI103,Química Inorgánica,3
+QUI104,Química Física,4
+QUI105,Química Orgánica II,4
+QUI106,Bioquímica,3
+QUI107,Análisis Instrumental,4
+QUI108,Química Ambiental,3
+QUI109,Metodología de Laboratorio,2
+QUI110,Química de Polímeros,4
 #-------------------------------------------------------------------
 BIO,BIOLOGIA,9
-Biología Celular,BIO201,4
-Genética,BIO202,4
-Botánica,BIO203,3
-Zoología,BIO204,4
-Ecología,BIO205,4
-Microbiología,BIO206,3
-Biología Molecular,BIO207,4
-Biotecnología,BIO208,3
-Anatomía,BIO209,2
-Fisiología,BIO210,4
+BIO201,Biología Celular,4
+BIO202,Genética,4
+BIO203,Botánica,3
+BIO204,Zoología,4
+BIO205,Ecología,4
+BIO206,Microbiología,3
+BIO207,Biología Molecular,4
+BIO208,Biotecnología,3
+BIO209,Anatomía,2
+BIO210,Fisiología,4
