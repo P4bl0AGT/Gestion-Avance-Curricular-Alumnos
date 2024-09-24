@@ -38,19 +38,24 @@ public class Main {
     }
 
     public static void leerProfesor(BufferedReader lector, Instituto instituto) throws IOException {
+
+        Verificaciones verificaciones = new Verificaciones();
+
         System.out.print("Ingrese nombre: ");
         String nombre = lector.readLine();
     
         System.out.print("Ingrese apellido: ");
         String apellido = lector.readLine();
     
-        System.out.print("Ingrese edad: ");
-        int edad = Integer.parseInt(lector.readLine());
+        //System.out.print("Ingrese edad: ");
+        int edad = verificaciones.verificarEdad(lector, "Ingrese su edad: ");
     
-        System.out.print("Ingrese rut sin puntos ni digito verificador: ");
-        String rut = lector.readLine();
+        //System.out.print("Ingrese rut sin puntos ni digito verificador: ");
+        //String rut = lector.readLine();
+        int rut = verificaciones.validarEntrada(lector, "Ingrese su rut sin puntos ni digito verificador: ");
+        String rutCadena = Integer.toString(rut);
     
-        Profesor profesor = new Profesor(nombre, apellido, rut, edad);
+        Profesor profesor = new Profesor(nombre, apellido, rutCadena, edad);
     
         instituto.agregarProfesor(profesor);
     
@@ -69,8 +74,10 @@ public class Main {
         //System.out.print("Ingrese edad: ");
         int edad = verificaciones.verificarEdad(lector, "Ingrese su edad: ");
     
-        System.out.print("Ingrese rut sin puntos ni digito verificador: ");
-        String rut = lector.readLine();
+        //System.out.print("Ingrese rut sin puntos ni digito verificador: ");
+        //String rut = lector.readLine();
+        int rut = verificaciones.validarEntrada(lector, "Ingrese su rut sin puntos ni digito verificador: ");
+        String rutCadena = Integer.toString(rut);
     
         System.out.println("Ingrese carrera: ");
         int talla = instituto.cantidadCarreras();
@@ -79,14 +86,11 @@ public class Main {
         }
         
         //validar lectura
-        int indice = -1;
-        while (indice < 0 || indice >= talla) {
-            indice = Integer.parseInt(lector.readLine());
-        }
+        int indice = verificaciones.validarEntrada(lector, "Ingrese la opcion de su carrera: ");//AGREGAR RANGO A LAS VALIDACIONES
         
         Carrera carrera = instituto.obtenerCarrera(indice);
     
-        Alumno alumno = new Alumno(nombre, apellido, rut, edad);
+        Alumno alumno = new Alumno(nombre, apellido, rutCadena, edad);
         alumno.inscribirCarrera(carrera);
     
         instituto.agregarAlumno(alumno);
