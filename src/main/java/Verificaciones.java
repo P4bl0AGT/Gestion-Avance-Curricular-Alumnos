@@ -37,18 +37,14 @@ public class Verificaciones {
         catch (NotCovertToNumericException mensajeError){
             while(true)
             {
-                try{
-                    System.out.println(mensajeError);
-                    System.out.print(mensaje);
-                    cadena = lector.readLine();
-
-                    if (validarNumero(cadena))
-                        break;
-                }
-                catch (IOException e){
-                    System.out.println("asd");
                 
-                }
+                System.out.println(mensajeError);
+                System.out.print(mensaje);
+                cadena = lector.readLine();
+
+                if (validarNumero(cadena))
+                    break;
+
             }
         }
 
