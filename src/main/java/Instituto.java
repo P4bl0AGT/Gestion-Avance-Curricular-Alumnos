@@ -26,7 +26,8 @@ public class Instituto
     public boolean agregarProfesor(Profesor profesor) {return contenedorProfesores.agregar(profesor.getRut(), profesor);}
 
     public int cantidadAlumnos() {return contenedorAlumnos.talla();}
-    public Alumno obteneraAlumno(int i) {return contenedorAlumnos.obtener(i);}
+    public Alumno obtenerAlumno(int i) {return contenedorAlumnos.obtener(i);}
+    public Alumno obtenerAlumno(String rut) {return contenedorAlumnos.obtener(rut);}
     public boolean agregarAlumno(Alumno alumno) {return contenedorAlumnos.agregar(alumno.getRut(), alumno);}
 
 
@@ -63,42 +64,31 @@ public class Instituto
 
 
     /* = = = = = = = = = = METODOS BUSCAR = = = = = = = = = = */
-    public void buscarCarreradId(BufferedReader lector) throws IOException {
-        System.out.println("Porfavor ingresar el ID de la carrera a buscar");
-        String id = lector.readLine();
-
-        Carrera carreraBuscada = contenedorCarreras.obtener(id);
+    public void buscarCarreradId(String idCarrera) {
+        Carrera carreraBuscada = contenedorCarreras.obtener(idCarrera);
         if(carreraBuscada != null)
             carreraBuscada.mostrar();
         else
             System.out.println("No se encuentra la carrera con el id ingresado");
     }
 
-    public void buscarProfesoresRut(BufferedReader lector) throws IOException {
-        System.out.println("Porfavor ingresar el RUT del profesor a buscar");
-        String rut = lector.readLine();
-
-        Profesor profesorBuscado = contenedorProfesores.obtener(rut);
+    public void buscarProfesoresRut(String rutProfesor) {
+        Profesor profesorBuscado = contenedorProfesores.obtener(rutProfesor);
         if(profesorBuscado != null)
             profesorBuscado.mostrar();
         else
             System.out.println("No se encuentra el alumno con el rut ingresado");
     }
 
-    public void buscarAlumnosRut(BufferedReader lector) throws IOException {
-        System.out.println("Porfavor ingresar el RUT del alumno a buscar");
-        String rut = lector.readLine();
-
-        Alumno alumnoBuscado = contenedorAlumnos.obtener(rut);
+    public void buscarAlumnosRut(String rutAlumno) {
+        Alumno alumnoBuscado = contenedorAlumnos.obtener(rutAlumno);
         if(alumnoBuscado != null)
             alumnoBuscado.mostrar();
         else
             System.out.println("No se encuentra el alumno con el rut ingresado");
     }
 
-    public void buscarAlumnosPorCarrera(BufferedReader lector)throws IOException{
-        System.out.println("Porfavor ingresar la Carrera a buscar: ");
-        String carreraBuscada = lector.readLine();
+    public void buscarAlumnosPorCarrera(String idCarrera) {
         boolean hayAlumnosCarrera = false;
         
         if (contenedorAlumnos.talla() != 0) {
@@ -106,7 +96,7 @@ public class Instituto
                 Alumno alumnoActual = contenedorAlumnos.obtener(i);
                 String nombreCarrera = alumnoActual.getCarrera().getNombre();
 
-                if (nombreCarrera.equals(carreraBuscada)) {
+                if (nombreCarrera.equals(idCarrera)) {
                     alumnoActual.mostrar();
                     System.out.println("");
                     hayAlumnosCarrera = true;
@@ -122,11 +112,8 @@ public class Instituto
 
 
     /* = = = = = = = = = = METODOS ELIMINAR = = = = = = = = = = */
-    public void eliminarCarrera(BufferedReader lector) throws IOException{
-        System.out.println("Porfavor ingresar el ID de la carrera a eliminar");
-        String idEliminar = lector.readLine();
-        
-        Carrera carreraEliminar = contenedorCarreras.eliminar(idEliminar);
+    public void eliminarCarrera(String idCarrera) {
+        Carrera carreraEliminar = contenedorCarreras.eliminar(idCarrera);
 
         if(carreraEliminar != null)
             carreraEliminar.mostrar(true);
@@ -139,17 +126,14 @@ public class Instituto
         while (iterador.hasNext()) {
             Alumno alumnoActual = iterador.next();
             String idCarreraAlumno = alumnoActual.getCarrera().getId();
-            if (idEliminar.equals(idCarreraAlumno)) {
+            if (idCarrera.equals(idCarreraAlumno)) {
                 alumnoActual.setCarrera(new Carrera());
             }
         }
     }
 
-    public void eliminarProfesor(BufferedReader lector) throws IOException{
-        System.out.println("Porfavor ingresar el rut del profesor a eliminar");
-        String rutEliminar = lector.readLine();
-
-        Profesor profesorEliminar = contenedorProfesores.eliminar(rutEliminar);
+    public void eliminarProfesor(String rutProfesor) {
+        Profesor profesorEliminar = contenedorProfesores.eliminar(rutProfesor);
 
         if(profesorEliminar != null)
             profesorEliminar.mostrar(true);
@@ -159,11 +143,8 @@ public class Instituto
         }
     }
 
-    public void eliminarAlumno(BufferedReader lector) throws IOException{
-        System.out.println("Porfavor ingresar el rut del alumno a eliminar");
-        String rutEliminar = lector.readLine();
-
-        Alumno alumnoEliminar = contenedorAlumnos.eliminar(rutEliminar);
+    public void eliminarAlumno(String rutAlumno) {
+        Alumno alumnoEliminar = contenedorAlumnos.eliminar(rutAlumno);
 
         if(alumnoEliminar != null)
             alumnoEliminar.mostrar(true);
@@ -178,15 +159,10 @@ public class Instituto
 
 
     /* = = = = = = = = = =           = = = = = = = = = = */
-
-    //modificar, hay que dividirla entre las clases participantes
-    public void actualizacionEstado(BufferedReader lector)throws IOException{
+    public void actualizacionEstado(String rutAlumno, BufferedReader lector)throws IOException{ // FALTA SACAR LECTOR
         
         int creditosAprobados = 0;
-        System.out.println("Ingresa el rut del Alumno al cual actualizar su estado");
-        String rut = lector.readLine();
-
-        Alumno alumnoBuscado = contenedorAlumnos.obtener(rut);
+        Alumno alumnoBuscado = contenedorAlumnos.obtener(rutAlumno);
 
         if (alumnoBuscado == null) {
             System.out.println("Alumno NO encontrado");
@@ -197,44 +173,33 @@ public class Instituto
         
         Carrera carreraAlumno = alumnoBuscado.getCarrera();
 
-        System.out.println("Deseas actualizar los estados de asignaturas");
-        System.out.println("1.- SI");
-        System.out.println("2.- NO");
-        String opcion = lector.readLine();
+        System.out.println("");
+        System.out.println("Asignaturas:");
+        System.out.println("============");
 
-        if (Integer.parseInt(opcion) == 2){
-            System.out.println("Muchas Gracias");
-            return;
-        }
-        else {
+        for (int i = 0 ; i < carreraAlumno.cantidadAsignaturas() ; i++){
+            AsignaturaInscrita asigaturaActual = (AsignaturaInscrita) carreraAlumno.obtenerAsignatura(i);
 
-            for (int i = 0 ; i < carreraAlumno.cantidadAsignaturas() ; i++){
-                AsignaturaInscrita asigaturaActual = (AsignaturaInscrita) carreraAlumno.obtenerAsignatura(i);
+            System.out.println(asigaturaActual.getNombre());
+            System.out.println("1.- APROBADO");
+            System.out.println("2.- REPORBADO");
+            System.out.println("0.- MANTENER");
+            int estadoActualizado = Integer.parseInt(lector.readLine());
+            if(estadoActualizado == 1) {
+                creditosAprobados += asigaturaActual.getCreditos();
+                asigaturaActual.aprobar();
+            }
+            else if (estadoActualizado == 2){
+                asigaturaActual.reprobar();
+            }
+        }   
 
-                System.out.println("Porfavor selecciona una opcion para ver si cursaste o ya aprobaste la asignatura de : " + asigaturaActual.getNombre());
-                System.out.println("1.- APROBADO");
-                System.out.println("2.- REPORBADO");
-                int estadoActualizado = Integer.parseInt(lector.readLine());
-                if(estadoActualizado == 1) {
-                    creditosAprobados += asigaturaActual.getCreditos();
-                    asigaturaActual.aprobar();
-                }
-                else {
-                    asigaturaActual.reprobar();
-                }
-            }   
-
-            System.out.println("Tus estados de asignatura han sido actualizados con exito");
-        }
+        System.out.println("Tus estados de asignatura han sido actualizados con exito");
         alumnoBuscado.setCreditosAprobados(creditosAprobados);
     }
 
-    public void mostrarEstadoAsignaturas(BufferedReader lector)throws IOException {
-                
-        System.out.println("Hola podrias darme el rut del Alumno al cual actualizar su estado");
-        String rut = lector.readLine();
-
-        Alumno alumnoBuscado = contenedorAlumnos.obtener(rut);
+    public void mostrarEstadoAsignaturas(String rutAlumno) {
+        Alumno alumnoBuscado = contenedorAlumnos.obtener(rutAlumno);
 
         if (alumnoBuscado == null){
             System.out.println("Alumno NO encontrado");
@@ -256,10 +221,8 @@ public class Instituto
 
     /* = = = = = = = = = =           = = = = = = = = = = */
 
-    public void agregarAsignaturaProfe(BufferedReader lector) throws IOException {
+    public void agregarAsignaturaProfe(String rutProfesor, String idCarrera, String codigoAsignatura) {
         mostrarProfesores();
-        System.out.print("Ingresa RUT profesor: ");
-        String rutProfesor = lector.readLine();
         Profesor profesor = contenedorProfesores.obtener(rutProfesor);
         if (profesor == null) {
             System.out.print("profesor no encontrado");
@@ -268,8 +231,6 @@ public class Instituto
         profesor.mostrar(true);
         
         mostrarCarreras();
-        System.out.print("Ingresa Id carrera: ");
-        String idCarrera = lector.readLine();
         Carrera carrera = contenedorCarreras.obtener(idCarrera);
         if (carrera == null) {
             System.out.print("Carrera no encontrada");
@@ -277,8 +238,6 @@ public class Instituto
         }
         carrera.mostrar();
         
-        System.out.print("Ingresa el codigo de la asignatura: ");
-        String codigoAsignatura = lector.readLine();
         Asignatura asignatura = carrera.obtenerAsignatura(codigoAsignatura);
         if (asignatura == null) {
             System.out.print("Asignatura no encontrada");
@@ -295,9 +254,7 @@ public class Instituto
     }
 
 
-    public void eliminarAsignaturaProfe(BufferedReader lector)  throws IOException {
-        System.out.print("Ingresa profesor: ");
-        String rutProfesor = lector.readLine();
+    public void eliminarAsignaturaProfe(String rutProfesor, String codigoAsignatura){
         Profesor profesor = contenedorProfesores.obtener(rutProfesor);
         if (profesor == null) {
             System.out.print("profesor no encontrado");
@@ -305,8 +262,6 @@ public class Instituto
         }
         profesor.mostrar(true);
 
-        System.out.print("Ingresa codigo: ");
-        String codigoAsignatura = lector.readLine();
         Asignatura asignatura = profesor.elimarAsignatura(codigoAsignatura);
         if (asignatura == null) {
             System.out.print("no encontrado");

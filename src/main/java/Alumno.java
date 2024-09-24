@@ -90,5 +90,10 @@ public class Alumno extends Persona{
         setCarrera(nuevaCarrera);
     }
 
+    
+    public int obtenerCantidadAsignaturas() {
+        return carrera.cantidadAsignaturas();
+    }
+
 }
 

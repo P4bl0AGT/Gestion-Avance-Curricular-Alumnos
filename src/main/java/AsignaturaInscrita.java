@@ -1,13 +1,13 @@
 public class AsignaturaInscrita extends Asignatura{
     //ATRIBUTOS
-    private Enums.estadoAsignatura estado;
+    private estadoAsignatura estado;
     private int nota;
 
 
     //CONSTRUCTOR
     public AsignaturaInscrita() {};
 
-    public AsignaturaInscrita(String codigo, String nombre, int creditos, Enums.estadoAsignatura estado, int nota) {
+    public AsignaturaInscrita(String codigo, String nombre, int creditos, estadoAsignatura estado, int nota) {
         super(codigo, nombre, creditos);
         this.estado = estado;
         this.nota = nota;
@@ -15,13 +15,13 @@ public class AsignaturaInscrita extends Asignatura{
 
     public AsignaturaInscrita(String codigo, String nombre, int creditos) {
         super(codigo, nombre, creditos);
-        this.estado = Enums.estadoAsignatura.INSCRITO;
+        this.estado = estadoAsignatura.INSCRITO;
         this.nota = 0;
     }
 
 
     //SETTERS
-    public void setEstado(Enums.estadoAsignatura estado) {
+    public void setEstado(estadoAsignatura estado) {
         this.estado = estado;
     }
 
@@ -35,7 +35,7 @@ public class AsignaturaInscrita extends Asignatura{
         return nota;
     }
 
-    public Enums.estadoAsignatura getEstado() {
+    public estadoAsignatura getEstado() {
         return estado;
     }
 
@@ -56,15 +56,15 @@ public class AsignaturaInscrita extends Asignatura{
     }
 
     public void inscribir() {
-        estado = Enums.estadoAsignatura.INSCRITO;
+        estado = estadoAsignatura.INSCRITO;
     }
 
     public void aprobar() {
-        estado = Enums.estadoAsignatura.APROBADO;
+        estado = estadoAsignatura.APROBADO;
     }
 
     public void reprobar() {
-        estado = Enums.estadoAsignatura.REPROBADO;
+        estado = estadoAsignatura.REPROBADO;
     }
 
     public void modificarParaInscribir(Asignatura asignatura) {
@@ -75,9 +75,15 @@ public class AsignaturaInscrita extends Asignatura{
         nota = -1;
     }
 
-    public void modificarNotaEstado(Enums.estadoAsignatura estado, int nota) {
+    public void modificarNotaEstado(estadoAsignatura estado, int nota) {
         this.estado = estado;
         this.nota = nota;
+    }
+
+    public enum estadoAsignatura {
+        INSCRITO,
+        APROBADO,
+        REPROBADO
     }
     
 }

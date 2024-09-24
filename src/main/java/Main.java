@@ -45,7 +45,7 @@ public class Main {
         System.out.print("Ingrese edad: ");
         int edad = Integer.parseInt(lector.readLine());
     
-        System.out.print("Ingrese rut: ");
+        System.out.print("Ingrese rut sin puntos ni digito verificador: ");
         String rut = lector.readLine();
     
         Profesor profesor = new Profesor(nombre, apellido, rut, edad);
@@ -65,7 +65,7 @@ public class Main {
         System.out.print("Ingrese edad: ");
         int edad = Integer.parseInt(lector.readLine());
     
-        System.out.print("Ingrese rut: ");
+        System.out.print("Ingrese rut sin puntos ni digito verificador: ");
         String rut = lector.readLine();
     
         System.out.println("Ingrese carrera: ");
@@ -125,8 +125,8 @@ public class Main {
         System.out.println("║   [2] Mostrar Carreras          ║");
         System.out.println("║   [3] Buscar Carrera ID         ║");
         System.out.println("║   [4] Eliminar Carrera          ║");
-        System.out.println("║   [3]                           ║");
-        System.out.println("║   [0] Salir                     ║");
+        System.out.println("║                                 ║");
+        System.out.println("║   [0] Volver                    ║");
         System.out.println("╚═════════════════════════════════╝");
     }
 
@@ -138,8 +138,8 @@ public class Main {
         System.out.println("║   [4] Eliminar Profesor         ║");
         System.out.println("║   [5] Agregar asignatura        ║");
         System.out.println("║   [6] Eliminar asignatura       ║");
-        System.out.println("║   [7]                           ║");
-        System.out.println("║   [0] Salir                     ║");
+        System.out.println("║                                 ║");
+        System.out.println("║   [0] Volver                    ║");
         System.out.println("╚═════════════════════════════════╝");
     }
 
@@ -152,8 +152,8 @@ public class Main {
         System.out.println("║   [5] Buscar Alumno CARRERA     ║");
         System.out.println("║   [6] Actualizar Asignaturas    ║");
         System.out.println("║   [7] Estado Asignaturas        ║");
-        System.out.println("║   [8]                           ║");
-        System.out.println("║   [0] Salir                     ║");
+        System.out.println("║                                 ║");
+        System.out.println("║   [0] Volver                    ║");
         System.out.println("╚═════════════════════════════════╝");
     }
 
@@ -161,8 +161,8 @@ public class Main {
         System.out.println("╔═════════════════════════════════╗");
         System.out.println("║   [1] IMPLEMENTAR               ║");
         System.out.println("║   [2] IMPLEMENTAR               ║");
-        System.out.println("║   [3]                           ║");
-        System.out.println("║   [0] Salir                     ║");
+        System.out.println("║                                 ║");
+        System.out.println("║   [0] Volver                    ║");
         System.out.println("╚═════════════════════════════════╝");
     }
 
@@ -170,6 +170,7 @@ public class Main {
     //OPCIONES
     public static void opcionesCarrera(BufferedReader lector, Instituto instituto) throws IOException{
 
+        String id;
         while (true) {
             limpiarPantalla();
             menuCarreras();
@@ -189,12 +190,14 @@ public class Main {
                     break;
                 case 3:
                     limpiarPantalla();
-                    instituto.buscarCarreradId(lector);
+                    id = leerID(lector, "carrera", opcionMsj.BUSCAR);
+                    instituto.buscarCarreradId(id);
                     System.out.println("");
                     break;
                 case 4:
                     limpiarPantalla();
-                    instituto.eliminarCarrera(lector);
+                    id = leerID(lector, "carrera", opcionMsj.ELIMINAR);
+                    instituto.eliminarCarrera(id);
                     System.out.println("");
                     break;
                 case 0:
@@ -212,7 +215,7 @@ public class Main {
     }
 
     public static void opcionesProfesor(BufferedReader lector, Instituto instituto) throws IOException{
-
+        String rutProfesor,idCarrera, idAsignatura;
         while (true) {
             limpiarPantalla();
             menuProfesores();
@@ -232,22 +235,29 @@ public class Main {
                     break;
                 case 3:
                     limpiarPantalla();
-                    instituto.buscarProfesoresRut(lector);
+                    rutProfesor = leerRUT(lector, "profesor", opcionMsj.BUSCAR);
+                    instituto.buscarProfesoresRut(rutProfesor);
                     System.out.println("");
                     break;
                 case 4:
                     limpiarPantalla();
-                    instituto.eliminarProfesor(lector);
+                    rutProfesor = leerRUT(lector, "profesor", opcionMsj.ELIMINAR);
+                    instituto.eliminarProfesor(rutProfesor);
                     System.out.println("");
                     break;
                 case 5:
                     limpiarPantalla();
-                    instituto.agregarAsignaturaProfe(lector);
+                    rutProfesor = leerRUT(lector, "profesor", opcionMsj.BUSCAR);
+                    idCarrera = leerID(lector, "Carrera", opcionMsj.BUSCAR);
+                    idAsignatura = leerID(lector, "asignatura", opcionMsj.BUSCAR);
+                    instituto.agregarAsignaturaProfe(rutProfesor, idCarrera, idAsignatura);
                     System.out.println("");
                     break;
                 case 6:
                     limpiarPantalla();
-                    instituto.eliminarAsignaturaProfe(lector);
+                    rutProfesor = leerRUT(lector, "profesor", opcionMsj.ACTUALIZAR);
+                    idAsignatura = leerID(lector, "asignatura", opcionMsj.ELIMINAR);
+                    instituto.eliminarAsignaturaProfe(rutProfesor, idAsignatura);
                     System.out.println("");
                     break;
                 case 0:
@@ -265,7 +275,7 @@ public class Main {
     }
 
     public static void opcionesAlumno(BufferedReader lector, Instituto instituto) throws IOException{
-
+        String rutAlumno,idCarrera;
         while (true) {
             limpiarPantalla();
             menuAlumnos();
@@ -285,27 +295,32 @@ public class Main {
                     break;
                 case 3:
                     limpiarPantalla();
-                    instituto.buscarAlumnosRut(lector);
+                    rutAlumno = leerRUT(lector, "alumno", opcionMsj.BUSCAR);
+                    instituto.buscarAlumnosRut(rutAlumno);
                     System.out.println("");
                     break;
                 case 4:
                     limpiarPantalla();
-                    instituto.eliminarAlumno(lector);
+                    rutAlumno = leerID(lector, "alumno", opcionMsj.ELIMINAR);
+                    instituto.eliminarAlumno(rutAlumno);
                     System.out.println("");
                     break;
                 case 5:
                     limpiarPantalla();
-                    instituto.buscarAlumnosPorCarrera(lector);
+                    idCarrera = leerID(lector, "carrera", opcionMsj.BUSCAR);
+                    instituto.buscarAlumnosPorCarrera(idCarrera);
                     System.out.println("");
                     break;
                 case 6:
                     limpiarPantalla();
-                    instituto.actualizacionEstado(lector);
+                    rutAlumno = leerRUT(lector, "alumno", opcionMsj.ACTUALIZAR);
+                    instituto.actualizacionEstado(rutAlumno, lector);  ////////FALTA MOVER LECTURA
                     System.out.println("");
                     break;
                 case 7:
                     limpiarPantalla();
-                    instituto.mostrarEstadoAsignaturas(lector);
+                    rutAlumno = leerRUT(lector, "alumno", opcionMsj.MOSTRAR);
+                    instituto.mostrarEstadoAsignaturas(rutAlumno);
                     System.out.println("");
                     break;
                 case 0:
@@ -324,7 +339,7 @@ public class Main {
 
 
 
-
+    //VARIOS
     public static void limpiarPantalla() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -335,6 +350,28 @@ public class Main {
         lector.readLine();  
     }
     
+
+    //LECTURA
+    public static String leerID(BufferedReader lector, String mensaje, opcionMsj op) throws IOException {
+        System.out.println("Porfavor ingresar el ID de la" + mensaje + " a " + op.name());
+        String id = lector.readLine();
+        return id;
+    }
+
+    public static String leerRUT(BufferedReader lector, String mensaje, opcionMsj op) throws IOException {
+        System.out.println("Porfavor ingresar el RUT del " + mensaje + " a " + op.name());
+        String rut = lector.readLine();
+        return rut;
+    }
+
+    public static enum opcionMsj {
+        BUSCAR,
+        ELIMINAR,
+        ACTUALIZAR,
+        MOSTRAR
+    }
+    
+    //PRINCIPAL
     public static void main(String[] args) throws IOException{
         limpiarPantalla();
 
@@ -394,6 +431,8 @@ public class Main {
         }
 
     }
+
+
 }
 
 
