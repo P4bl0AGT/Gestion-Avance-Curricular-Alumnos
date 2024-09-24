@@ -44,14 +44,12 @@ public class Verificaciones {
 
                 if (validarNumero(cadena))
                     break;
-
             }
         }
 
         return Integer.parseInt(cadena);
     }
 }
-
 
 class NotCovertToNumericException extends Exception{
     public NotCovertToNumericException(){
