@@ -1,5 +1,7 @@
 import java.io.*;
 
+import javax.xml.validation.Validator;
+
 public class Main {
 
     //LECTURAS
@@ -375,6 +377,9 @@ public class Main {
     public static void main(String[] args) throws IOException{
         limpiarPantalla();
 
+        //VERIFICACION
+        Verificaciones verificaciones = new Verificaciones();
+
         //Instituto clase principal
         Instituto instituto = new Instituto();
         
@@ -391,8 +396,13 @@ public class Main {
         while (true) {
             limpiarPantalla();
             menuPrincipal();
-            System.out.print("Seleccionar opcion: ");
-            int opcion = Integer.parseInt(lector.readLine());
+            //System.out.print("Seleccionar opcion: ");
+
+            // ---- PRUEBA ----- //
+            int opcion = verificaciones.validarEntrada(lector, "Seleccionar opcion: ");
+            // ---- PRUEBA ----- //
+
+
             System.out.println("");
 
             switch (opcion) {

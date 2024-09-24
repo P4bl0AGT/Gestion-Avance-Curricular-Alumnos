@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 
 public class Verificaciones {
 
@@ -23,27 +24,47 @@ public class Verificaciones {
 
 
     
-    public int validarEntrada(BufferedReader lector, String dato, String mensaje){
+    public int validarEntrada(BufferedReader lector, String mensaje) throws IOException{
 
         System.out.print(mensaje);
         String cadena = lector.readLine();
 
         try{
-            if (validarNumero(cadena))
-                return Integer.parseInt(cadena);
-        } catch (NotCovertToNumericException mensajeError){
+            if (!validarNumero(cadena))
+                throw new NotCovertToNumericException();
+
+        }
+        catch (NotCovertToNumericException mensajeError){
             while(true)
             {
-                System.out.println(mensajeError);
+                try{
+                    System.out.println(mensajeError);
+                    System.out.print(mensaje);
+                    cadena = lector.readLine();
 
-                System.out.print(mensaje);
-                cadena = lector.readLine();
-
-                if (validarNumero(cadena))
-                    return Integer.parseInt(cadena);
+                    if (validarNumero(cadena))
+                        break;
+                }
+                catch (IOException e){
+                    System.out.println("asd");
+                
+                }
             }
         }
 
+        return Integer.parseInt(cadena);
     }
+}
 
+
+class NotCovertToNumericException extends Exception{
+    public NotCovertToNumericException(){
+        super("La cadena que se ingreso no es numerica");
+    }
+}
+
+class InvalidaAgeException extends Exception{
+    public InvalidaAgeException(){
+        super("La edad ingresada no es valida");
+    }
 }
