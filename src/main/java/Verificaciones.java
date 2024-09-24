@@ -22,6 +22,14 @@ public class Verificaciones {
         return true;
     }
 
+    public boolean validarEdad(String posibleEdad){
+        int edadRevisar = Integer.parseInt(posibleEdad);
+
+        if (edadRevisar >= 0 && edadRevisar <= 100)
+            return true;
+        return false;
+    }
+
     public int validarEntrada(BufferedReader lector, String mensaje) throws IOException{
 
         System.out.print(mensaje);
@@ -47,7 +55,48 @@ public class Verificaciones {
 
         return Integer.parseInt(cadena);
     }
-}
+
+    public int verificarEdad(BufferedReader lector, String mensaje) throws IOException{
+        System.out.print(mensaje);
+        String cadena = lector.readLine();
+
+         try{
+            if (!validarNumero(cadena))
+                throw new NotCovertToNumericException();
+            if(!validarEdad(cadena))
+                throw new InvalidaAgeException();
+
+        }
+        catch (NotCovertToNumericException mensajeError){
+            while(true)
+            {
+                
+                System.out.println(mensajeError);
+                System.out.print(mensaje);
+                cadena = lector.readLine();
+
+                if (validarNumero(cadena) && validarEdad(cadena))
+                    break;
+            }
+        }
+        catch(InvalidaAgeException mensajeError){
+            while(true)
+            {
+                
+                System.out.println(mensajeError);
+                System.out.print(mensaje);
+                cadena = lector.readLine();
+
+                if (validarNumero(cadena) && validarEdad(cadena))
+                    break;
+            }
+        }
+
+        return Integer.parseInt(cadena);
+    }
+}   
+
+
 
 class NotCovertToNumericException extends Exception{
     public NotCovertToNumericException(){

@@ -58,14 +58,16 @@ public class Main {
     }
     
     public static void leerAlumno(BufferedReader lector, Instituto instituto) throws IOException {
+        Verificaciones verificaciones = new Verificaciones();
+
         System.out.print("Ingrese nombre: ");
         String nombre = lector.readLine();
     
         System.out.print("Ingrese apellido: ");
         String apellido = lector.readLine();
     
-        System.out.print("Ingrese edad: ");
-        int edad = Integer.parseInt(lector.readLine());
+        //System.out.print("Ingrese edad: ");
+        int edad = verificaciones.verificarEdad(lector, "Ingrese su edad: ");
     
         System.out.print("Ingrese rut sin puntos ni digito verificador: ");
         String rut = lector.readLine();
@@ -173,11 +175,12 @@ public class Main {
     public static void opcionesCarrera(BufferedReader lector, Instituto instituto) throws IOException{
 
         String id;
+        Verificaciones verificaciones = new Verificaciones();
         while (true) {
             limpiarPantalla();
             menuCarreras();
-            System.out.print("Seleccionar opcion: ");
-            int opcion = Integer.parseInt(lector.readLine());
+            //System.out.print("Seleccionar opcion: ");
+            int opcion = verificaciones.validarEntrada(lector, "Seleccionar opcion: ");
             System.out.println("");
 
             switch (opcion) {
@@ -218,11 +221,13 @@ public class Main {
 
     public static void opcionesProfesor(BufferedReader lector, Instituto instituto) throws IOException{
         String rutProfesor,idCarrera, idAsignatura;
+
+        Verificaciones verificaciones = new Verificaciones();
         while (true) {
             limpiarPantalla();
             menuProfesores();
-            System.out.print("Seleccionar opcion: ");
-            int opcion = Integer.parseInt(lector.readLine());
+            //System.out.print("Seleccionar opcion: ");
+            int opcion = verificaciones.validarEntrada(lector, "Seleccionar opcion: ");
             System.out.println("");
 
             switch (opcion) {
@@ -278,11 +283,14 @@ public class Main {
 
     public static void opcionesAlumno(BufferedReader lector, Instituto instituto) throws IOException{
         String rutAlumno,idCarrera;
+
+        Verificaciones verificaciones = new Verificaciones();
+
         while (true) {
             limpiarPantalla();
             menuAlumnos();
-            System.out.print("Seleccionar opcion: ");
-            int opcion = Integer.parseInt(lector.readLine());
+            //System.out.print("Seleccionar opcion: ");
+            int opcion = verificaciones.validarEntrada(lector, "Seleccionar opcion: ");
             System.out.println("");
 
             switch (opcion) {
