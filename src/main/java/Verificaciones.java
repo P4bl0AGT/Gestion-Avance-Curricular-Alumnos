@@ -22,8 +22,6 @@ public class Verificaciones {
         return true;
     }
 
-
-    
     public int validarEntrada(BufferedReader lector, String mensaje) throws IOException{
 
         System.out.print(mensaje);
