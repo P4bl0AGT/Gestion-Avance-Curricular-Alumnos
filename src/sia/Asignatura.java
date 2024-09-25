@@ -1,3 +1,4 @@
+package sia;
 public class Asignatura
 {
     //ATRIBUTOS

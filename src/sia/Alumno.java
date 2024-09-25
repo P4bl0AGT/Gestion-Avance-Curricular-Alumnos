@@ -1,3 +1,4 @@
+package sia;
 public class Alumno extends Persona{
 
     //ATRIBUTOS

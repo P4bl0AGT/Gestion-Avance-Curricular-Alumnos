@@ -1,3 +1,4 @@
+package sia;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +8,7 @@ public class Datos {
     
     public void cargarCsvCarreras(Instituto instituto) throws IOException{
 
-        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/carreras.csv"));
+        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/datos/carreras.csv"));
         String linea;
 
         while((linea = lectorCsv.readLine()) != null) {
@@ -48,7 +49,7 @@ public class Datos {
     }
 
     public void cargarCsvAlumnos(Instituto instituto) throws IOException{
-        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/alumnos.csv"));
+        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/datos/alumnos.csv"));
         String linea;
         int talla = instituto.cantidadCarreras();
         int posRandom;
@@ -76,7 +77,7 @@ public class Datos {
     }
 
     public void cargarCsvProfesores(Instituto instituto) throws IOException{
-        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/profesores.csv"));
+        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/datos/profesores.csv"));
         String linea;
         int cantidadCarreras = instituto.cantidadCarreras();
         int posRandom;

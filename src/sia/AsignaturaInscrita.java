@@ -1,3 +1,4 @@
+package sia;
 public class AsignaturaInscrita extends Asignatura{
     //ATRIBUTOS
     private estadoAsignatura estado;
