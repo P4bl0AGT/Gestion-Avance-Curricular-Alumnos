@@ -61,6 +61,11 @@ public class Instituto
             alumnoActual.mostrar(true);
         }
     }
+    
+    public String obtenerNombreAlumno(int indice){
+        Alumno alumnoActual = contenedorAlumnos.obtener(indice);
+        return alumnoActual.getNombre() + " " + alumnoActual.getApellido();
+    }
 
 
     /* = = = = = = = = = = METODOS BUSCAR = = = = = = = = = = */
