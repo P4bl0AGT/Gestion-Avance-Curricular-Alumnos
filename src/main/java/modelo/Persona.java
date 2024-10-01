@@ -1,3 +1,5 @@
+package modelo;
+
 public class Persona {
     //ATRIBUTOS
     private String nombre;

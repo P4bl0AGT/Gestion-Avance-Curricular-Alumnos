@@ -1,3 +1,5 @@
+package modelo;
+
 public class AsignaturaInscrita extends Asignatura{
     //ATRIBUTOS
     private estadoAsignatura estado;

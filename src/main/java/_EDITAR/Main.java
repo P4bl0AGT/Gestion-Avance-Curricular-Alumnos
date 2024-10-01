@@ -1,3 +1,12 @@
+package _EDITAR;
+
+import modelo.Instituto;
+import modelo.Verificaciones;
+import modelo.Alumno;
+import modelo.Asignatura;
+import modelo.Profesor;
+import modelo.Carrera;
+import modelo.Datos;
 import java.io.*;
 
 import javax.xml.validation.Validator;
