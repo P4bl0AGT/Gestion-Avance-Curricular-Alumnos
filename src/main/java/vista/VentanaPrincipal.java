@@ -35,6 +35,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregarProfesor = new javax.swing.JMenuItem();
         jMenuItemMostrarProfesores = new javax.swing.JMenuItem();
+        jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
+        jMenuItemBuscarProfesor = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -52,6 +54,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuItemMostrarProfesores.setText("Mostrar");
         jMenu3.add(jMenuItemMostrarProfesores);
+
+        jMenuItemEliminarProfesor.setText("Eliminar");
+        jMenu3.add(jMenuItemEliminarProfesor);
+
+        jMenuItemBuscarProfesor.setText("Buscar");
+        jMenu3.add(jMenuItemBuscarProfesor);
 
         jMenuBar1.add(jMenu3);
 
@@ -83,12 +91,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // CORESPONDE A LOS SUB-MENUS
     //(PUBLIC) (JMENUITEM) (GET+NOMBREVENTANA)
     public JMenuItem getjMenuItemAgregarProfesor() {
-        return jMenuItemAgregarProfesor;
-    }
+        return jMenuItemAgregarProfesor;}
 
     public JMenuItem getjMenuItemMostrarProfesores() {
-        return jMenuItemMostrarProfesores;
-    }
+        return jMenuItemMostrarProfesores;}
+    
+    public JMenuItem getjMenuItemEliminarProfesor(){
+        return jMenuItemEliminarProfesor;}
+    
+    public JMenuItem getjMenuItemBuscarProfesor(){
+        return jMenuItemBuscarProfesor;}
     
     
     // ...
@@ -102,6 +114,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAgregarProfesor;
+    private javax.swing.JMenuItem jMenuItemBuscarProfesor;
+    private javax.swing.JMenuItem jMenuItemEliminarProfesor;
     private javax.swing.JMenuItem jMenuItemMostrarProfesores;
     // End of variables declaration//GEN-END:variables
 }

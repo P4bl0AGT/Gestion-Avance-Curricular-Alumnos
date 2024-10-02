@@ -47,6 +47,11 @@ public class Profesor extends Persona{
     public Asignatura elimarAsignatura(String codigo) {
         return asignaturas.eliminar(codigo);
     }
+    
+    @Override
+    public String toString() {
+       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "\n");
+    }
 
 
 }

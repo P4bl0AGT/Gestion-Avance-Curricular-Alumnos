@@ -91,9 +91,10 @@ public class MostrarAlumnos extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         int talla = instituto.cantidadAlumnos();
         for (int i = 0; i < talla; i++)
-        {
+        {/*
             String nombre = instituto.obtenerNombreAlumno(i);
             jTextArea1.append(nombre + "\n");
+           */
         }
     }
     

@@ -3,11 +3,13 @@ modelo\Contenedor.class
 _EDITAR\AgregarAlumno$3.class
 Sistema.class
 modelo\AsignaturaInscrita$estadoAsignatura.class
+vista\VentanaMostrarProfesores$1.class
 _EDITAR\Menu.class
 vista\VentanaPrincipal.class
 modelo\Carrera.class
 _EDITAR\MostrarAlumnos$1.class
 _EDITAR\Menu$1.class
+vista\VentanaBuscarProfesor.class
 _EDITAR\AgregarAlumno$2.class
 modelo\Profesor.class
 modelo\Instituto.class
@@ -16,6 +18,7 @@ modelo\Datos.class
 Controlador\ControladorSistema.class
 _EDITAR\AgregarAlumno.class
 modelo\Asignatura.class
+vista\VentanaEliminarProfesor.class
 _EDITAR\AgregarAlumno$1.class
 modelo\Verificaciones.class
 _EDITAR\MostrarAlumnos.class

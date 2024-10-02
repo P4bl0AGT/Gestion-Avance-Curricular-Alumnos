@@ -25,6 +25,7 @@ public class Instituto
 
     public int cantidadProfesores() {return contenedorProfesores.talla();}
     public Profesor obtenerProfesor(int i) {return contenedorProfesores.obtener(i);}
+    public Profesor obtenerProfesor(String rut) {return contenedorProfesores.obtener(rut);}
     public boolean agregarProfesor(Profesor profesor) {return contenedorProfesores.agregar(profesor.getRut(), profesor);}
 
     public int cantidadAlumnos() {return contenedorAlumnos.talla();}
@@ -64,10 +65,13 @@ public class Instituto
         }
     }
     
+    /*preferir tostring
     public String obtenerNombreAlumno(int indice){
         Alumno alumnoActual = contenedorAlumnos.obtener(indice);
         return alumnoActual.getNombre() + " " + alumnoActual.getApellido();
     }
+    */
+    
 
 
     /* = = = = = = = = = = METODOS BUSCAR = = = = = = = = = = */
@@ -139,6 +143,7 @@ public class Instituto
         }
     }
 
+    /*
     public void eliminarProfesor(String rutProfesor) {
         Profesor profesorEliminar = contenedorProfesores.eliminar(rutProfesor);
 
@@ -148,6 +153,12 @@ public class Instituto
             System.out.println("No se encuentra el rut ingresado");
             return;
         }
+    }
+    */
+    //MOD-VENTANA
+    public boolean eliminarProfesor(String rutProfesor) {
+        Profesor profesorEliminar = contenedorProfesores.eliminar(rutProfesor);
+        return profesorEliminar != null;
     }
 
     public void eliminarAlumno(String rutAlumno) {
@@ -277,6 +288,17 @@ public class Instituto
         System.out.print("eliminado");
         asignatura.mostrar();
 
+    }
+    
+    
+    //para ventanas -----------------------
+    public String listarProfesores(){
+        String cc = "";
+        Iterator iterable = contenedorProfesores.iterador();
+        while (iterable.hasNext()) {
+            cc += iterable.next().toString(); //HAY QUE HACER EL TOSTRING PARA CADA CLASE
+        }
+        return cc;
     }
 }
 
