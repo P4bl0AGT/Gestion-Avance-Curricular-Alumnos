@@ -30,6 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -45,10 +46,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemBuscarXCarrera = new javax.swing.JMenuItem();
         jMenuItemActualizarAsigaturas = new javax.swing.JMenuItem();
         jMenuItemEstadoAsignatura = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemAgregarCarrera = new javax.swing.JMenuItem();
+        jMenuItemMostrarCarreras = new javax.swing.JMenuItem();
+        jMenuItemBuscarCarrera = new javax.swing.JMenuItem();
+        jMenuItemEliminarCarrera = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
         jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +104,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu1.setText("Carreras");
+
+        jMenuItemAgregarCarrera.setText("Agregar Carrera");
+        jMenu1.add(jMenuItemAgregarCarrera);
+
+        jMenuItemMostrarCarreras.setText("Mostrar Carreras");
+        jMenu1.add(jMenuItemMostrarCarreras);
+
+        jMenuItemBuscarCarrera.setText("Buscar Carrera");
+        jMenu1.add(jMenuItemBuscarCarrera);
+
+        jMenuItemEliminarCarrera.setText("Eliminar Carrera");
+        jMenu1.add(jMenuItemEliminarCarrera);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,21 +166,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemActualizarAsigaturas;
     private javax.swing.JMenuItem jMenuItemAgregar;
+    private javax.swing.JMenuItem jMenuItemAgregarCarrera;
     private javax.swing.JMenuItem jMenuItemAgregarProfesor;
     private javax.swing.JMenuItem jMenuItemBuscar;
+    private javax.swing.JMenuItem jMenuItemBuscarCarrera;
     private javax.swing.JMenuItem jMenuItemBuscarProfesor;
     private javax.swing.JMenuItem jMenuItemBuscarRut;
     private javax.swing.JMenuItem jMenuItemBuscarXCarrera;
     private javax.swing.JMenuItem jMenuItemEliminar;
+    private javax.swing.JMenuItem jMenuItemEliminarCarrera;
     private javax.swing.JMenuItem jMenuItemEliminarProfesor;
     private javax.swing.JMenuItem jMenuItemEstadoAsignatura;
+    private javax.swing.JMenuItem jMenuItemMostrarCarreras;
     private javax.swing.JMenuItem jMenuItemMostrarProfesores;
     // End of variables declaration//GEN-END:variables
 }
