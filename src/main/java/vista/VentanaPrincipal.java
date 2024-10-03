@@ -37,6 +37,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemMostrarProfesores = new javax.swing.JMenuItem();
         jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
         jMenuItemBuscarProfesor = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItemAgregar = new javax.swing.JMenuItem();
+        jMenuItemBuscar = new javax.swing.JMenuItem();
+        jMenuItemBuscarRut = new javax.swing.JMenuItem();
+        jMenuItemEliminar = new javax.swing.JMenuItem();
+        jMenuItemBuscarXCarrera = new javax.swing.JMenuItem();
+        jMenuItemActualizarAsigaturas = new javax.swing.JMenuItem();
+        jMenuItemEstadoAsignatura = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -62,6 +70,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItemBuscarProfesor);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Alumno");
+
+        jMenuItemAgregar.setText("Agregar");
+        jMenu4.add(jMenuItemAgregar);
+
+        jMenuItemBuscar.setText("Buscar");
+        jMenu4.add(jMenuItemBuscar);
+
+        jMenuItemBuscarRut.setText("Buscar por Rut");
+        jMenu4.add(jMenuItemBuscarRut);
+
+        jMenuItemEliminar.setText("Eliminar");
+        jMenu4.add(jMenuItemEliminar);
+
+        jMenuItemBuscarXCarrera.setText("Buscar por Carrera");
+        jMenu4.add(jMenuItemBuscarXCarrera);
+
+        jMenuItemActualizarAsigaturas.setText("Actualizar Asignaturas");
+        jMenu4.add(jMenuItemActualizarAsigaturas);
+
+        jMenuItemEstadoAsignatura.setText("Estado Asignaturas");
+        jMenu4.add(jMenuItemEstadoAsignatura);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -110,12 +143,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItemActualizarAsigaturas;
+    private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemAgregarProfesor;
+    private javax.swing.JMenuItem jMenuItemBuscar;
     private javax.swing.JMenuItem jMenuItemBuscarProfesor;
+    private javax.swing.JMenuItem jMenuItemBuscarRut;
+    private javax.swing.JMenuItem jMenuItemBuscarXCarrera;
+    private javax.swing.JMenuItem jMenuItemEliminar;
     private javax.swing.JMenuItem jMenuItemEliminarProfesor;
+    private javax.swing.JMenuItem jMenuItemEstadoAsignatura;
     private javax.swing.JMenuItem jMenuItemMostrarProfesores;
     // End of variables declaration//GEN-END:variables
 }
