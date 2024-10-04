@@ -116,6 +116,7 @@ public class VentanaBuscarCarrera extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getjButtonBuscar() {

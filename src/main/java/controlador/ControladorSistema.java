@@ -20,10 +20,16 @@ public class ControladorSistema implements ActionListener{
     
     //AQUI HAY QUE AGREGAR CADA NUEVA VENTANA COMO ATRIBUTO-------------------------------------------------------------
     //CREAR NUEVA VENTANA -> SE GENERA CLASE -> AGREGO ABAJO (PRIVATE) (NOMBRECLASEVENTANA) (VARIABLEVENTANA)
+    //VENTANAS DE PROESOR
     private VentanaAgregarProfesor vAgregarProfesor;
     private VentanaMostrarProfesores vMostrarProfesores;
     private VentanaEliminarProfesor vEliminarProfesor;
     private VentanaBuscarProfesor vBuscarProfesor;
+    //VENTANAS DE CARRERAS
+    private VentanaAgregarCarrera vAgregarCarrera;
+    private VentanaBuscarCarrera vBuscarCarrera;
+    private VentanaEliminarCarrera vEliminarCarrera;
+    private VentanaMostrarCarreras vMostrarCarreras;
     // ...
     //-------------------------------------------------------------------------------------------------------
 
@@ -40,10 +46,16 @@ public class ControladorSistema implements ActionListener{
         
         //AQUI HAY QUE AGREGAR CADA NUEVA OPCION DE VENTANA PRINCIPAL --------------------------------------------
         //(VENTANAPRINCIPAL) (METODO GET CLASE VENTANA) (ACTIONLISTENER)
+        //ASOCIAR EVENTOS DE PROFESOR
         ventanaPrincipal.getjMenuItemAgregarProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemMostrarProfesores().addActionListener(this);
         ventanaPrincipal.getjMenuItemEliminarProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemBuscarProfesor().addActionListener(this);
+        //ASOCIAR EVENTOS DE CARRERAS
+        ventanaPrincipal.getjMenuItemAgregarCarrera().addActionListener(this);
+        ventanaPrincipal.getjMenuItemBuscarCarrera().addActionListener(this);
+        ventanaPrincipal.getjMenuItemEliminarCarrera().addActionListener(this);
+        ventanaPrincipal.getjMenuItemMostrarCarreras().addActionListener(this);
         // ...
         //-------------------------------------------------------------------------------------------------------
         
@@ -146,8 +158,60 @@ public class ControladorSistema implements ActionListener{
             vBuscarProfesor.dispose();
         }
  
-                
+        //===================== EVENTOS DE CARRERAS =====================//
+        //AGREGAR CARRERA
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemAgregarCarrera()){
+            vAgregarCarrera = new VentanaAgregarCarrera();
+            vAgregarCarrera.getjButtonVolver().addActionListener(this);
+            vAgregarCarrera.setAlwaysOnTop(true);     
+            vAgregarCarrera.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vAgregarCarrera.dispose();
+        }
         
+        //BUSCAR CARRERA
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarCarrera()){
+            vBuscarCarrera = new VentanaBuscarCarrera();
+            vBuscarCarrera.getjButtonBuscar().addActionListener(this);
+            vBuscarCarrera.getjButtonVolver().addActionListener(this);
+            vBuscarCarrera.setAlwaysOnTop(true);     
+            vBuscarCarrera.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vBuscarCarrera != null && ae.getSource() == vBuscarCarrera.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vBuscarCarrera.dispose();
+        }
+        
+        //ELIMINAR CARRERA
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarCarrera()){
+            vEliminarCarrera = new VentanaEliminarCarrera();
+            vEliminarCarrera.getjButtonBuscar().addActionListener(this);
+            vEliminarCarrera.getjButtonVolver().addActionListener(this);
+            vEliminarCarrera.setAlwaysOnTop(true);     
+            vEliminarCarrera.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vEliminarCarrera != null && ae.getSource() == vEliminarCarrera.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vEliminarCarrera.dispose();
+        }
+        
+        //Mostrar CARRERA
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarCarreras()){
+            vMostrarCarreras = new VentanaMostrarCarreras();
+            vMostrarCarreras.getjButtonVolver().addActionListener(this);
+            vMostrarCarreras.setAlwaysOnTop(true);     
+            vMostrarCarreras.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vMostrarCarreras != null && ae.getSource() == vMostrarCarreras.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vMostrarCarreras.dispose();
+        }
     }
     
 }

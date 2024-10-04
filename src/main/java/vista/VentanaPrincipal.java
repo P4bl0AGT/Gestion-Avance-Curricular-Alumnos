@@ -147,6 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //AQUI VAN LOS METODOS NECESARIOS PARA LA COMPARACION EN EL CONTROLADOR--------------------------------
     // CORESPONDE A LOS SUB-MENUS
     //(PUBLIC) (JMENUITEM) (GET+NOMBREVENTANA)
+    //GETTERS DE PROFESOR
     public JMenuItem getjMenuItemAgregarProfesor() {
         return jMenuItemAgregarProfesor;}
 
@@ -159,11 +160,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public JMenuItem getjMenuItemBuscarProfesor(){
         return jMenuItemBuscarProfesor;}
     
+    //GETTERS DE CARRERA
+    public JMenuItem getjMenuItemAgregarCarrera(){
+        return jMenuItemAgregarCarrera;}
+    
+    public JMenuItem getjMenuItemBuscarCarrera() {
+        return jMenuItemBuscarCarrera;}
+    
+    public JMenuItem getjMenuItemEliminarCarrera() {
+        return jMenuItemEliminarCarrera;}
+    
+    public JMenuItem getjMenuItemMostrarCarreras(){
+        return jMenuItemMostrarCarreras;}
+    
     
     // ...
     //LO DE ABAJO SON LOS NOMBRES DE LOS BOTONES, == A LO DE ARRIBA
     //-------------------------------------------------------------------------------------------------
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

@@ -5,18 +5,17 @@
 package vista;
 
 import javax.swing.JButton;
-import javax.swing.JTable;
 
 /**
  *
  * @author pagui
  */
-public class VentanaMostrarCarreras extends javax.swing.JFrame {
+public class VentanaAgregarCarrera extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaMostrarCarreras
+     * Creates new form VentanaAgregarCarrera
      */
-    public VentanaMostrarCarreras() {
+    public VentanaAgregarCarrera() {
         initComponents();
     }
 
@@ -29,56 +28,35 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableMostrar = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTableMostrar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Codigo", "Nombre", "Semestres"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableMostrar);
+        jButtonVolver.setText("Volver");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Mostrar Carreras");
-
-        jButtonVolver.setText("Volver");
+        jLabel1.setText("Agregar Carrera");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
+                .addContainerGap(119, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(103, 103, 103))
+                .addGap(114, 114, 114))
             .addGroup(layout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(jButtonVolver)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(jButtonVolver)
                 .addContainerGap())
         );
@@ -88,18 +66,10 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getjButtonVolver() {
-        return jButtonVolver;
-    }
-
-    public JTable getjTableMostrar() {
-        return jTableMostrar;
-    }
+        return jButtonVolver;}
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableMostrar;
     // End of variables declaration//GEN-END:variables
 }
