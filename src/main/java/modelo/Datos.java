@@ -1,15 +1,24 @@
 package modelo;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
+
+
 
 public class Datos {
     
     public void cargarCsvCarreras(Instituto instituto) throws IOException{
 
-        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/carreras.csv"));
+        BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/carreras.csv"), "UTF-8"));
         String linea;
 
         while((linea = lectorCsv.readLine()) != null) {
@@ -50,7 +59,8 @@ public class Datos {
     }
 
     public void cargarCsvAlumnos(Instituto instituto) throws IOException{
-        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/alumnos.csv"));
+        
+        BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/alumnos.csv"), "UTF-8"));
         String linea;
         int talla = instituto.cantidadCarreras();
         int posRandom;
@@ -61,6 +71,10 @@ public class Datos {
             String apellido = datos[1];
             String rut = datos[2];
             int edad = Integer.parseInt(datos[3].trim());
+            //no utilizados por el momento
+            int creditosApro = Integer.parseInt(datos[4].trim());
+            String carrera = datos[5];
+            
 
             Alumno alumno = new Alumno(nombre, apellido, rut, edad);
             
@@ -78,7 +92,8 @@ public class Datos {
     }
 
     public void cargarCsvProfesores(Instituto instituto) throws IOException{
-        BufferedReader lectorCsv = new BufferedReader(new FileReader("src/main/java/datos/profesores.csv"));
+        
+        BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/profesores.csv"), "UTF-8"));
         String linea;
         int cantidadCarreras = instituto.cantidadCarreras();
         int posRandom;
@@ -103,5 +118,37 @@ public class Datos {
                 System.out.println("No fue posible cargar datos");
         }
         lectorCsv.close();
-    }    
+    }
+    
+    public void guardarCsvProfesores(Instituto instituto) throws IOException {
+        File file = new File("src/main/java/datos/pruebaProfesores.csv");
+        FileOutputStream fos = new FileOutputStream(file);
+        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+        BufferedWriter bw = new BufferedWriter(osw);
+        PrintWriter pw = new PrintWriter(bw);
+        
+        String datos = instituto.listarProfesores();
+        pw.write(datos);
+        
+        pw.close();
+        bw.close();
+        osw.close();
+        fos.close();
+    }
+    
+    public void guardarCsvAlumnos(Instituto instituto) throws IOException {
+        File file = new File("src/main/java/datos/pruebaAlumnos.csv");
+        FileOutputStream fos = new FileOutputStream(file);
+        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+        BufferedWriter bw = new BufferedWriter(osw);
+        PrintWriter pw = new PrintWriter(bw);
+        
+        String datos = instituto.listarAlumnos();
+        pw.write(datos);
+        
+        pw.close();
+        bw.close();
+        osw.close();
+        fos.close();
+    }
 }

@@ -96,6 +96,11 @@ public class Alumno extends Persona{
     public int obtenerCantidadAsignaturas() {
         return carrera.cantidadAsignaturas();
     }
+    
+    @Override
+    public String toString() {
+       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "," + creditosAprobados + "," + carrera.getNombre() + "\n");
+    }
 
 }
 
