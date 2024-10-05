@@ -51,6 +51,9 @@ public class ControladorSistema implements ActionListener{
         datos.cargarCsvCarreras(instituto);
         datos.cargarCsvAlumnos(instituto);
         datos.cargarCsvProfesores(instituto);
+        //temporal
+        datos.guardarCsvProfesores(instituto);
+        datos.guardarCsvAlumnos(instituto);
         
         ventanaPrincipal = new VentanaPrincipal();
         

@@ -300,5 +300,14 @@ public class Instituto
         }
         return cc;
     }
+    
+    public String listarAlumnos(){
+        String cc = "";
+        Iterator iterable = contenedorAlumnos.iterador();
+        while (iterable.hasNext()) {
+            cc += iterable.next().toString(); //HAY QUE HACER EL TOSTRING PARA CADA CLASE
+        }
+        return cc;
+    }
 }
 
