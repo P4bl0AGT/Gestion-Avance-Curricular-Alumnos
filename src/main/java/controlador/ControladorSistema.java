@@ -345,6 +345,7 @@ public class ControladorSistema implements ActionListener {
         if(ae.getSource() == ventanaPrincipal.getjMenuItemAgregarCarrera()){
             vAgregarCarrera = new VentanaAgregarCarrera();
             vAgregarCarrera.getjButtonVolver().addActionListener(this);
+            vAgregarCarrera.getjButtonAgregar().addActionListener(this);
             vAgregarCarrera.setAlwaysOnTop(true);     
             vAgregarCarrera.setVisible(true);
             ventanaPrincipal.setVisible(false);
@@ -353,7 +354,39 @@ public class ControladorSistema implements ActionListener {
             ventanaPrincipal.setVisible(true);
             vAgregarCarrera.dispose();
         }
-        
+        else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonAgregar()){
+            String ID = vAgregarCarrera.getjTextFieldID().getText().toString();
+            String nombre = vAgregarCarrera.getjTextFieldNombre().getText().toString();
+            int semestres = Integer.parseInt(vAgregarCarrera.getjTextFieldSemestres().getText());
+            int asignaturas = Integer.parseInt(vAgregarCarrera.getjTextFieldAsignaturas().getText());
+            Carrera nuevaCarrera = new Carrera(ID, nombre, semestres);
+            Object lector;
+            
+            for(int i = 0 ; i < asignaturas ; i++){
+                lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 0);
+                String codigo = "";
+                if(lector != null)
+                    codigo = lector.toString();
+                
+                lector = null;
+                lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 1);
+                String nombreAs = "";
+                if(lector != null)
+                        nombreAs = lector.toString();
+                
+                lector = null;
+                lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 2);
+                int creditos = 0;
+                if(lector != null)
+                        creditos = Integer.parseInt(lector.toString());
+                
+ 
+                Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAs, creditos);
+                nuevaCarrera.agregarAsignatura(nuevaAsignatura);
+            }
+            instituto.agregarCarrera(nuevaCarrera);
+                
+        }
         //BUSCAR CARRERA
         if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarCarrera()){
             vBuscarCarrera = new VentanaBuscarCarrera();

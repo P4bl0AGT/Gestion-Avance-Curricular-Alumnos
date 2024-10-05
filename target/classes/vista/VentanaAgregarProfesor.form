@@ -33,12 +33,16 @@
               <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
               <Component id="jButtonAgregar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-              <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="87" max="32767" attributes="0"/>
+              <Component id="jButtonVolver" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel5" min="-2" pref="233" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel4" max="32767" attributes="0"/>
@@ -52,11 +56,8 @@
                           <Component id="jTextFieldApellido" max="32767" attributes="0"/>
                           <Component id="jTextFieldRut" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldEdad" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldMensaje" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="233" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
@@ -88,10 +89,12 @@
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldEdad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Component id="jTextFieldMensaje" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
@@ -114,9 +117,9 @@
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonCancelar">
+    <Component class="javax.swing.JButton" name="jButtonVolver">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldNombre">
@@ -144,6 +147,11 @@
     <Component class="javax.swing.JTextField" name="jTextFieldRut">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldEdad">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldMensaje">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

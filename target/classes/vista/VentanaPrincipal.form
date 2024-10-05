@@ -26,22 +26,37 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarProfesor">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="text" type="java.lang.String" value="Agregar Profesor"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMostrarProfesores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar"/>
+                <Property name="text" type="java.lang.String" value="Mostrar Profesores"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarProfesor">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar"/>
+                <Property name="text" type="java.lang.String" value="Eliminar Profesor"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBuscarProfesor">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
+                <Property name="text" type="java.lang.String" value="Buscar Profesor"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarAsignaturaProfesor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar Asignatura"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarAsignaturaProfesor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar Asignatura"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMostrarAsignaturasProfesor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mostrar Asignaturas"/>
               </Properties>
             </MenuItem>
           </SubComponents>
