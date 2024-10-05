@@ -315,5 +315,14 @@ public class Instituto
         }
         return cc;
     }
+    
+    public String listarCarreras(){
+        String cc = "";
+        Iterator iterable = contenedorCarreras.iterador();
+        while (iterable.hasNext()) {
+            cc += iterable.next().toString(); //HAY QUE HACER EL TOSTRING PARA CADA CLASE
+        }
+        return cc;
+    }
 }
 

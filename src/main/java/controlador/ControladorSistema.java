@@ -361,16 +361,32 @@ public class ControladorSistema implements ActionListener {
         */
         
         //EVENTOS ALUMNOS
-        //ACTUALIZACION ESTADO AGREGAR
+        //ACTUALIZACION ESTADO AGREGAR Y INTERACCION EN AGREGAR
         if(ae.getSource() == ventanaPrincipal.getjMenuItemAgregarAlumno()){
             vAgregarAlumno = new VentanaAgregarAlumno();
+            vAgregarAlumno.rellenarTabla(instituto.listarCarreras());
             vAgregarAlumno.getjButtonAgregar().addActionListener(this);
-            vAgregarAlumno.getjButtonCancelar().addActionListener(this);
+            vAgregarAlumno.getjButtonVolver().addActionListener(this);
             vAgregarAlumno.setAlwaysOnTop(true);     
             vAgregarAlumno.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        else if(vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonCancelar()){
+        else if (vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonAgregar()){
+            Alumno alumno = new Alumno(vAgregarAlumno.getjTextFieldNombre().getText(),
+                                       vAgregarAlumno.getjTextFieldApellido().getText(),
+                                       vAgregarAlumno.getjTextFieldRut().getText(),
+                                       Integer.parseInt(vAgregarAlumno.getjTextFieldEdad().getText()));
+            
+            
+            Carrera carrera = instituto.obtenerCarrera(vAgregarAlumno.getjTextFieldIdCarrera().getText());
+            
+            if (carrera != null)
+            {
+                alumno.setCarrera(carrera);
+                instituto.agregarAlumno(alumno);
+            }
+        }
+        else if(vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarAlumno.dispose();
         }
@@ -448,15 +464,19 @@ public class ControladorSistema implements ActionListener {
         //ACTUALIZACION ESTADO MOSTRAR ALUMNO
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarAlumnos()){
             vMostrarAlumnos = new VentanaMostrarAlumnos();
+            vMostrarAlumnos.rellenarTabla(instituto.listarAlumnos());
             vMostrarAlumnos.getjButtonVolver().addActionListener(this);
             vMostrarAlumnos.setAlwaysOnTop(true);     
             vMostrarAlumnos.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        
+        
         else if(vMostrarAlumnos != null && ae.getSource() == vMostrarAlumnos.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vMostrarAlumnos.dispose();
         }
+        
         
         
         

@@ -6,6 +6,8 @@ package vista;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -31,7 +33,7 @@ public class VentanaMostrarAlumnos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableRegistroAlumnos = new javax.swing.JTable();
         jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,7 +42,7 @@ public class VentanaMostrarAlumnos extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 0, 255));
         jLabel1.setText("MOSTRAR ALUMNOS");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableRegistroAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -59,7 +61,7 @@ public class VentanaMostrarAlumnos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableRegistroAlumnos);
 
         jButtonVolver.setText("Volver");
 
@@ -100,8 +102,19 @@ public class VentanaMostrarAlumnos extends javax.swing.JFrame {
         return jButtonVolver;
     }
 
-    public JTable getjTable1() {
-        return jTable1;
+    public JTable getjTableRegistroAlumnos() {
+        return jTableRegistroAlumnos;
+    }
+    
+    public void rellenarTabla(String datos) {
+        String[] arr = datos.split("\n");
+        DefaultTableModel model = (DefaultTableModel) jTableRegistroAlumnos.getModel();
+        model.setRowCount(0);
+        
+        for (String cadenaActual : arr) {
+            String[] cc = cadenaActual.split(",");
+            model.addRow(cc);
+        }
     }
 
 
@@ -109,6 +122,6 @@ public class VentanaMostrarAlumnos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableRegistroAlumnos;
     // End of variables declaration//GEN-END:variables
 }

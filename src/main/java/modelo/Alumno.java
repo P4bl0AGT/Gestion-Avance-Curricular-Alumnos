@@ -99,8 +99,9 @@ public class Alumno extends Persona{
     
     @Override
     public String toString() {
-       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "," + creditosAprobados + "," + carrera.getNombre() + "\n");
+       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "," + getCarrera());
     }
+    
 
 }
 
