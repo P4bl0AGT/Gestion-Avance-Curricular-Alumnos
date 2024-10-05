@@ -6,6 +6,7 @@ package controlador;
 
 import java.awt.event.*;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import modelo.*;
 import vista.*;
 import java.io.*;
@@ -210,11 +211,24 @@ public class ControladorSistema implements ActionListener{
             ventanaPrincipal.setVisible(true);
             vBuscarCarrera.dispose();
         }
-        
+        else if(vBuscarCarrera != null && ae.getSource() == vBuscarCarrera.getjButtonBuscar()){
+            String ID = vBuscarCarrera.getjTextFieldBuscarID().getText();
+            Carrera actual = instituto.obtenerCarrera(ID);
+            if(actual != null)
+            {
+                vBuscarCarrera.getjTextFieldMensaje().setText("ENCONTRADO");
+                vBuscarCarrera.getjTableMostrar().setValueAt(actual.getId(), 0, 0);
+                vBuscarCarrera.getjTableMostrar().setValueAt(actual.getNombre(), 0, 1);
+                vBuscarCarrera.getjTableMostrar().setValueAt(actual.cantidadCreditos(), 0, 2);
+            }
+            else
+                vBuscarCarrera.getjTextFieldMensaje().setText("NO ENCONTADO");
+        }
+            
         //ELIMINAR CARRERA
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarCarrera()){
             vEliminarCarrera = new VentanaEliminarCarrera();
-            vEliminarCarrera.getjButtonBuscar().addActionListener(this);
+            vEliminarCarrera.getjButtonEliminar().addActionListener(this);
             vEliminarCarrera.getjButtonVolver().addActionListener(this);
             vEliminarCarrera.setAlwaysOnTop(true);     
             vEliminarCarrera.setVisible(true);
@@ -224,19 +238,58 @@ public class ControladorSistema implements ActionListener{
             ventanaPrincipal.setVisible(true);
             vEliminarCarrera.dispose();
         }
+        else if(vEliminarCarrera != null && ae.getSource() == vEliminarCarrera.getjButtonEliminar()){
+            String ID = vEliminarCarrera.getjTextFieldBuscarID().getText();
+            if(instituto.eliminarCarrera(ID))
+                vEliminarCarrera.getjTextFieldMensaje().setText("Carrera eliminada exitosamente");
+            else
+                vEliminarCarrera.getjTextFieldMensaje().setText("No se encontro la carrera indicada");
+        }    
         
-        //Mostrar CARRERA
+        //MOSTRAR CARRERAS
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarCarreras()){
             vMostrarCarreras = new VentanaMostrarCarreras();
             vMostrarCarreras.getjButtonVolver().addActionListener(this);
+            vMostrarCarreras.getjButtonLectura().addActionListener(this);
             vMostrarCarreras.setAlwaysOnTop(true);     
             vMostrarCarreras.setVisible(true);
             ventanaPrincipal.setVisible(false);
+            
+            //MOSTRAR
+            for(int i = 0 ; i < instituto.cantidadCarreras() ; i++)
+            {
+                Carrera actual = instituto.obtenerCarrera(i);
+                vMostrarCarreras.getjTableMostrar().setValueAt(actual.getId(), i, 0);
+                vMostrarCarreras.getjTableMostrar().setValueAt(actual.getNombre(), i, 1);
+                vMostrarCarreras.getjTableMostrar().setValueAt(actual.getSemestres(), i, 2);
+                
+                
+            }
         }
         else if(vMostrarCarreras != null && ae.getSource() == vMostrarCarreras.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vMostrarCarreras.dispose();
         }
+        //PRUEBA
+        else if(vMostrarCarreras != null && ae.getSource() == vMostrarCarreras.getjButtonLectura()){
+            System.out.println("LECTURA");
+            JTable tabla = vMostrarCarreras.getjTableMostrar();
+            int filasTabla = tabla.getRowCount();
+            int columTabla = tabla.getColumnCount();
+            System.out.println(filasTabla + " " + columTabla);
+            String cadena = tabla.getValueAt(1, 1).toString();
+            System.out.println("lectura" + cadena);
+        }
+        
+        /* LECTURA DESDE UN PANEL
+            System.out.println("LECTURA");
+            JTable tabla = vMostrarCarreras.getjTableMostrar();
+            int filasTabla = tabla.getRowCount();
+            int columTabla = tabla.getColumnCount();
+            System.out.println(filasTabla + " " + columTabla);
+            String cadena = tabla.getValueAt(1, 1).toString();
+            System.out.println("lectura" + cadena);
+        */
         
         //EVENTOS ALUMNOS
         //ACTUALIZACION ESTADO AGREGAR

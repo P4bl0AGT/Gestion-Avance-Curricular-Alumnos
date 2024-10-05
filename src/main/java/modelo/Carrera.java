@@ -76,7 +76,6 @@ public class Carrera {
         System.out.println(" | " + id + " | " + nombre + " | " + semestres + " | ");
     }
 
-
     public int cantidadAsignaturas() {
         return asignaturas.talla();
     }

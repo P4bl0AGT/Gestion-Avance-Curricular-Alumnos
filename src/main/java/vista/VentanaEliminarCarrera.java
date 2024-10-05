@@ -32,7 +32,7 @@ public class VentanaEliminarCarrera extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldBuscarID = new javax.swing.JTextField();
         jTextFieldMensaje = new javax.swing.JTextField();
-        jButtonBuscar = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -43,7 +43,7 @@ public class VentanaEliminarCarrera extends javax.swing.JFrame {
 
         jTextFieldMensaje.setEditable(false);
 
-        jButtonBuscar.setText("Buscar");
+        jButtonEliminar.setText("Eliminar");
 
         jButtonVolver.setText("Volver");
 
@@ -69,7 +69,7 @@ public class VentanaEliminarCarrera extends javax.swing.JFrame {
                         .addGap(69, 69, 69))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jButtonBuscar)
+                .addComponent(jButtonEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonVolver)
                 .addGap(23, 23, 23))
@@ -88,7 +88,7 @@ public class VentanaEliminarCarrera extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver)
-                    .addComponent(jButtonBuscar))
+                    .addComponent(jButtonEliminar))
                 .addGap(27, 27, 27))
         );
 
@@ -96,8 +96,8 @@ public class VentanaEliminarCarrera extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getjButtonBuscar(){
-        return jButtonBuscar;
+    public JButton getjButtonEliminar(){
+        return jButtonEliminar;
     }
 
     public JButton getjButtonVolver(){
@@ -116,7 +116,7 @@ public class VentanaEliminarCarrera extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

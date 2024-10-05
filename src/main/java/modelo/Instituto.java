@@ -21,6 +21,7 @@ public class Instituto
     /* = = = = = = = = = = METODOS FUERA CLASE = = = = = = = = = = */
     public int cantidadCarreras() {return contenedorCarreras.talla();}
     public Carrera obtenerCarrera(int i) {return contenedorCarreras.obtener(i);}
+    public Carrera obtenerCarrera(String ID) {return contenedorCarreras.obtener(ID);}
     public boolean agregarCarrera(Carrera carrera) {return contenedorCarreras.agregar(carrera.getId(), carrera);}
 
     public int cantidadProfesores() {return contenedorProfesores.talla();}
@@ -123,7 +124,7 @@ public class Instituto
 
 
     /* = = = = = = = = = = METODOS ELIMINAR = = = = = = = = = = */
-    public void eliminarCarrera(String idCarrera) {
+    /*public void eliminarCarrera(String idCarrera) {
         Carrera carreraEliminar = contenedorCarreras.eliminar(idCarrera);
 
         if(carreraEliminar != null)
@@ -141,6 +142,11 @@ public class Instituto
                 alumnoActual.setCarrera(new Carrera());
             }
         }
+    }*/
+    public boolean eliminarCarrera(String ID){
+        Carrera actual = contenedorCarreras.eliminar(ID);
+        return actual != null;
+        
     }
 
     /*
