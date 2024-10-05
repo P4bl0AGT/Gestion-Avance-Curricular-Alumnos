@@ -110,4 +110,18 @@ public class Carrera {
         Carrera copia = new Carrera(idCopia, nombreCopia, semestresCopia);
         return copia;
     }
+    
+    @Override
+    public String toString() {
+       return (id + "," + nombre + "," + Integer.toString(semestres) + "\n");
+    }
+    
+    public String listarAsignatura(){
+        String cc = "";
+        Iterator iterable = asignaturas.iterador();
+        while (iterable.hasNext()) {
+            cc += iterable.next().toString();
+        }
+        return cc;
+    }
 }

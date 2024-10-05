@@ -44,6 +44,11 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarAsignaturaProfesor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar Asignatura"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">

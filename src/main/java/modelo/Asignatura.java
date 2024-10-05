@@ -65,5 +65,9 @@ public class Asignatura
     public void mostrar(boolean simple){ 
         System.out.println(" | " + codigo + " | ");
     }
-
+    
+    @Override
+    public String toString() {
+       return (codigo + "," + nombre + "," + creditos + "\n");
+    }
 }

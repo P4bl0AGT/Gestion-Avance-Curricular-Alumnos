@@ -15,31 +15,34 @@ import java.io.*;
  *
  * @author Note
  */
-public class ControladorSistema implements ActionListener{
+public class ControladorSistema implements ActionListener {
     private Instituto instituto;
     private VentanaPrincipal ventanaPrincipal;
-    
+
     //AQUI HAY QUE AGREGAR CADA NUEVA VENTANA COMO ATRIBUTO-------------------------------------------------------------
     //CREAR NUEVA VENTANA -> SE GENERA CLASE -> AGREGO ABAJO (PRIVATE) (NOMBRECLASEVENTANA) (VARIABLEVENTANA)
+    
     //VENTANAS DE PROESOR
     private VentanaAgregarProfesor vAgregarProfesor;
     private VentanaMostrarProfesores vMostrarProfesores;
     private VentanaEliminarProfesor vEliminarProfesor;
     private VentanaBuscarProfesor vBuscarProfesor;
+    private VentanaAgregarAsignaturaProfesor vAgregarAsignaturaProfesor;
+
     //VENTANAS DE CARRERAS
     private VentanaAgregarCarrera vAgregarCarrera;
     private VentanaBuscarCarrera vBuscarCarrera;
     private VentanaEliminarCarrera vEliminarCarrera;
     private VentanaMostrarCarreras vMostrarCarreras;
+
     // VENTANAS DE ALUMNO
-    
-   private VentanaActualizacionEstadoAsignaturaAlumno vActualizarEstadoAsignaturaAlumno;
-   private VentanaAgregarAlumno vAgregarAlumno;
-   private VentanaBuscarAlumno vBuscarAlumno;
-   private VentanaBuscarAlumnoCarrera vBuscarAlumnoCarrera;
-   private VentanaEliminarAlumno vEliminarAlumno;
-   private VentanaEstadoAsignaturaAlumno vEstadoAsignaturaAlumno;
-   private VentanaMostrarAlumnos vMostrarAlumnos;
+    private VentanaActualizacionEstadoAsignaturaAlumno vActualizarEstadoAsignaturaAlumno;
+    private VentanaAgregarAlumno vAgregarAlumno;
+    private VentanaBuscarAlumno vBuscarAlumno;
+    private VentanaBuscarAlumnoCarrera vBuscarAlumnoCarrera;
+    private VentanaEliminarAlumno vEliminarAlumno;
+    private VentanaEstadoAsignaturaAlumno vEstadoAsignaturaAlumno;
+    private VentanaMostrarAlumnos vMostrarAlumnos;
    
     
     //-------------------------------------------------------------------------------------------------------
@@ -60,18 +63,23 @@ public class ControladorSistema implements ActionListener{
         
         //AQUI HAY QUE AGREGAR CADA NUEVA OPCION DE VENTANA PRINCIPAL --------------------------------------------
         //(VENTANAPRINCIPAL) (METODO GET CLASE VENTANA) (ACTIONLISTENER)
+        
         //ASOCIAR EVENTOS DE PROFESOR
         ventanaPrincipal.getjMenuItemAgregarProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemMostrarProfesores().addActionListener(this);
         ventanaPrincipal.getjMenuItemEliminarProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemBuscarProfesor().addActionListener(this);
+        ventanaPrincipal.getjMenuItemjMenuItemAgregarAsignaturaProfesor().addActionListener(this);
+        
+        
         //ASOCIAR EVENTOS DE CARRERAS
         ventanaPrincipal.getjMenuItemAgregarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemBuscarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemEliminarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemMostrarCarreras().addActionListener(this);
-        // ASOCIAR EVENTOS DE ALUMNO
         
+        
+        // ASOCIAR EVENTOS DE ALUMNO
         ventanaPrincipal.getjMenuItemActualizacionEstadoAsignaturaAlumno().addActionListener(this);
         ventanaPrincipal.getjMenuItemAgregarAlumno().addActionListener(this);
         ventanaPrincipal.getjMenuItemBuscarPorRut().addActionListener(this);
@@ -121,9 +129,10 @@ public class ControladorSistema implements ActionListener{
         }
         
         
-        //MENU MOSTRAR PROFESOR ==================================================================================================
+        //MENU MOSTRAR PROFESORES ==================================================================================================
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarProfesores()) {
-            vMostrarProfesores = new VentanaMostrarProfesores(instituto.listarProfesores());
+            vMostrarProfesores = new VentanaMostrarProfesores();
+            vMostrarProfesores.rellenarTabla(instituto.listarProfesores());
             vMostrarProfesores.getjButtonVolver().addActionListener(this);
             vMostrarProfesores.setAlwaysOnTop(true);     
             vMostrarProfesores.setVisible(true);
@@ -183,6 +192,66 @@ public class ControladorSistema implements ActionListener{
             ventanaPrincipal.setVisible(true);
             vBuscarProfesor.dispose();
         }
+        
+        
+        //MENU MOSTRAR PROFESOR ==================================================================================================
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemjMenuItemAgregarAsignaturaProfesor()) {
+            vAgregarAsignaturaProfesor = new VentanaAgregarAsignaturaProfesor();
+            vAgregarAsignaturaProfesor.getjButtonVolver().addActionListener(this);
+            vAgregarAsignaturaProfesor.getjButtonAgregar().addActionListener(this);
+            vAgregarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
+            vAgregarAsignaturaProfesor.setAlwaysOnTop(true);     
+            vAgregarAsignaturaProfesor.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        //BOTON BUSCAR
+        else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonBuscar()){
+            String rut = vAgregarAsignaturaProfesor.getjTextFieldRut().getText();
+            String id = vAgregarAsignaturaProfesor.getjTextFieldIDCarrera().getText();
+            Profesor profesor = instituto.obtenerProfesor(rut);
+            Carrera carrera = instituto.obtenerCarrera(id);
+            if (profesor != null && carrera != null) {
+                vAgregarAsignaturaProfesor.rellenarTabla(carrera.listarAsignatura());
+                vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText(" - - - ");
+            }
+            else {
+                vAgregarAsignaturaProfesor.limpiarTabla();
+                vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
+            }
+             
+        }
+        //BOTON AGREGAR
+        else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonAgregar()){
+            String idAsignatura = vAgregarAsignaturaProfesor.getjTextFieldIDAsignatura().getText();
+            String rut = vAgregarAsignaturaProfesor.getjTextFieldRut().getText();
+            String idCarrera = vAgregarAsignaturaProfesor.getjTextFieldIDCarrera().getText();
+            
+            Profesor profesor = instituto.obtenerProfesor(rut);
+            Carrera carrera = instituto.obtenerCarrera(idCarrera);
+            
+            if (profesor != null && carrera != null) {
+                Asignatura asignatura = carrera.obtenerAsignatura(idAsignatura);
+                
+                if (asignatura != null) {
+                    profesor.agregarAsignatura(asignatura);
+                    vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("Agregado");
+                }
+                else {
+                    vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("Asignatura INCORRECTA");
+                }
+            }
+            else {
+                //vAgregarAsignaturaProfesor.rellenarTabla("");
+                vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
+            }
+        }
+        //BOTON VOLVER
+        else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vAgregarAsignaturaProfesor.dispose();
+        }
+        
+        
  
         //===================== EVENTOS DE CARRERAS =====================//
         //AGREGAR CARRERA

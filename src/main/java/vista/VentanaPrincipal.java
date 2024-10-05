@@ -38,6 +38,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemMostrarProfesores = new javax.swing.JMenuItem();
         jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
         jMenuItemBuscarProfesor = new javax.swing.JMenuItem();
+        jMenuItemAgregarAsignaturaProfesor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgregarAlumno = new javax.swing.JMenuItem();
         jMenuItemBuscarPorRut = new javax.swing.JMenuItem();
@@ -76,6 +77,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuItemBuscarProfesor.setText("Buscar");
         jMenu3.add(jMenuItemBuscarProfesor);
+
+        jMenuItemAgregarAsignaturaProfesor.setText("Agregar Asignatura");
+        jMenu3.add(jMenuItemAgregarAsignaturaProfesor);
 
         jMenuBar1.add(jMenu3);
 
@@ -173,6 +177,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public JMenuItem getjMenuItemMostrarCarreras(){
         return jMenuItemMostrarCarreras;}
     
+    public JMenuItem getjMenuItemjMenuItemAgregarAsignaturaProfesor() {
+        return jMenuItemAgregarAsignaturaProfesor;}
+    
     //GETTERS DE ALUMNO
     
      public JMenuItem getjMenuItemActualizacionEstadoAsignaturaAlumno() {
@@ -220,6 +227,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemActualizacionEstado;
     private javax.swing.JMenuItem jMenuItemAgregarAlumno;
+    private javax.swing.JMenuItem jMenuItemAgregarAsignaturaProfesor;
     private javax.swing.JMenuItem jMenuItemAgregarCarrera;
     private javax.swing.JMenuItem jMenuItemAgregarProfesor;
     private javax.swing.JMenuItem jMenuItemBuscarCarrera;

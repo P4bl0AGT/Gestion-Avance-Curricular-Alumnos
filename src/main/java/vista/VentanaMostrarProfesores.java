@@ -17,15 +17,8 @@ public class VentanaMostrarProfesores extends javax.swing.JFrame {
      * Creates new form VentanaMostrarProfesores
      * @param datos
      */
-    public VentanaMostrarProfesores(String datos) {
+    public VentanaMostrarProfesores() {
         initComponents();
-        String[] arr = datos.split("\n");
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        
-        for (String cadenaActual : arr) {
-            String[] cc = cadenaActual.split(",");
-            model.addRow(cc);
-        }
     }
 
     /**
@@ -106,6 +99,17 @@ public class VentanaMostrarProfesores extends javax.swing.JFrame {
     public JButton getjButtonVolver() {
         return jButtonVolver;
     }
+    
+    public void rellenarTabla(String datos) {
+        String[] arr = datos.split("\n");
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        for (String cadenaActual : arr) {
+            String[] cc = cadenaActual.split(",");
+            model.addRow(cc);
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonVolver;

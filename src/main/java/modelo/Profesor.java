@@ -52,6 +52,7 @@ public class Profesor extends Persona{
     public String toString() {
        return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "\n");
     }
+    
 
 
 }

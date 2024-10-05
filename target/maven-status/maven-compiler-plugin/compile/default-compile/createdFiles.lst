@@ -4,6 +4,7 @@ modelo\Contenedor.class
 vista\VentanaAgregarCarrera.class
 vista\VentanaMostrarAlumnos$1.class
 _EDITAR\AgregarAlumno$3.class
+vista\VentanaAgregarAsignaturaProfesor$1.class
 Sistema.class
 modelo\AsignaturaInscrita$estadoAsignatura.class
 vista\VentanaMostrarAlumnos.class
@@ -23,6 +24,7 @@ modelo\Instituto.class
 _EDITAR\Main.class
 modelo\Datos.class
 vista\VentanaEliminarAlumno.class
+vista\VentanaAgregarAsignaturaProfesor.class
 _EDITAR\AgregarAlumno.class
 modelo\Asignatura.class
 controlador\ControladorSistema.class
