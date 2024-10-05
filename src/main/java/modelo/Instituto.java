@@ -167,7 +167,7 @@ public class Instituto
         return profesorEliminar != null;
     }
 
-    public void eliminarAlumno(String rutAlumno) {
+    /*public void eliminarAlumno(String rutAlumno) {
         Alumno alumnoEliminar = contenedorAlumnos.eliminar(rutAlumno);
 
         if(alumnoEliminar != null)
@@ -176,6 +176,11 @@ public class Instituto
             System.out.println("No se encuentra el rut ingresado");
             return;
         }
+    }*/
+    
+    public boolean eliminarAlumno(String rutAlumno) {
+        Alumno alumnoEliminar = contenedorAlumnos.eliminar(rutAlumno);
+        return alumnoEliminar != null;
     }
 
 

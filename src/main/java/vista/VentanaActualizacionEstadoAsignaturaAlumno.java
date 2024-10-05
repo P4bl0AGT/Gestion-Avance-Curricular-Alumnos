@@ -35,9 +35,10 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
         jTextFieldRut = new javax.swing.JTextField();
         jButtonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableDatos = new javax.swing.JTable();
         jButtonActualizar = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
+        jTextFieldMensaje = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,8 +50,27 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
 
         jButtonBuscar.setText("Buscar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -65,7 +85,8 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jTableDatos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTableDatos);
 
         jButtonActualizar.setText("Actualizar");
 
@@ -85,12 +106,14 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldMensaje)
+                                    .addComponent(jTextFieldRut, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonBuscar)))
                 .addContainerGap(9, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(52, 52, 52)
                 .addComponent(jButtonActualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonVolver)
@@ -106,13 +129,15 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextFieldMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonActualizar)
                     .addComponent(jButtonVolver))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -136,9 +161,12 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
     public JTextField getjTextFieldRut() {
         return jTextFieldRut;
     }
-
-    public JTable getjTable1() {
-        return jTable1;
+    
+    public JTextField getjTextFieldMensaje() {
+        return jTextFieldMensaje;
+    }
+    public JTable getjTableDatos() {
+        return jTableDatos;
     }
     
     
@@ -150,7 +178,8 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableDatos;
+    private javax.swing.JTextField jTextFieldMensaje;
     private javax.swing.JTextField jTextFieldRut;
     // End of variables declaration//GEN-END:variables
 }
