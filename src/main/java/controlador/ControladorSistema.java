@@ -306,10 +306,11 @@ public class ControladorSistema implements ActionListener{
             vActualizarEstadoAsignaturaAlumno.dispose();
         }
         
+        
         //ACTUALIZACION ESTADO ASIGNATURA ALUMNO
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEstadoAsignatura()){
             vEstadoAsignaturaAlumno = new VentanaEstadoAsignaturaAlumno();
-            vEstadoAsignaturaAlumno.getjButtonBuscar().addActionListener(this);
+            vEstadoAsignaturaAlumno.getjButtonBuscar().addActionListener(this); 
             vEstadoAsignaturaAlumno.getjButtonVolver().addActionListener(this);
             vEstadoAsignaturaAlumno.setAlwaysOnTop(true);     
             vEstadoAsignaturaAlumno.setVisible(true);
