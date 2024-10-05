@@ -38,14 +38,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemMostrarProfesores = new javax.swing.JMenuItem();
         jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
         jMenuItemBuscarProfesor = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItemAgregar = new javax.swing.JMenuItem();
-        jMenuItemBuscar = new javax.swing.JMenuItem();
-        jMenuItemBuscarRut = new javax.swing.JMenuItem();
-        jMenuItemEliminar = new javax.swing.JMenuItem();
-        jMenuItemBuscarXCarrera = new javax.swing.JMenuItem();
-        jMenuItemActualizarAsigaturas = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemAgregarAlumno = new javax.swing.JMenuItem();
+        jMenuItemBuscarPorRut = new javax.swing.JMenuItem();
+        jMenuItemBuscarPorCarrera = new javax.swing.JMenuItem();
+        jMenuItemEliminarAlumno = new javax.swing.JMenuItem();
         jMenuItemEstadoAsignatura = new javax.swing.JMenuItem();
+        jMenuItemMostrarAlumnos = new javax.swing.JMenuItem();
+        jMenuItemActualizacionEstado = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemAgregarCarrera = new javax.swing.JMenuItem();
         jMenuItemMostrarCarreras = new javax.swing.JMenuItem();
@@ -79,30 +79,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Alumno");
+        jMenu2.setText("Alumno");
 
-        jMenuItemAgregar.setText("Agregar");
-        jMenu4.add(jMenuItemAgregar);
+        jMenuItemAgregarAlumno.setText("Agregar");
+        jMenu2.add(jMenuItemAgregarAlumno);
 
-        jMenuItemBuscar.setText("Buscar");
-        jMenu4.add(jMenuItemBuscar);
+        jMenuItemBuscarPorRut.setText("Buscar Por Rut");
+        jMenu2.add(jMenuItemBuscarPorRut);
 
-        jMenuItemBuscarRut.setText("Buscar por Rut");
-        jMenu4.add(jMenuItemBuscarRut);
+        jMenuItemBuscarPorCarrera.setText("Buscar Por Carrera");
+        jMenu2.add(jMenuItemBuscarPorCarrera);
 
-        jMenuItemEliminar.setText("Eliminar");
-        jMenu4.add(jMenuItemEliminar);
+        jMenuItemEliminarAlumno.setText("Eliminar ");
+        jMenu2.add(jMenuItemEliminarAlumno);
 
-        jMenuItemBuscarXCarrera.setText("Buscar por Carrera");
-        jMenu4.add(jMenuItemBuscarXCarrera);
+        jMenuItemEstadoAsignatura.setText("Estado Asignatura");
+        jMenu2.add(jMenuItemEstadoAsignatura);
 
-        jMenuItemActualizarAsigaturas.setText("Actualizar Asignaturas");
-        jMenu4.add(jMenuItemActualizarAsigaturas);
+        jMenuItemMostrarAlumnos.setText("Mostrar Alumnos");
+        jMenu2.add(jMenuItemMostrarAlumnos);
 
-        jMenuItemEstadoAsignatura.setText("Estado Asignaturas");
-        jMenu4.add(jMenuItemEstadoAsignatura);
+        jMenuItemActualizacionEstado.setText("Actualizacion Estado");
+        jMenu2.add(jMenuItemActualizacionEstado);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenu2);
 
         jMenu1.setText("Carreras");
 
@@ -173,32 +173,64 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public JMenuItem getjMenuItemMostrarCarreras(){
         return jMenuItemMostrarCarreras;}
     
+    //GETTERS DE ALUMNO
     
-    // ...
+     public JMenuItem getjMenuItemActualizacionEstadoAsignaturaAlumno() {
+        return jMenuItemActualizacionEstado;
+    }
+
+    public JMenuItem getjMenuItemAgregarAlumno() {
+        return jMenuItemAgregarAlumno;
+    }
+
+    public JMenuItem getjMenuItemBuscarPorCarrera() {
+        return jMenuItemBuscarPorCarrera;
+    }
+
+    public JMenuItem getjMenuItemBuscarPorRut() {
+        return jMenuItemBuscarPorRut;
+    }
+
+    public JMenuItem getjMenuItemEliminarAlumno() {
+        return jMenuItemEliminarAlumno;
+    }
+
+    public JMenuItem getjMenuItemEstadoAsignatura() {
+        return jMenuItemEstadoAsignatura;
+    }
+
+    public JMenuItem getjMenuItemMostrarAlumnos() {
+        return jMenuItemMostrarAlumnos;
+    }
+    
+    
+     // ...
     //LO DE ABAJO SON LOS NOMBRES DE LOS BOTONES, == A LO DE ARRIBA
-    //-------------------------------------------------------------------------------------------------
+    
+  
+//-------------------------------------------------------------------------------------------------
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItemActualizarAsigaturas;
-    private javax.swing.JMenuItem jMenuItemAgregar;
+    private javax.swing.JMenuItem jMenuItemActualizacionEstado;
+    private javax.swing.JMenuItem jMenuItemAgregarAlumno;
     private javax.swing.JMenuItem jMenuItemAgregarCarrera;
     private javax.swing.JMenuItem jMenuItemAgregarProfesor;
-    private javax.swing.JMenuItem jMenuItemBuscar;
     private javax.swing.JMenuItem jMenuItemBuscarCarrera;
+    private javax.swing.JMenuItem jMenuItemBuscarPorCarrera;
+    private javax.swing.JMenuItem jMenuItemBuscarPorRut;
     private javax.swing.JMenuItem jMenuItemBuscarProfesor;
-    private javax.swing.JMenuItem jMenuItemBuscarRut;
-    private javax.swing.JMenuItem jMenuItemBuscarXCarrera;
-    private javax.swing.JMenuItem jMenuItemEliminar;
+    private javax.swing.JMenuItem jMenuItemEliminarAlumno;
     private javax.swing.JMenuItem jMenuItemEliminarCarrera;
     private javax.swing.JMenuItem jMenuItemEliminarProfesor;
     private javax.swing.JMenuItem jMenuItemEstadoAsignatura;
+    private javax.swing.JMenuItem jMenuItemMostrarAlumnos;
     private javax.swing.JMenuItem jMenuItemMostrarCarreras;
     private javax.swing.JMenuItem jMenuItemMostrarProfesores;
     // End of variables declaration//GEN-END:variables

@@ -30,7 +30,17 @@ public class ControladorSistema implements ActionListener{
     private VentanaBuscarCarrera vBuscarCarrera;
     private VentanaEliminarCarrera vEliminarCarrera;
     private VentanaMostrarCarreras vMostrarCarreras;
-    // ...
+    // VENTANAS DE ALUMNO
+    
+   private VentanaActualizacionEstadoAsignaturaAlumno vActualizarEstadoAsignaturaAlumno;
+   private VentanaAgregarAlumno vAgregarAlumno;
+   private VentanaBuscarAlumno vBuscarAlumno;
+   private VentanaBuscarAlumnoCarrera vBuscarAlumnoCarrera;
+   private VentanaEliminarAlumno vEliminarAlumno;
+   private VentanaEstadoAsignaturaAlumno vEstadoAsignaturaAlumno;
+   private VentanaMostrarAlumnos vMostrarAlumnos;
+   
+    
     //-------------------------------------------------------------------------------------------------------
 
     
@@ -56,7 +66,19 @@ public class ControladorSistema implements ActionListener{
         ventanaPrincipal.getjMenuItemBuscarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemEliminarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemMostrarCarreras().addActionListener(this);
-        // ...
+        // ASOCIAR EVENTOS DE ALUMNO
+        
+        ventanaPrincipal.getjMenuItemActualizacionEstadoAsignaturaAlumno().addActionListener(this);
+        ventanaPrincipal.getjMenuItemAgregarAlumno().addActionListener(this);
+        ventanaPrincipal.getjMenuItemBuscarPorRut().addActionListener(this);
+        ventanaPrincipal.getjMenuItemBuscarPorCarrera().addActionListener(this);
+        ventanaPrincipal.getjMenuItemEliminarAlumno().addActionListener(this);    
+        ventanaPrincipal.getjMenuItemEstadoAsignatura().addActionListener(this); 
+        ventanaPrincipal.getjMenuItemMostrarAlumnos().addActionListener(this);
+
+
+
+        
         //-------------------------------------------------------------------------------------------------------
         
         ventanaPrincipal.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -212,6 +234,106 @@ public class ControladorSistema implements ActionListener{
             ventanaPrincipal.setVisible(true);
             vMostrarCarreras.dispose();
         }
+        
+        //EVENTOS ALUMNOS
+        //ACTUALIZACION ESTADO AGREGAR
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemAgregarAlumno()){
+            vAgregarAlumno = new VentanaAgregarAlumno();
+            vAgregarAlumno.getjButtonAgregar().addActionListener(this);
+            vAgregarAlumno.getjButtonCancelar().addActionListener(this);
+            vAgregarAlumno.setAlwaysOnTop(true);     
+            vAgregarAlumno.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonCancelar()){
+            ventanaPrincipal.setVisible(true);
+            vAgregarAlumno.dispose();
+        }
+        
+        //ACTUALIZACION ESTADO BUSCAR POR RUT
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarPorRut()){
+            vBuscarAlumno = new VentanaBuscarAlumno();
+            vBuscarAlumno.getjButtonBuscar().addActionListener(this);
+            vBuscarAlumno.getjButtonVolver().addActionListener(this);
+            vBuscarAlumno.setAlwaysOnTop(true);     
+            vBuscarAlumno.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vBuscarAlumno != null && ae.getSource() == vBuscarAlumno.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vBuscarAlumno.dispose();
+        }
+        
+        //ACTUALIZACION ESTADO BUSCAR POR CARRERA
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarPorCarrera()){
+            vBuscarAlumnoCarrera = new VentanaBuscarAlumnoCarrera();
+            vBuscarAlumnoCarrera.getjButtonBuscar().addActionListener(this);
+            vBuscarAlumnoCarrera.getjButtonVolver().addActionListener(this);
+            vBuscarAlumnoCarrera.setAlwaysOnTop(true);     
+            vBuscarAlumnoCarrera.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vBuscarAlumnoCarrera != null && ae.getSource() == vBuscarAlumnoCarrera.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vBuscarAlumnoCarrera.dispose();
+        }
+        
+        //ACTUALIZACION ESTADO ELIMINAR ALUMNO 
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarAlumno()){
+            vEliminarAlumno = new VentanaEliminarAlumno();
+            vEliminarAlumno.getjButtonEliminar().addActionListener(this);
+            vEliminarAlumno.getjButtonVolver().addActionListener(this);
+            vEliminarAlumno.setAlwaysOnTop(true);     
+            vEliminarAlumno.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vEliminarAlumno != null && ae.getSource() == vEliminarAlumno.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vEliminarAlumno.dispose();
+        }
+        //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemActualizacionEstadoAsignaturaAlumno()){
+            vActualizarEstadoAsignaturaAlumno = new VentanaActualizacionEstadoAsignaturaAlumno();
+            vActualizarEstadoAsignaturaAlumno.getjButtonActualizar().addActionListener(this);
+            vActualizarEstadoAsignaturaAlumno.getjButtonBuscar().addActionListener(this);
+            vActualizarEstadoAsignaturaAlumno.getjButtonVolver().addActionListener(this);
+            vActualizarEstadoAsignaturaAlumno.setAlwaysOnTop(true);     
+            vActualizarEstadoAsignaturaAlumno.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vActualizarEstadoAsignaturaAlumno.dispose();
+        }
+        
+        //ACTUALIZACION ESTADO ASIGNATURA ALUMNO
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemEstadoAsignatura()){
+            vEstadoAsignaturaAlumno = new VentanaEstadoAsignaturaAlumno();
+            vEstadoAsignaturaAlumno.getjButtonBuscar().addActionListener(this);
+            vEstadoAsignaturaAlumno.getjButtonVolver().addActionListener(this);
+            vEstadoAsignaturaAlumno.setAlwaysOnTop(true);     
+            vEstadoAsignaturaAlumno.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vEstadoAsignaturaAlumno != null && ae.getSource() == vEstadoAsignaturaAlumno.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vEstadoAsignaturaAlumno.dispose();
+        }
+        //ACTUALIZACION ESTADO MOSTRAR ALUMNO
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarAlumnos()){
+            vMostrarAlumnos = new VentanaMostrarAlumnos();
+            vMostrarAlumnos.getjButtonVolver().addActionListener(this);
+            vMostrarAlumnos.setAlwaysOnTop(true);     
+            vMostrarAlumnos.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        else if(vMostrarAlumnos != null && ae.getSource() == vMostrarAlumnos.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vMostrarAlumnos.dispose();
+        }
+        
+        
+        
     }
     
 }
