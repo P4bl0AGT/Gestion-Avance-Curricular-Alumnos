@@ -28,6 +28,8 @@ public class ControladorSistema implements ActionListener {
     private VentanaEliminarProfesor vEliminarProfesor;
     private VentanaBuscarProfesor vBuscarProfesor;
     private VentanaAgregarAsignaturaProfesor vAgregarAsignaturaProfesor;
+    private VentanaEliminarAsignaturaProfesor vEliminarAsignaturaProfesor;
+    private VentanaMostrarAsignaturasProfesor vMostrarAsignaturaProfesor;
 
     //VENTANAS DE CARRERAS
     private VentanaAgregarCarrera vAgregarCarrera;
@@ -70,6 +72,8 @@ public class ControladorSistema implements ActionListener {
         ventanaPrincipal.getjMenuItemEliminarProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemBuscarProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemjMenuItemAgregarAsignaturaProfesor().addActionListener(this);
+        ventanaPrincipal.getjMenuItemEliminarAsignaturaProfesor().addActionListener(this);
+        ventanaPrincipal.getjMenuItemMostrarAsignaturasProfesor().addActionListener(this);
         
         
         //ASOCIAR EVENTOS DE CARRERAS
@@ -107,7 +111,7 @@ public class ControladorSistema implements ActionListener {
         if (ae.getSource() == ventanaPrincipal.getjMenuItemAgregarProfesor()){
             vAgregarProfesor = new VentanaAgregarProfesor();
             vAgregarProfesor.getjButtonAgregar().addActionListener(this);
-            vAgregarProfesor.getjButtonCancelar().addActionListener(this);
+            vAgregarProfesor.getjButtonVolver().addActionListener(this);
             vAgregarProfesor.setAlwaysOnTop(true);     
             vAgregarProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
@@ -119,11 +123,10 @@ public class ControladorSistema implements ActionListener {
                                        vAgregarProfesor.getjTextFieldRut().getText(),
                                        Integer.parseInt(vAgregarProfesor.getjTextFieldEdad().getText()));
             instituto.agregarProfesor(pp);
-            ventanaPrincipal.setVisible(true);
-            vAgregarProfesor.dispose();
+            vAgregarProfesor.getjTextFieldMensaje().setText("Agregado");
         }
-        //BOTON CANCELAR
-        else if (vAgregarProfesor != null && ae.getSource() == vAgregarProfesor.getjButtonCancelar()){
+        //BOTON VOLVER
+        else if (vAgregarProfesor != null && ae.getSource() == vAgregarProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarProfesor.dispose();
         }
@@ -158,7 +161,7 @@ public class ControladorSistema implements ActionListener {
         else if (vEliminarProfesor != null && ae.getSource() == vEliminarProfesor.getjButtonEliminar()){
             String rut = vEliminarProfesor.getjTextFieldRut().getText();
             if (instituto.eliminarProfesor(rut))
-                vEliminarProfesor.getjTextFieldMensaje().setText("Profesor eliminado con éxito");
+                vEliminarProfesor.getjTextFieldMensaje().setText("Profesor eliminado");
             else
                 vEliminarProfesor.getjTextFieldMensaje().setText("Profesor no encontrado");
         }
@@ -182,8 +185,10 @@ public class ControladorSistema implements ActionListener {
         else if (vBuscarProfesor != null && ae.getSource() == vBuscarProfesor.getjButtonBuscar()){     
             String rut = vBuscarProfesor.getjTextFieldRut().getText();
             Profesor profesor = instituto.obtenerProfesor(rut);
-            if (profesor != null)
-                vBuscarProfesor.getjTextFieldMensaje().setText(profesor.toString());
+            if (profesor != null) {
+                vBuscarProfesor.rellenarTabla(profesor.toString());
+                vBuscarProfesor.getjTextFieldMensaje().setText("Encontrado");
+            }
             else
                 vBuscarProfesor.getjTextFieldMensaje().setText("Profesor no encontrado"); 
         }
@@ -194,12 +199,12 @@ public class ControladorSistema implements ActionListener {
         }
         
         
-        //MENU MOSTRAR PROFESOR ==================================================================================================
+        //MENU AGREGAR ASIGNATURA PROFESOR ==================================================================================================
         if(ae.getSource() == ventanaPrincipal.getjMenuItemjMenuItemAgregarAsignaturaProfesor()) {
             vAgregarAsignaturaProfesor = new VentanaAgregarAsignaturaProfesor();
-            vAgregarAsignaturaProfesor.getjButtonVolver().addActionListener(this);
-            vAgregarAsignaturaProfesor.getjButtonAgregar().addActionListener(this);
             vAgregarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
+            vAgregarAsignaturaProfesor.getjButtonAgregar().addActionListener(this);
+            vAgregarAsignaturaProfesor.getjButtonVolver().addActionListener(this);
             vAgregarAsignaturaProfesor.setAlwaysOnTop(true);     
             vAgregarAsignaturaProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
@@ -211,7 +216,7 @@ public class ControladorSistema implements ActionListener {
             Profesor profesor = instituto.obtenerProfesor(rut);
             Carrera carrera = instituto.obtenerCarrera(id);
             if (profesor != null && carrera != null) {
-                vAgregarAsignaturaProfesor.rellenarTabla(carrera.listarAsignatura());
+                vAgregarAsignaturaProfesor.rellenarTabla(carrera.listarAsignaturas());
                 vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText(" - - - ");
             }
             else {
@@ -241,7 +246,6 @@ public class ControladorSistema implements ActionListener {
                 }
             }
             else {
-                //vAgregarAsignaturaProfesor.rellenarTabla("");
                 vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
             }
         }
@@ -249,6 +253,89 @@ public class ControladorSistema implements ActionListener {
         else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarAsignaturaProfesor.dispose();
+        }
+        
+        
+        //MENU ELIMINAR ASIGNATURA PROFESOR ==================================================================================================
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarAsignaturaProfesor()) {
+            vEliminarAsignaturaProfesor = new VentanaEliminarAsignaturaProfesor();
+            vEliminarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
+            vEliminarAsignaturaProfesor.getjButtonEliminar().addActionListener(this);
+            vEliminarAsignaturaProfesor.getjButtonVolver().addActionListener(this);
+            vEliminarAsignaturaProfesor.setAlwaysOnTop(true);     
+            vEliminarAsignaturaProfesor.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        //BOTON BUSCAR
+        else if (vEliminarAsignaturaProfesor != null && ae.getSource() == vEliminarAsignaturaProfesor.getjButtonBuscar()){
+            String rut = vEliminarAsignaturaProfesor.getjTextFieldRut().getText();
+            Profesor profesor = instituto.obtenerProfesor(rut);
+            if (profesor != null) {
+                vEliminarAsignaturaProfesor.rellenarTabla(profesor.listarAsignaturas());
+                vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText(profesor.contarAsignaturas() + " Asignaturas");
+            }
+            else {
+                vEliminarAsignaturaProfesor.limpiarTabla();
+                vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
+            }  
+        }
+        //BOTON ELIMINAR
+        else if (vEliminarAsignaturaProfesor != null && ae.getSource() == vEliminarAsignaturaProfesor.getjButtonEliminar()){
+            String idAsignatura = vEliminarAsignaturaProfesor.getjTextFieldIDAsignatura().getText();
+            String rut = vEliminarAsignaturaProfesor.getjTextFieldRut().getText();
+
+            Profesor profesor = instituto.obtenerProfesor(rut);
+            
+            if (profesor != null) {
+                Asignatura asignatura = profesor.obtenerAsignatura(idAsignatura);
+                
+                if (asignatura != null) {
+                    profesor.elimarAsignatura(asignatura.getCodigo());
+                    vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("Eliminado");
+                }
+                else {
+                    vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("Asignatura INCORRECTA");
+                }
+            }
+            else {
+                vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
+            }
+        }
+        //BOTON VOLVER
+        else if (vEliminarAsignaturaProfesor != null && ae.getSource() == vEliminarAsignaturaProfesor.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vEliminarAsignaturaProfesor.dispose();
+        }
+        
+        
+        //MENU MOSTRAR ASIGNATURAS PROFESORES ==================================================================================================
+        if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarAsignaturasProfesor()) {
+            vMostrarAsignaturaProfesor = new VentanaMostrarAsignaturasProfesor();
+            vMostrarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
+            vMostrarAsignaturaProfesor.getjButtonVolver().addActionListener(this);
+            vMostrarAsignaturaProfesor.setAlwaysOnTop(true);     
+            vMostrarAsignaturaProfesor.setVisible(true);
+            ventanaPrincipal.setVisible(false);
+        }
+        //BOTON BUSCAR
+        else if (vMostrarAsignaturaProfesor != null && ae.getSource() == vMostrarAsignaturaProfesor.getjButtonBuscar()){
+            String rut = vMostrarAsignaturaProfesor.getjTextFieldRut().getText();
+            Profesor profesor = instituto.obtenerProfesor(rut);
+
+            if (profesor != null) {
+                vMostrarAsignaturaProfesor.rellenarTabla(profesor.listarAsignaturas());
+                vMostrarAsignaturaProfesor.getjTextFieldMensaje().setText(profesor.contarAsignaturas() + " Asignaturas");
+            }
+            else {
+                vMostrarAsignaturaProfesor.limpiarTabla();
+                vMostrarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
+            }  
+        }
+        
+        //BOTON VOLVER
+        else if (vMostrarAsignaturaProfesor != null && ae.getSource() == vMostrarAsignaturaProfesor.getjButtonVolver()){
+            ventanaPrincipal.setVisible(true);
+            vMostrarAsignaturaProfesor.dispose();
         }
         
         

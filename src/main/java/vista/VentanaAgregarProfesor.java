@@ -33,7 +33,7 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonAgregar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
         jTextFieldNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -41,6 +41,7 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
         jTextFieldApellido = new javax.swing.JTextField();
         jTextFieldRut = new javax.swing.JTextField();
         jTextFieldEdad = new javax.swing.JTextField();
+        jTextFieldMensaje = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +51,7 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
 
         jButtonAgregar.setText("Agregar");
 
-        jButtonCancelar.setText("Cancelar");
+        jButtonVolver.setText("Volver");
 
         jLabel3.setText("Rut");
 
@@ -58,6 +59,8 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setText("AGREGAR PROFESOR");
+
+        jTextFieldMensaje.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,11 +70,14 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
                 .addGap(108, 108, 108)
                 .addComponent(jButtonAgregar)
                 .addGap(57, 57, 57)
-                .addComponent(jButtonCancelar)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addComponent(jButtonVolver)
+                .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -83,10 +89,8 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
                             .addComponent(jTextFieldNombre)
                             .addComponent(jTextFieldApellido)
                             .addComponent(jTextFieldRut)
-                            .addComponent(jTextFieldEdad)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldEdad)
+                            .addComponent(jTextFieldMensaje))))
                 .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
@@ -110,10 +114,12 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(jTextFieldMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregar)
-                    .addComponent(jButtonCancelar))
+                    .addComponent(jButtonVolver))
                 .addGap(37, 37, 37))
         );
 
@@ -125,8 +131,8 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
     public JButton getjButtonAgregar() {
         return jButtonAgregar;}
 
-    public JButton getjButtonCancelar() {
-        return jButtonCancelar;}
+    public JButton getjButtonVolver() {
+        return jButtonVolver;}
     
     public JTextField getjTextFieldNombre() {
         return jTextFieldNombre;}
@@ -139,10 +145,14 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
     
     public JTextField getjTextFieldEdad() {
         return jTextFieldEdad;}
+    
+    public JTextField getjTextFieldMensaje() {
+        return jTextFieldMensaje;}
+      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAgregar;
-    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -151,6 +161,7 @@ public class VentanaAgregarProfesor extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldEdad;
+    private javax.swing.JTextField jTextFieldMensaje;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldRut;
     // End of variables declaration//GEN-END:variables

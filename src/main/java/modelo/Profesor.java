@@ -53,6 +53,23 @@ public class Profesor extends Persona{
        return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "\n");
     }
     
+    public String listarAsignaturas(){
+        String cc = "";
+        Iterator iterable = asignaturas.iterador();
+        while (iterable.hasNext()) {
+            cc += iterable.next().toString();
+        }
+        return cc;
+    }
+    
+    public int contarAsignaturas() {
+        return asignaturas.talla();
+    }
+    
+    public Asignatura obtenerAsignatura(String id) {
+        return asignaturas.obtener(id);
+    }
+    
 
 
 }

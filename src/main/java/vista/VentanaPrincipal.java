@@ -39,6 +39,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
         jMenuItemBuscarProfesor = new javax.swing.JMenuItem();
         jMenuItemAgregarAsignaturaProfesor = new javax.swing.JMenuItem();
+        jMenuItemEliminarAsignaturaProfesor = new javax.swing.JMenuItem();
+        jMenuItemMostrarAsignaturasProfesor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgregarAlumno = new javax.swing.JMenuItem();
         jMenuItemBuscarPorRut = new javax.swing.JMenuItem();
@@ -66,20 +68,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Profesor");
 
-        jMenuItemAgregarProfesor.setText("Agregar");
+        jMenuItemAgregarProfesor.setText("Agregar Profesor");
         jMenu3.add(jMenuItemAgregarProfesor);
 
-        jMenuItemMostrarProfesores.setText("Mostrar");
+        jMenuItemMostrarProfesores.setText("Mostrar Profesores");
         jMenu3.add(jMenuItemMostrarProfesores);
 
-        jMenuItemEliminarProfesor.setText("Eliminar");
+        jMenuItemEliminarProfesor.setText("Eliminar Profesor");
         jMenu3.add(jMenuItemEliminarProfesor);
 
-        jMenuItemBuscarProfesor.setText("Buscar");
+        jMenuItemBuscarProfesor.setText("Buscar Profesor");
         jMenu3.add(jMenuItemBuscarProfesor);
 
         jMenuItemAgregarAsignaturaProfesor.setText("Agregar Asignatura");
         jMenu3.add(jMenuItemAgregarAsignaturaProfesor);
+
+        jMenuItemEliminarAsignaturaProfesor.setText("Eliminar Asignatura");
+        jMenu3.add(jMenuItemEliminarAsignaturaProfesor);
+
+        jMenuItemMostrarAsignaturasProfesor.setText("Mostrar Asignaturas");
+        jMenu3.add(jMenuItemMostrarAsignaturasProfesor);
 
         jMenuBar1.add(jMenu3);
 
@@ -164,7 +172,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public JMenuItem getjMenuItemBuscarProfesor(){
         return jMenuItemBuscarProfesor;}
     
-    //GETTERS DE CARRERA
+    public JMenuItem getjMenuItemEliminarAsignaturaProfesor() {
+        return jMenuItemEliminarAsignaturaProfesor;}
+    
+    public JMenuItem getjMenuItemMostrarAsignaturasProfesor() {
+        return jMenuItemMostrarAsignaturasProfesor;}
+
+
+//GETTERS DE CARRERA
     public JMenuItem getjMenuItemAgregarCarrera(){
         return jMenuItemAgregarCarrera;}
     
@@ -179,6 +194,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public JMenuItem getjMenuItemjMenuItemAgregarAsignaturaProfesor() {
         return jMenuItemAgregarAsignaturaProfesor;}
+
+    
     
     //GETTERS DE ALUMNO
     
@@ -235,10 +252,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemBuscarPorRut;
     private javax.swing.JMenuItem jMenuItemBuscarProfesor;
     private javax.swing.JMenuItem jMenuItemEliminarAlumno;
+    private javax.swing.JMenuItem jMenuItemEliminarAsignaturaProfesor;
     private javax.swing.JMenuItem jMenuItemEliminarCarrera;
     private javax.swing.JMenuItem jMenuItemEliminarProfesor;
     private javax.swing.JMenuItem jMenuItemEstadoAsignatura;
     private javax.swing.JMenuItem jMenuItemMostrarAlumnos;
+    private javax.swing.JMenuItem jMenuItemMostrarAsignaturasProfesor;
     private javax.swing.JMenuItem jMenuItemMostrarCarreras;
     private javax.swing.JMenuItem jMenuItemMostrarProfesores;
     // End of variables declaration//GEN-END:variables
