@@ -29,6 +29,7 @@ vista\VentanaEliminarAlumno.class
 vista\VentanaAgregarAsignaturaProfesor.class
 _EDITAR\AgregarAlumno.class
 modelo\Asignatura.class
+vista\VentanaAgregarCarrera$1.class
 vista\VentanaMostrarAsignaturasProfesor.class
 controlador\ControladorSistema.class
 vista\VentanaMostrarCarreras.class

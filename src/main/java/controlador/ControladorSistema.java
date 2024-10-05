@@ -378,7 +378,8 @@ public class ControladorSistema implements ActionListener {
                 lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 2);
                 int creditos = 0;
                 if(lector != null)
-                        creditos = Integer.parseInt(lector.toString());
+                    creditos = Integer.parseInt(lector.toString());
+
                 
  
                 Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAs, creditos);

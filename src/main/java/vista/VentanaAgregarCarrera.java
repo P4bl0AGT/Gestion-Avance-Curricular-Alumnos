@@ -88,7 +88,15 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
             new String [] {
                 "Codigo", "Nombre", "Creditos"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jTableLectura.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableLectura);
         if (jTableLectura.getColumnModel().getColumnCount() > 0) {
