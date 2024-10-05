@@ -17,16 +17,19 @@ _EDITAR\MostrarAlumnos$1.class
 vista\VentanaEstadoAsignaturaAlumno.class
 _EDITAR\Menu$1.class
 vista\VentanaBuscarProfesor.class
+vista\VentanaMostrarAsignaturasProfesor$1.class
 vista\VentanaEliminarCarrera.class
 _EDITAR\AgregarAlumno$2.class
 modelo\Profesor.class
 modelo\Instituto.class
 _EDITAR\Main.class
+vista\VentanaEliminarAsignaturaProfesor$1.class
 modelo\Datos.class
 vista\VentanaEliminarAlumno.class
 vista\VentanaAgregarAsignaturaProfesor.class
 _EDITAR\AgregarAlumno.class
 modelo\Asignatura.class
+vista\VentanaMostrarAsignaturasProfesor.class
 controlador\ControladorSistema.class
 vista\VentanaMostrarCarreras.class
 vista\VentanaBuscarAlumno$1.class
@@ -43,6 +46,7 @@ vista\VentanaMostrarProfesores.class
 modelo\Alumno.class
 modelo\Persona.class
 _EDITAR\Main$opcionMsj.class
+vista\VentanaEliminarAsignaturaProfesor.class
 modelo\NotCovertToNumericException.class
 _EDITAR\Menu$2.class
 vista\VentanaAgregarProfesor.class

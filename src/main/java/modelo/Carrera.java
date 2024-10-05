@@ -116,7 +116,7 @@ public class Carrera {
        return (id + "," + nombre + "," + Integer.toString(semestres) + "\n");
     }
     
-    public String listarAsignatura(){
+    public String listarAsignaturas(){
         String cc = "";
         Iterator iterable = asignaturas.iterador();
         while (iterable.hasNext()) {

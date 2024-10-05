@@ -5,7 +5,6 @@
 package vista;
 
 import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,12 +12,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Note
  */
-public class VentanaBuscarProfesor extends javax.swing.JFrame {
+public class VentanaMostrarAsignaturasProfesor extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaBuscarProfesor
+     * Creates new form VentanaMostrarAsignaturasProfesor
      */
-    public VentanaBuscarProfesor() {
+    public VentanaMostrarAsignaturasProfesor() {
         initComponents();
     }
 
@@ -32,35 +31,42 @@ public class VentanaBuscarProfesor extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextFieldRut = new javax.swing.JTextField();
-        jButtonBuscar = new javax.swing.JButton();
-        jButtonVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButtonBuscar = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldRut = new javax.swing.JTextField();
         jTextFieldMensaje = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("BUSCAR PROFESOR");
-
-        jLabel2.setText("Rut");
-
-        jButtonBuscar.setText("Buscar");
-
-        jButtonVolver.setText("Volver");
+        jLabel1.setText("Asignaturas Profesor");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Apellido", "Rut", "Edad"
+                "Codigo", "Nombre", "Creditos"
             }
-        ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        jButtonBuscar.setText("Buscar");
+
+        jButtonVolver.setText("Volver");
+
+        jLabel2.setText("Rut");
 
         jTextFieldMensaje.setEditable(false);
 
@@ -69,48 +75,46 @@ public class VentanaBuscarProfesor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(105, 105, 105))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jButtonBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonVolver)
-                .addGap(84, 84, 84))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonBuscar)
+                                .addGap(110, 110, 110)
+                                .addComponent(jButtonVolver))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jTextFieldMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldRut)))))
+                .addGap(63, 63, 63))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jTextFieldMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextFieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBuscar)
-                    .addComponent(jButtonVolver))
-                .addGap(22, 22, 22))
+                    .addComponent(jButtonVolver)
+                    .addComponent(jButtonBuscar))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -118,31 +122,37 @@ public class VentanaBuscarProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getjButtonBuscar() {
-        return jButtonBuscar;}
-    
+        return jButtonBuscar;
+    }
+
     public JButton getjButtonVolver() {
-        return jButtonVolver;}
+        return jButtonVolver;
+    }
+
+    public JTextField getjTextFieldRut() {
+        return jTextFieldRut;
+    }
     
     public JTextField getjTextFieldMensaje() {
-        return jTextFieldMensaje;}
-   
-    public JTextField getjTextFieldRut() {
-        return jTextFieldRut;}
-    
+        return jTextFieldMensaje;
+    }
     
     public void rellenarTabla(String datos) {
+        String[] arr = datos.split("\n");
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        model.setRowCount(0);
-        String[] cc = datos.split(",");
-        model.addRow(cc);
+        for (String cadenaActual : arr) {
+            String[] cc = cadenaActual.split(",");
+            model.addRow(cc);
+        }
     }
     
     public void limpiarTabla() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonVolver;
