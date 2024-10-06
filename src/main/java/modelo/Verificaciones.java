@@ -5,6 +5,7 @@ import java.io.IOException;
 
 public class Verificaciones {
 
+    //ESTE METODO SOLO VERIFICA SI UN CARACTER ES NUMERICO
     private boolean esNumero(char digito) {
 
             int codePoint = (int) digito;
@@ -12,7 +13,7 @@ public class Verificaciones {
             if( !(codePoint >= 48 && codePoint <= 57)) return false;
             return true;
     }
-
+    //ESTE METODO SOLO VERIFICA SI UNA CADENA ES NUMERICA
     public boolean validarNumero(String dato){
         for (int i = 0 ; i < dato.length() ; i++)
         {
@@ -23,23 +24,24 @@ public class Verificaciones {
         }
         return true;
     }
-
+    //@overide
     public boolean validarEdad(String posibleEdad){
         int edadRevisar = Integer.parseInt(posibleEdad);
-
         if (edadRevisar >= 0 && edadRevisar <= 100)
             return true;
         return false;
     }
     
-    public boolean validarEdad(String posibleEdad, int limSup, int limInf){
-        int edadRevisar = Integer.parseInt(posibleEdad);
+    public boolean validarNumeroRango(String cadena, int limSup, int limInf){
+        if(!validarNumero(cadena)) return false;
+        int numero = Integer.parseInt(cadena);
 
-        if (edadRevisar >= limInf && edadRevisar <= limSup)
+        if (numero >= limInf && numero <= limSup)
             return true;
         return false;
     }
 
+    //@overide
     public int validarEntrada(BufferedReader lector, String mensaje) throws IOException{
 
         System.out.print(mensaje);
@@ -65,7 +67,7 @@ public class Verificaciones {
 
         return Integer.parseInt(cadena);
     }
-
+    //@overide
     public int verificarEdad(BufferedReader lector, String mensaje) throws IOException{
         System.out.print(mensaje);
         String cadena = lector.readLine();
