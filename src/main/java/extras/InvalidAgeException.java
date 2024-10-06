@@ -1,4 +1,4 @@
-package modelo;
+package extras;
 
 public class InvalidAgeException extends Exception{
     public InvalidAgeException(){

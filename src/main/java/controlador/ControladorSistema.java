@@ -2,13 +2,17 @@
 package controlador;
 
 //LIBRERIAS
-import modelo.NotCovertToNumericException;
+import extras.ModificarCadenas;
+import extras.Verificaciones;
+import extras.InvalidAgeException;
+import extras.NotCovertToNumericException;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import modelo.*;
 import vista.*;
 import java.io.*;
+import extras.*;
 
 
 public class ControladorSistema implements ActionListener {

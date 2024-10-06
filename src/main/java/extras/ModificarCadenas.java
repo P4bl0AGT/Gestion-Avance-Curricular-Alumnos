@@ -1,4 +1,4 @@
-package modelo;
+package extras;
 
 public class ModificarCadenas {
     public String capitalize(String str) {
