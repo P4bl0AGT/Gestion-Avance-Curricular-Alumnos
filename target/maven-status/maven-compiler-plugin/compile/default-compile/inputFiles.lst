@@ -1,6 +1,5 @@
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\_EDITAR\Main.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\controlador\ControladorSistema.java
-C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\controlador\NotCovertToNumericException.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Alumno.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Asignatura.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\AsignaturaInscrita.java
@@ -8,7 +7,9 @@ C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Contenedor.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Datos.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Instituto.java
+C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\InvalidAgeException.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\ModificarCadenas.java
+C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\NotCovertToNumericException.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Persona.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Profesor.java
 C:\Users\pagui\OneDrive\Documentos\GitHub\Gestion-Avance-Curricular-Alumnos\src\main\java\modelo\Verificaciones.java

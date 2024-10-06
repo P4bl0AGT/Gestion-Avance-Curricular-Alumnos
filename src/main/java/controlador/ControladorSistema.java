@@ -17,6 +17,8 @@ import java.io.*;
  * @author Note
  */
 public class ControladorSistema implements ActionListener {
+    private Verificaciones verificar = new Verificaciones();
+    private ModificarCadenas modificador = new ModificarCadenas();
     private Instituto instituto;
     private VentanaPrincipal ventanaPrincipal;
 
@@ -362,8 +364,6 @@ public class ControladorSistema implements ActionListener {
         else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonAgregar()){
             Object lector;
             String lectorString;
-            Verificaciones verificaciones = new Verificaciones();
-            ModificarCadenas modificador = new ModificarCadenas();
             String ID = modificador.toUppercase(vAgregarCarrera.getjTextFieldID().getText().toString());
             String nombre = modificador.capitalize(vAgregarCarrera.getjTextFieldNombre().getText().toString());
             
@@ -371,7 +371,7 @@ public class ControladorSistema implements ActionListener {
             lector = vAgregarCarrera.getjTextFieldSemestres().getText();
             lectorString = lector.toString();
             try{
-                if(!verificaciones.validarNumero(lectorString))
+                if(!verificar.validarNumero(lectorString))
                         throw new NotCovertToNumericException();
             }catch(NotCovertToNumericException mensajeError){
                 vAgregarCarrera.getjTextFieldMensaje().setText("ERROR: SOLO SE PERMITEN NUMERO EN SEMESTRES");
@@ -383,7 +383,7 @@ public class ControladorSistema implements ActionListener {
             lector = vAgregarCarrera.getjTextFieldAsignaturas().getText();
             lectorString = lector.toString();
             try{
-                if(!verificaciones.validarNumero(lectorString))
+                if(!verificar.validarNumero(lectorString))
                         throw new NotCovertToNumericException();
             }catch(NotCovertToNumericException mensajeError){
                 vAgregarCarrera.getjTextFieldMensaje().setText("ERROR: SOLO SE PERMITEN NUMERO EN ASIGNATURAS");
@@ -399,20 +399,25 @@ public class ControladorSistema implements ActionListener {
                 if(lector != null)
                     codigo = lector.toString();
                 
-                lector = null;
                 lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 1);
                 String nombreAs = "";
                 if(lector != null)
                         nombreAs = lector.toString();
                 
-                lector = null;
                 lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 2);
                 int creditos = 0;
-                if(lector != null)
-                    creditos = Integer.parseInt(lector.toString());
-
                 
- 
+                if(lector != null){
+                    lectorString = lector.toString();
+                    try{
+                        if(!verificar.validarNumero(lectorString))
+                            throw new NotCovertToNumericException();
+                    }catch(NotCovertToNumericException mensajeError){
+                        vAgregarCarrera.getjTextFieldMensaje().setText("ERROR: LA CELDA DE CREDITOS" + (i+1) + " ESPERA UN NUMERO NO UNA LETRA");
+                        return;
+                }
+                }
+
                 Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAs, creditos);
                 nuevaCarrera.agregarAsignatura(nuevaAsignatura);
             }
