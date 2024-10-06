@@ -1,0 +1,124 @@
+@startuml
+package modelo {
+    
+    class Instituto {
+        - Contenedor<String, Carrera> contenedorCarreras
+        - Contenedor<String, Profesor> contenedorProfesores
+        - Contenedor<String, Alumno> contenedorAlumnos
+        + agregarCarrera(carrera: Carrera): boolean
+        + agregarProfesor(profesor: Profesor): boolean
+        + agregarAlumno(alumno: Alumno): boolean
+        + obtenerCarrera(id: String): Carrera
+        + obtenerProfesor(rut: String): Profesor
+        + obtenerAlumno(rut: String): Alumno
+        + buscarCarreradId(idCarrera: String)
+        + buscarProfesoresRut(rutProfesor: String)
+        + buscarAlumnosRut(rutAlumno: String)
+        + listarCarreras(): String
+        + listarProfesores(completo: boolean): String
+        + listarAlumnos(completo: boolean): String
+        + cargarDatosPredefinidos(): void
+        + guardarDatos(): void
+    }
+    
+    class Datos {
+        + cargarCsvCarreras(instituto: Instituto): void
+        + cargarCsvAsignaturas(carrera: Carrera): void
+        + cargarCsvAlumnos(instituto: Instituto): void
+        + cargarCsvProfesores(instituto: Instituto): void
+        + guardarCsvCarreras(instituto: Instituto): void
+        + guardarCsvAsignaturas(instituto: Instituto): void
+        + guardarCsvProfesores(instituto: Instituto): void
+        + guardarCsvAlumnos(instituto: Instituto): void
+    }
+    
+    class Carrera {
+        - String id
+        - String nombre
+        - int semestres
+        + agregarAsignatura(asignatura: Asignatura): void
+        + obtenerAsignatura(id: String): Asignatura
+        + cantidadAsignaturas(): int
+        + mostrar(completo: boolean): void
+    }
+
+    class Asignatura {
+        - String id
+        - String nombre
+        - int creditos
+        + mostrar(): void
+    }
+
+    class Persona {
+        - String nombre
+        - String apellido
+        - String rut
+        - int edad
+        + mostrar(): void
+        + mostrar(simple: boolean): void
+        + getNombre(): String
+        + getApellido(): String
+        + getRut(): String
+        + getEdad(): int
+    }
+
+    class Alumno {
+        - int creditosAprobados
+        - Carrera carrera
+        + Alumno(nombre: String, apellido: String, rut: String, edad: int, carrera: Carrera)
+        + Alumno(nombre: String, apellido: String, rut: String, edad: int)
+        + Alumno(nombre: String, apellido: String, rut: String, edad: int, creditosAprobados: int)
+        + getCarrera(): Carrera
+        + getCreditosAprobados(): int
+        + setCarrera(carrera: Carrera): void
+        + setCreditosAprobados(creditosAprobados: int): void
+        + mostrar(): void
+        + mostrar(simple: boolean): void
+        + inscribirCarrera(carrera: Carrera): void
+        + obtenerCantidadAsignaturas(): int
+        + toString(): String
+        + toString(completo: boolean): String
+    }
+
+    class Profesor {
+        - Contenedor<String, Asignatura> asignaturas
+        + agregarAsignatura(asignatura: Asignatura): boolean
+        + elimarAsignatura(codigo: String): Asignatura
+        + mostrar(): void
+        + mostrar(simple: boolean): void
+        + listarAsignaturas(): String
+        + contarAsignaturas(): int
+        + obtenerAsignatura(id: String): Asignatura
+    }
+    
+    class AsignaturaInscrita {
+        - estadoAsignatura estado
+        - int nota
+        + setEstado(estado: estadoAsignatura): void
+        + setNota(nota: int): void
+        + getNota(): int
+        + getEstado(): estadoAsignatura
+        + mostrar(): void
+        + mostrar(simple: boolean): void
+        + inscribir(): void
+        + aprobar(): void
+        + reprobar(): void
+        + modificarParaInscribir(asignatura: Asignatura): void
+        + modificarNotaEstado(estado: estadoAsignatura, nota: int): void
+        + enum estadoAsignatura {
+            INSCRITO,
+            APROBADO,
+            REPROBADO
+        }
+    }
+    
+    Instituto "1" -- "1..*" Carrera : contiene >
+    Instituto "1" -- "1..*" Profesor : contiene >
+    Instituto "1" -- "1..*" Alumno : contiene >
+    Carrera "1" -- "0..*" Asignatura : contiene >
+    Alumno --|> Persona
+    Profesor --|> Persona
+    AsignaturaInscrita --|> Asignatura
+}
+
+@enduml
