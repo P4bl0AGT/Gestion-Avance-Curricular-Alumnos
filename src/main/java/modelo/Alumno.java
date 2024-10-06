@@ -20,6 +20,12 @@ public class Alumno extends Persona{
         creditosAprobados = 0;
     }
     
+    public Alumno(String nombre, String apellido, String rut, int edad, int creditosAprobados) {
+        super(nombre, apellido, rut, edad);
+        carrera = null;
+        this.creditosAprobados = creditosAprobados;
+    }
+    
 
     //GETTERS
     public Carrera getCarrera() {
@@ -99,7 +105,11 @@ public class Alumno extends Persona{
     
     @Override
     public String toString() {
-       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "," + getCarrera());
+       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "," + carrera.getId() + "\n");
+    }
+    
+    public String toString(boolean completo) {
+       return (getNombre() + "," + getApellido() + "," + getRut() + "," + getEdad() + "," + creditosAprobados + "," + carrera.getId() + "\n");
     }
     
 

@@ -53,12 +53,27 @@ public class Profesor extends Persona{
        return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "\n");
     }
     
+    public String toString(boolean sinSalto) {
+       return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()));
+    }
+    
     public String listarAsignaturas(){
         String cc = "";
         Iterator iterable = asignaturas.iterador();
         while (iterable.hasNext()) {
             cc += iterable.next().toString();
         }
+        return cc;
+    }
+    
+    public String listarAsignaturas(boolean simple){
+        String cc = "";
+        Iterator<Asignatura> iterable = asignaturas.iterador();
+        while (iterable.hasNext()) {
+            Asignatura asignatura = iterable.next();
+            cc += (asignatura.getCodigo() + "-");
+        }
+        cc = cc.replaceFirst(".$", "");
         return cc;
     }
     

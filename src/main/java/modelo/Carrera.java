@@ -124,4 +124,13 @@ public class Carrera {
         }
         return cc;
     }
+    
+    public String listarAsignaturas(boolean completo){
+        String cc = "";
+        Iterator iterable = asignaturas.iterador();
+        while (iterable.hasNext()) {
+            cc += (this.id + "," + iterable.next().toString());
+        }
+        return cc;
+    }
 }

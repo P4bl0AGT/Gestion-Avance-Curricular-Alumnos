@@ -52,19 +52,16 @@ public class ControladorSistema implements ActionListener {
     
     public void iniciar() throws IOException {
         instituto = new Instituto();
-        Datos datos = new Datos();
+        instituto.cargarDatosPredefinidos();
         
-        datos.cargarCsvCarreras(instituto);
-        datos.cargarCsvAlumnos(instituto);
-        datos.cargarCsvProfesores(instituto);
-        //temporal
-        datos.guardarCsvProfesores(instituto);
-        datos.guardarCsvAlumnos(instituto);
+        //hay que ver donde colocarla
+        instituto.guardarDatos();
         
         ventanaPrincipal = new VentanaPrincipal();
         
         //AQUI HAY QUE AGREGAR CADA NUEVA OPCION DE VENTANA PRINCIPAL --------------------------------------------
         //(VENTANAPRINCIPAL) (METODO GET CLASE VENTANA) (ACTIONLISTENER)
+        ventanaPrincipal.getjButtonSalir().addActionListener(this);
         
         //ASOCIAR EVENTOS DE PROFESOR
         ventanaPrincipal.getjMenuItemAgregarProfesor().addActionListener(this);
@@ -100,10 +97,16 @@ public class ControladorSistema implements ActionListener {
         ventanaPrincipal.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ventanaPrincipal.setVisible(true);
     }
-    
+
+
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        //EN CADA IF AGREGAR CADA BOTON
+    public void actionPerformed(ActionEvent ae){
+        
+        if (ae.getSource() == ventanaPrincipal.getjButtonSalir()) {
+            ventanaPrincipal.dispose();
+        }
+        
+//EN CADA IF AGREGAR CADA BOTON
         // SI LA ACCION == SUBITEM 
         //INSTANCIO VENTANA -> SELECCIONO BOTON -> AGREGO LISTENER
         

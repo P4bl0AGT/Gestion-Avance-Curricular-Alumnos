@@ -6,9 +6,9 @@ import java.util.Iterator;
 public class Instituto
 {
     //ATRIBUTOS
-    private Contenedor<String, Carrera> contenedorCarreras;
-    private Contenedor<String, Profesor> contenedorProfesores;
-    private Contenedor<String, Alumno> contenedorAlumnos;
+    private final Contenedor<String, Carrera> contenedorCarreras;
+    private final Contenedor<String, Profesor> contenedorProfesores;
+    private final Contenedor<String, Alumno> contenedorAlumnos;
 
     //CONSTRUCTOR
     public Instituto() {
@@ -33,6 +33,18 @@ public class Instituto
     public Alumno obtenerAlumno(int i) {return contenedorAlumnos.obtener(i);}
     public Alumno obtenerAlumno(String rut) {return contenedorAlumnos.obtener(rut);}
     public boolean agregarAlumno(Alumno alumno) {return contenedorAlumnos.agregar(alumno.getRut(), alumno);}
+    
+    public Asignatura obtenerAsignatura(String id) {
+        Iterator<Carrera> iterador = contenedorCarreras.iterador();
+        while(iterador.hasNext()) {
+            Carrera carreraActual = iterador.next();
+            Asignatura asignaturaActual = carreraActual.obtenerAsignatura(id);
+            if (asignaturaActual != null)
+                return asignaturaActual;
+        }
+        return null;
+    }
+    
 
 
     /* = = = = = = = = = = METODOS MOSTRAR = = = = = = = = = = */
@@ -312,11 +324,32 @@ public class Instituto
         return cc;
     }
     
+    public String listarProfesores(boolean completo){
+        String cc = "";
+        Iterator<Profesor> iterable = contenedorProfesores.iterador();
+        while (iterable.hasNext()) {
+            Profesor profesor = iterable.next();
+            String strAsignaturas = profesor.listarAsignaturas(true);
+            cc += (profesor.toString(true) + "," + strAsignaturas + "\n");
+        }
+        return cc;
+    }
+    
     public String listarAlumnos(){
         String cc = "";
         Iterator iterable = contenedorAlumnos.iterador();
         while (iterable.hasNext()) {
             cc += iterable.next().toString(); //HAY QUE HACER EL TOSTRING PARA CADA CLASE
+        }
+        return cc;
+    }
+    
+    public String listarAlumnos(boolean simple){
+        String cc = "";
+        Iterator<Alumno> iterable = contenedorAlumnos.iterador();
+        while (iterable.hasNext()) {
+            Alumno alumno = iterable.next();
+            cc += alumno.toString(true); //HAY QUE HACER EL TOSTRING PARA CADA CLASE
         }
         return cc;
     }
@@ -328,6 +361,31 @@ public class Instituto
             cc += iterable.next().toString(); //HAY QUE HACER EL TOSTRING PARA CADA CLASE
         }
         return cc;
+    }
+    
+    public String listarAsignaturas(){
+        String ca = "";
+        Iterator<Carrera> iterable = contenedorCarreras.iterador();
+        while (iterable.hasNext()) {
+            Carrera carrera = iterable.next();
+            ca += carrera.listarAsignaturas(true);
+        }
+        return ca;
+    }
+    
+    public void cargarDatosPredefinidos() throws IOException{
+        Datos datos = new Datos();
+        datos.cargarCsvCarreras(this);
+        datos.cargarCsvProfesores(this);
+        datos.cargarCsvAlumnos(this);
+    }
+    
+    public void guardarDatos() throws IOException{
+        Datos datos = new Datos();
+        datos.guardarCsvCarreras(this);
+        datos.guardarCsvAsignaturas(this);
+        datos.guardarCsvProfesores(this);
+        datos.guardarCsvAlumnos(this);
     }
 }
 

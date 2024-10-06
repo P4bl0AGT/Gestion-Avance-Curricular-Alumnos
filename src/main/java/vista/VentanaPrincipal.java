@@ -4,6 +4,7 @@
  */
 package vista;
 
+import javax.swing.JButton;
 import javax.swing.JMenuItem;
 
 /**
@@ -32,6 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
+        jButtonSalir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregarProfesor = new javax.swing.JMenuItem();
@@ -65,6 +67,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Sistema Gestion");
+
+        jButtonSalir.setText("Salir");
 
         jMenu3.setText("Profesor");
 
@@ -139,8 +143,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jButtonSalir)))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,14 +157,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel1)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addComponent(jButtonSalir)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public JButton getjButtonSalir() {
+        return jButtonSalir;
+    }
+
     //AQUI VAN LOS METODOS NECESARIOS PARA LA COMPARACION EN EL CONTROLADOR--------------------------------
     // CORESPONDE A LOS SUB-MENUS
     //(PUBLIC) (JMENUITEM) (GET+NOMBREVENTANA)
@@ -234,6 +248,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
   
 //-------------------------------------------------------------------------------------------------
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
