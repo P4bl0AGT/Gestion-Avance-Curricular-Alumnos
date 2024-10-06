@@ -32,7 +32,7 @@ public class Verificaciones {
         return false;
     }
     
-    public boolean validarNumeroRango(String cadena, int limSup, int limInf){
+    public boolean validarNumeroRango(String cadena, int limInf, int limSup){
         if(!validarNumero(cadena)) return false;
         int numero = Integer.parseInt(cadena);
 

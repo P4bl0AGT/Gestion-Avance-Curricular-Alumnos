@@ -114,10 +114,28 @@ public class ControladorSistema implements ActionListener {
         }
         //MENU AGREGAR PROFESOR -> BOTON AGREGAR
         else if (vAgregarProfesor != null && ae.getSource() == vAgregarProfesor.getjButtonAgregar()){
-            Profesor pp = new Profesor(vAgregarProfesor.getjTextFieldNombre().getText(),
-                                       vAgregarProfesor.getjTextFieldApellido().getText(),
-                                       vAgregarProfesor.getjTextFieldRut().getText(),
-                                       Integer.parseInt(vAgregarProfesor.getjTextFieldEdad().getText()));
+            String nombre = modificador.capitalize(vAgregarProfesor.getjTextFieldNombre().getText());
+            String apellido = modificador.capitalize(vAgregarProfesor.getjTextFieldApellido().getText());
+            String cRut = vAgregarProfesor.getjTextFieldRut().getText();
+            try{
+                if(!verificar.validarNumero(cRut))
+                    throw new NotCovertToNumericException();
+            }catch(NotCovertToNumericException mensajeError){
+                vAgregarProfesor.getjTextFieldMensaje().setText("ERROR: el rut solo deben ser caracteres numericos");
+                return;
+            }
+            
+            String cEdad = vAgregarProfesor.getjTextFieldEdad().getText();
+            try{
+                if(!verificar.validarNumeroRango(cEdad, 0, 99))
+                    throw new InvalidAgeException();
+            }catch(InvalidAgeException mensajeError){
+                vAgregarProfesor.getjTextFieldMensaje().setText("ERROR: la edad no es un numero y en un rango de 0-99");
+                return;
+            }
+            int edad = Integer.parseInt(cEdad);
+            
+            Profesor pp = new Profesor(nombre, apellido, cRut, edad);
             instituto.agregarProfesor(pp);
             vAgregarProfesor.getjTextFieldMensaje().setText("Agregado");
         }
@@ -220,8 +238,10 @@ public class ControladorSistema implements ActionListener {
         }
         //MENU AGREGAR ASIGNATURA PROFESOR -> BOTON AGREGAR
         else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonAgregar()){
-            String idAsignatura = vAgregarAsignaturaProfesor.getjTextFieldIDAsignatura().getText();
+            //revisar id carrera esta dando show
+            String idAsignatura = modificador.toUppercase(vAgregarAsignaturaProfesor.getjTextFieldIDAsignatura().getText());
             String rut = vAgregarAsignaturaProfesor.getjTextFieldRut().getText();
+            //String idCarrera = modificador.toUppercase(vAgregarAsignaturaProfesor.getjTextFieldIDCarrera().getText());
             String idCarrera = vAgregarAsignaturaProfesor.getjTextFieldIDCarrera().getText();
             
             Profesor profesor = instituto.obtenerProfesor(rut);
@@ -495,13 +515,32 @@ public class ControladorSistema implements ActionListener {
         }
         //MENU AGREGAR ALUMNO -> BOTON AGREGAR
         else if (vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonAgregar()){
-            Alumno alumno = new Alumno(vAgregarAlumno.getjTextFieldNombre().getText(),
-                                       vAgregarAlumno.getjTextFieldApellido().getText(),
-                                       vAgregarAlumno.getjTextFieldRut().getText(),
-                                       Integer.parseInt(vAgregarAlumno.getjTextFieldEdad().getText()));
+            String nombre = modificador.capitalize(vAgregarAlumno.getjTextFieldNombre().getText());
+            String apellido = modificador.capitalize(vAgregarAlumno.getjTextFieldApellido().getText());
+            String rut = vAgregarAlumno.getjTextFieldRut().getText();
+            
+            try{
+                if(!verificar.validarNumero(rut))
+                    throw new NotCovertToNumericException();
+            }catch(NotCovertToNumericException mensajeError){
+                vAgregarAlumno.getjTextFieldMensaje().setText("ERROR: el rut debe ser numerico");
+                return;
+            }
+            
+            String cEdad = vAgregarAlumno.getjTextFieldEdad().getText();
+            
+            try{
+                if(!verificar.validarNumeroRango(cEdad, 0, 99))
+                    throw new InvalidAgeException();
+            }catch(InvalidAgeException mensajeError){
+                vAgregarAlumno.getjTextFieldMensaje().setText("ERROR: la edad debe ser numerica y en un rango de 0-99");
+                return;
+            }
+            int edad = Integer.parseInt(cEdad);
+            Alumno alumno = new Alumno(nombre, apellido, rut, edad);
             
             
-            Carrera carrera = instituto.obtenerCarrera(vAgregarAlumno.getjTextFieldIdCarrera().getText());
+            Carrera carrera = instituto.obtenerCarrera(modificador.toUppercase(vAgregarAlumno.getjTextFieldIdCarrera().getText()));
             
             if (carrera != null)
             {
