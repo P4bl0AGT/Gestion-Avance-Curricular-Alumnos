@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import modelo.NotCovertToNumericException;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -50,7 +51,8 @@ public class ControladorSistema implements ActionListener {
     //-------------------------------------------------------------------------------------------------------
 
     
-    public void iniciar() throws IOException {
+    public void iniciar() throws IOException {        
+        //INSTITUTO
         instituto = new Instituto();
         instituto.cargarDatosPredefinidos();
         
@@ -361,8 +363,9 @@ public class ControladorSistema implements ActionListener {
             Object lector;
             String lectorString;
             Verificaciones verificaciones = new Verificaciones();
-            String ID = vAgregarCarrera.getjTextFieldID().getText().toString();
-            String nombre = vAgregarCarrera.getjTextFieldNombre().getText().toString();
+            ModificarCadenas modificador = new ModificarCadenas();
+            String ID = modificador.toUppercase(vAgregarCarrera.getjTextFieldID().getText().toString());
+            String nombre = modificador.capitalize(vAgregarCarrera.getjTextFieldNombre().getText().toString());
             
             //TRY, CATCH PARA SEMESTRES
             lector = vAgregarCarrera.getjTextFieldSemestres().getText();

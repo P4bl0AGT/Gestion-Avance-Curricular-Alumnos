@@ -31,6 +31,14 @@ public class Verificaciones {
             return true;
         return false;
     }
+    
+    public boolean validarEdad(String posibleEdad, int limSup, int limInf){
+        int edadRevisar = Integer.parseInt(posibleEdad);
+
+        if (edadRevisar >= limInf && edadRevisar <= limSup)
+            return true;
+        return false;
+    }
 
     public int validarEntrada(BufferedReader lector, String mensaje) throws IOException{
 
@@ -66,7 +74,7 @@ public class Verificaciones {
             if (!validarNumero(cadena))
                 throw new NotCovertToNumericException();
             if(!validarEdad(cadena))
-                throw new InvalidaAgeException();
+                throw new InvalidAgeException();
 
         }
         catch (NotCovertToNumericException mensajeError){
@@ -81,7 +89,7 @@ public class Verificaciones {
                     break;
             }
         }
-        catch(InvalidaAgeException mensajeError){
+        catch(InvalidAgeException mensajeError){
             while(true)
             {
                 
@@ -97,17 +105,3 @@ public class Verificaciones {
         return Integer.parseInt(cadena);
     }
 }   
-
-
-
-class NotCovertToNumericException extends Exception{
-    public NotCovertToNumericException(){
-        super("La cadena que se ingreso no es numerica");
-    }
-}
-
-class InvalidaAgeException extends Exception{
-    public InvalidaAgeException(){
-        super("La edad ingresada no es valida");
-    }
-}
