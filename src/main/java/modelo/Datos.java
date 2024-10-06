@@ -11,12 +11,17 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
-
-
+/**
+ * Esta clase se encarga de hacer la lectura y escritura de datos
+ */
 public class Datos {
     
     //CARGAR ============================================================================
-
+    /**
+    * @param instituto El instituto donde cargaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de cargar datos de carreras desde un csv de carreras
+    */
     public void cargarCsvCarreras(Instituto instituto) throws IOException {
         BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/carreras.csv"), "UTF-8"));
         String linea;
@@ -35,7 +40,11 @@ public class Datos {
         }
         lectorCsv.close();
     }
-    
+    /**
+    * @param carrera La carrera donde cargaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de cargar datos de asignaturas desde un csv de asignaturas
+    */
     private void cargarCsvAsignaturas(Carrera carrera) throws IOException {
         BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/asignaturas.csv"), "UTF-8"));
         String linea;
@@ -54,7 +63,11 @@ public class Datos {
         }
         lectorCsv.close();
     }
-
+    /**
+    * @param instituto El instotuto donde cargaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de cargar datos de alumnos desde un csv de alumnos
+    */
     public void cargarCsvAlumnos(Instituto instituto) throws IOException{
         
         BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/alumnos.csv"), "UTF-8"));
@@ -79,7 +92,11 @@ public class Datos {
         }
         lectorCsv.close();
     }
-
+    /**
+    * @param instituto El instotuto donde cargaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de cargar datos de profesores desde un csv de profesores
+    */
     public void cargarCsvProfesores(Instituto instituto) throws IOException{
         
         BufferedReader lectorCsv = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/datos/profesores.csv"), "UTF-8"));
@@ -111,7 +128,11 @@ public class Datos {
     
     
     //GUARDAR ============================================================================
-    
+    /**
+    * @param instituto El instotuto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de guardar datos de carreras a un csv de carreras
+    */
     public void guardarCsvCarreras(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zCarreras.csv");
         FileOutputStream fos = new FileOutputStream(file);
@@ -127,7 +148,11 @@ public class Datos {
         osw.close();
         fos.close();
     }
-    
+    /**
+    * @param instituto El instotuto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de guardar datos de asignaturas a un csv de asignaturas
+    */
     public void guardarCsvAsignaturas(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zAsignaturas.csv");
         FileOutputStream fos = new FileOutputStream(file);
@@ -143,7 +168,11 @@ public class Datos {
         osw.close();
         fos.close();
     }
-    
+    /**
+    * @param instituto El instotuto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de guardar datos de profesores a un csv de profesores
+    */
     public void guardarCsvProfesores(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zProfesores.csv");
         FileOutputStream fos = new FileOutputStream(file);
@@ -159,7 +188,11 @@ public class Datos {
         osw.close();
         fos.close();
     }
-    
+    /**
+    * @param instituto El instotuto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * Metodo encargado de guardar datos de alumnos a un csv de alumnos
+    */
     public void guardarCsvAlumnos(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zAlumnos.csv");
         FileOutputStream fos = new FileOutputStream(file);
