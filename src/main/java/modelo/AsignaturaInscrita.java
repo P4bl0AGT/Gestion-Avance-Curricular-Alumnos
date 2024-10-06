@@ -76,8 +76,8 @@ public class AsignaturaInscrita extends Asignatura{
         System.out.println("Nota: " + nota);
     }
     /**
-     * @Override
      * Metodo que muestra por consola los atributos de la asignatura de manera simple
+     * @param simple Boleano que represetan si es mostrar simple o no
      */
     public void mostrar(boolean simple) { 
         System.out.println(" | " + getCodigo() + " | " + estado +  " | ");}
