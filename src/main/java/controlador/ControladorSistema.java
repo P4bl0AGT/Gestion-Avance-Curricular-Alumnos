@@ -538,7 +538,7 @@ public class ControladorSistema implements ActionListener {
                 vBuscarAlumno.getjTableDatos().setValueAt(actual.getApellido(), 0, 1);
                 vBuscarAlumno.getjTableDatos().setValueAt(actual.getRut(), 0, 2);
                 vBuscarAlumno.getjTableDatos().setValueAt(actual.getEdad(), 0, 3);
-                vBuscarAlumno.getjTableDatos().setValueAt(actual.getCarrera(), 0, 4);
+                vBuscarAlumno.getjTableDatos().setValueAt(actual.getCarrera().getNombre(), 0, 4);
             }
             else
                 vBuscarAlumno.getjTextFieldMensaje().setText("ALUMNO NO ENCONTADO");
@@ -576,23 +576,27 @@ public class ControladorSistema implements ActionListener {
                             vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("ALUMNOS ENCONTRADO");
                             vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getNombre(), contador, 0);
                             vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getApellido(), contador, 1);
-                            vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getRut(), contador, 2);
-                            vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getEdad(), contador, 3);
-                            vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getCarrera(), contador, 4);
+                            vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getEdad(), contador, 2);
+                            vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getRut(), contador, 3);
+                            vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getCarrera().getNombre(), contador, 4);
                             vBuscarAlumnoCarrera.getjTable1Datos().setValueAt(alumnoActual.getCreditosAprobados(), contador, 5);
                             contador ++;
                             hayAlumnosCarrera = true;
                         }
                     }
-                if(hayAlumnosCarrera)
-                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("ALUMNOS INSCRITOS");
-                else
-                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO HAY ALUMNOS INSCRITOS EN ESTA CARRERA");
+                 if(hayAlumnosCarrera) {
+                vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("ALUMNOS INSCRITOS");
+                } else {
+                vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO HAY ALUMNOS INSCRITOS EN ESTA CARRERA");
                 }
-                else
-                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO ENCONTADO");
+                } else {  // Si no hay alumnos en el instituto
+                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO HAY ALUMNOS REGISTRADOS EN EL INSTITUTO");
+                }
+                } else {  // Si no se encontró la carrera con el ID especificado
+                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("CARRERA CON ID ESPECIFICADO NO SE ENCUENTRA");
+                }
             }
-        }
+    
         //ACTUALIZACION ESTADO BUSCAR POR CARRERA -> BOTON VOLVER
         else if(vBuscarAlumnoCarrera != null && ae.getSource() == vBuscarAlumnoCarrera.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
@@ -641,10 +645,11 @@ public class ControladorSistema implements ActionListener {
         else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonBuscar()){
             String rut = vActualizarEstadoAsignaturaAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
-            Carrera carrera = actual.getCarrera();
+            
             
             if(actual != null)
             {
+                Carrera carrera = actual.getCarrera();
                 for (int i = 0 ; i < carrera.cantidadAsignaturas(); i++)
                 {
                     AsignaturaInscrita asignaturaActual = (AsignaturaInscrita)carrera.obtenerAsignatura(i);
@@ -652,8 +657,9 @@ public class ControladorSistema implements ActionListener {
                     vActualizarEstadoAsignaturaAlumno.getjTableDatos().setValueAt(asignaturaActual.getCodigo(), i, 0);      
                 }
             }
-            else
+            else{
                 vActualizarEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("ALUMNO NO ENCONTADO");
+            }
         }
         //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO -> BOTON ACTUALIZAR ESTADO
         else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonActualizar()){
@@ -676,6 +682,9 @@ public class ControladorSistema implements ActionListener {
                 else if (estadoInscrito != null)
                     asignatura.inscribir();
             }
+            vActualizarEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("");
+            vActualizarEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("ASIGNATURAS ACTUALIZADAS");
+            
         }
         
         //MENU ACTUALIZACION ESTADO ASIGNATURA ALUMNO *****************************************************************************************************
@@ -691,9 +700,10 @@ public class ControladorSistema implements ActionListener {
         else if(vEstadoAsignaturaAlumno != null && ae.getSource() == vEstadoAsignaturaAlumno.getjButtonBuscar()){
             String rut = vEstadoAsignaturaAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
-            Carrera carrera = actual.getCarrera();
+            
             if(actual != null)
             {
+                Carrera carrera = actual.getCarrera();
                 for (int i = 0 ; i < carrera.cantidadAsignaturas(); i++)
                 {
                     AsignaturaInscrita asignaturaActual = (AsignaturaInscrita)carrera.obtenerAsignatura(i);
