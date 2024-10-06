@@ -12,6 +12,8 @@ import javax.swing.JTable;
 import modelo.*;
 import vista.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import extras.*;
 
 
@@ -58,7 +60,7 @@ public class ControladorSistema implements ActionListener {
         instituto.cargarDatosPredefinidos();
         
         //hay que ver donde colocarla
-        instituto.guardarDatos();
+        //instituto.guardarDatos();
         
         ventanaPrincipal = new VentanaPrincipal();
         
@@ -99,8 +101,14 @@ public class ControladorSistema implements ActionListener {
     //METODO QUE ESCUCHA LAS ACCIONES
     public void actionPerformed(ActionEvent ae){
         //FINALIZAR CON LA VENTANA INICIAL
-        if (ae.getSource() == ventanaPrincipal.getjButtonSalir())
+        if (ae.getSource() == ventanaPrincipal.getjButtonSalir()){
+            try {
+                instituto.guardarDatos();
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorSistema.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ventanaPrincipal.dispose();
+        }
         
         //EN CADA IF AGREGAR CADA BOTON
         // SI LA ACCION == SUBITEM 

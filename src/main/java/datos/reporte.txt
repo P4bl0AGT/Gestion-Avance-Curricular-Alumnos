@@ -2,9 +2,9 @@ Informe Instituto
 
 Cantidades:
 ***********
-Cantidad Alumnos: 15
-Cantidad Profesores: 12
-Cantidad Carreras: 6
+Cantidad Alumnos: 16
+Cantidad Profesores: 13
+Cantidad Carreras: 7
 
 Detalles de Alumnos:
 ********************
@@ -23,6 +23,7 @@ Detalles de Alumnos:
    Rut: 19123456, Carrera: MATEMATICAS, Creditos: 0 de 40 - AUN NO SUPERA EL 50% MALLA 
    Rut: 20234567, Carrera: FISICA, Creditos: 0 de 41 - AUN NO SUPERA EL 50% MALLA 
    Rut: 10111001, Carrera: PROGRAMACION, Creditos: 0 de 33 - AUN NO SUPERA EL 50% MALLA 
+   Rut: 123, Carrera: MATEMATICAS, Creditos: 0 de 40 - AUN NO SUPERA EL 50% MALLA 
 
 Detalles de Profesores:
 ***********************
@@ -38,10 +39,11 @@ Detalles de Profesores:
    Nombre: Francisco, Rut: 18012345, Asignaturas: 1 - NO CUMPLE REQUISITOS BONO 
    Nombre: Claudio, Rut: 11111111, Asignaturas: 1 - NO CUMPLE REQUISITOS BONO 
    Nombre: Ignacio, Rut: 22222222, Asignaturas: 1 - NO CUMPLE REQUISITOS BONO 
+   Nombre: Prueba, Rut: 11, Asignaturas: 0 - NO CUMPLE REQUISITOS BONO 
 
 Detalles de Carreras:
 **********************
-Carrera con menor cantidad de Asignaturas: BIOLOGIA con 10
+Carrera con menor cantidad de Asignaturas: PRUEBA con 2
 Carrera con mayor cantidad de Asignaturas: BIOLOGIA con 10
-En promedio una carrera tiene: 10 Asignaturas
+En promedio una carrera tiene: 8 Asignaturas
 
