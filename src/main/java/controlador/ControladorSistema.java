@@ -706,6 +706,7 @@ public class ControladorSistema implements ActionListener {
             String rut = vActualizarEstadoAsignaturaAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
             Carrera carreraActual = actual.getCarrera();
+            int creditosAprob = 0;
             
             for (int i = 0 ; i < carreraActual.cantidadAsignaturas() ; i++)
             {
@@ -714,13 +715,17 @@ public class ControladorSistema implements ActionListener {
                 Object estadoReprobado = tabla.getValueAt(i, 2);
                 Object estadoInscrito = tabla.getValueAt(i, 3);
                 
-                if (estadoAprobado != null)
+                if (estadoAprobado != null){
                     asignatura.aprobar();
+                    creditosAprob += asignatura.getCreditos();
+                }         
                 else if (estadoReprobado != null)
                     asignatura.reprobar();
                 else if (estadoInscrito != null)
                     asignatura.inscribir();
             }
+            actual.setCreditosAprobados(creditosAprob);
+            
             vActualizarEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("");
             vActualizarEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("ASIGNATURAS ACTUALIZADAS");
             
