@@ -358,13 +358,38 @@ public class ControladorSistema implements ActionListener {
             vAgregarCarrera.dispose();
         }
         else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonAgregar()){
+            Object lector;
+            String lectorString;
+            Verificaciones verificaciones = new Verificaciones();
             String ID = vAgregarCarrera.getjTextFieldID().getText().toString();
             String nombre = vAgregarCarrera.getjTextFieldNombre().getText().toString();
-            int semestres = Integer.parseInt(vAgregarCarrera.getjTextFieldSemestres().getText());
-            int asignaturas = Integer.parseInt(vAgregarCarrera.getjTextFieldAsignaturas().getText());
-            Carrera nuevaCarrera = new Carrera(ID, nombre, semestres);
-            Object lector;
             
+            //TRY, CATCH PARA SEMESTRES
+            lector = vAgregarCarrera.getjTextFieldSemestres().getText();
+            lectorString = lector.toString();
+            try{
+                if(!verificaciones.validarNumero(lectorString))
+                        throw new NotCovertToNumericException();
+            }catch(NotCovertToNumericException mensajeError){
+                vAgregarCarrera.getjTextFieldMensaje().setText("ERROR: SOLO SE PERMITEN NUMERO EN SEMESTRES");
+                return;
+            }
+            int semestres = Integer.parseInt(lectorString);
+            
+            //TRY, CATCH PARA ASIGNATURAS
+            lector = vAgregarCarrera.getjTextFieldAsignaturas().getText();
+            lectorString = lector.toString();
+            try{
+                if(!verificaciones.validarNumero(lectorString))
+                        throw new NotCovertToNumericException();
+            }catch(NotCovertToNumericException mensajeError){
+                vAgregarCarrera.getjTextFieldMensaje().setText("ERROR: SOLO SE PERMITEN NUMERO EN ASIGNATURAS");
+                return;
+            }
+            int asignaturas = Integer.parseInt(lectorString);
+
+            Carrera nuevaCarrera = new Carrera(ID, nombre, semestres);
+                      
             for(int i = 0 ; i < asignaturas ; i++){
                 lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 0);
                 String codigo = "";
@@ -389,7 +414,7 @@ public class ControladorSistema implements ActionListener {
                 nuevaCarrera.agregarAsignatura(nuevaAsignatura);
             }
             instituto.agregarCarrera(nuevaCarrera);
-                
+            vAgregarCarrera.getjTextFieldMensaje().setText("CARRERA INGRESADA CON EXITO");
         }
         //BUSCAR CARRERA
         if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarCarrera()){
@@ -416,6 +441,9 @@ public class ControladorSistema implements ActionListener {
             }
             else
                 vBuscarCarrera.getjTextFieldMensaje().setText("NO ENCONTADO");
+            
+            
+        
         }
             
         //ELIMINAR CARRERA

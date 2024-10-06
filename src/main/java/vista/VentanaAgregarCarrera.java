@@ -44,6 +44,7 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLectura = new javax.swing.JTable();
         jButtonAgregar = new javax.swing.JButton();
+        jTextFieldMensaje = new javax.swing.JTextField();
 
         jLabel4.setText("jLabel4");
 
@@ -136,7 +137,8 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
                             .addComponent(jTextFieldSemestres, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldAsignaturas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jTextFieldMensaje))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,8 +162,10 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldAsignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver)
@@ -199,6 +203,10 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
         return jTableLectura;
     }
     
+    public JTextField getjTextFieldMensaje(){
+        return jTextFieldMensaje;
+    }
+    
     
     
     
@@ -215,6 +223,7 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
     private javax.swing.JTable jTableLectura;
     private javax.swing.JTextField jTextFieldAsignaturas;
     private javax.swing.JTextField jTextFieldID;
+    private javax.swing.JTextField jTextFieldMensaje;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldSemestres;
     // End of variables declaration//GEN-END:variables

@@ -1,0 +1,59 @@
+MAT,MAT101,Álgebra Lineal,4
+MAT,MAT102,Geometría Analítica,3
+MAT,MAT103,Cálculo Diferencial,5
+MAT,MAT104,Cálculo Integral,4
+MAT,MAT105,Ecuaciones Diferenciales,5
+MAT,MAT106,Probabilidad y Estadística,4
+MAT,MAT107,Teoría de Números,3
+MAT,MAT108,Matemáticas Discretas,4
+MAT,MAT109,Optimización,3
+MAT,MAT110,Análisis Matemático,5
+FIS,FIS201,Mecánica Clásica,4
+FIS,FIS202,Electromagnetismo,5
+FIS,FIS203,Termodinámica,4
+FIS,FIS204,Óptica,3
+FIS,FIS205,Física Moderna,5
+FIS,FIS206,Relatividad Especial,4
+FIS,FIS207,Física Cuántica,5
+FIS,FIS208,Matemáticas para la Física,4
+FIS,FIS209,Astrofísica,3
+FIS,FIS210,Laboratorio de Física,4
+PROG,PROG101,Introducción a la Programación,3
+PROG,PROG102,Estructuras de Datos,4
+PROG,PROG103,Algoritmos,4
+PROG,PROG104,Programación Orientada a Objetos,3
+PROG,PROG105,Desarrollo Web,3
+PROG,PROG106,Base de Datos,4
+PROG,PROG107,Programación de Aplicaciones Móviles,3
+PROG,PROG108,Arquitectura de Computadoras,3
+PROG,PROG109,Redes y Comunicaciones,2
+PROG,PROG110,Seguridad Informática,4
+ING,ING101,Matemáticas Aplicadas,4
+ING,ING102,Física General,4
+ING,ING103,Química General,3
+ING,ING104,Estática,4
+ING,ING105,Dinámica,4
+ING,ING106,Electrónica Básica,3
+ING,ING107,Termodinámica,4
+ING,ING108,Control Automático,3
+ING,ING109,Metodología de la Investigación,2
+ING,ING110,Gestión de Proyectos,3
+QUI,QUI101,Química General,4
+QUI,QUI102,Química Orgánica I,4
+QUI,QUI103,Química Inorgánica,3
+QUI,QUI104,Química Física,4
+QUI,QUI105,Química Orgánica II,4
+QUI,QUI106,Bioquímica,3
+QUI,QUI107,Análisis Instrumental,4
+QUI,QUI108,Química Ambiental,3
+QUI,QUI109,Metodología de Laboratorio,2
+QUI,QUI110,Química de Polímeros,4
+BIO,BIO201,Biología Celular,4
+BIO,BIO202,Genética,4
+BIO,BIO203,Botánica,3
+BIO,BIO204,Zoología,4
+BIO,BIO205,Ecología,4
+BIO,BIO206,Microbiología,3
+BIO,BIO207,Biología Molecular,4
+BIO,BIO208,Biotecnología,3
+BIO,BIO209,Anatomía I,2
