@@ -505,7 +505,7 @@ public class ControladorSistema implements ActionListener {
             
             if (carrera != null)
             {
-                alumno.setCarrera(carrera);
+                alumno.inscribirCarrera(carrera);
                 instituto.agregarAlumno(alumno);
                 vAgregarAlumno.getjTextFieldMensaje().setText("ALUMNO AGREGADO");
             }
