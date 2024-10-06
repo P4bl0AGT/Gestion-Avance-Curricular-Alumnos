@@ -338,7 +338,6 @@ public class ControladorSistema implements ActionListener {
             ventanaPrincipal.setVisible(false);
         }
         // MENU AGREGAR CARRERA -> BOTON VOLVER
-        //@param Ventana 
         else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarCarrera.dispose();
