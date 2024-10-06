@@ -110,7 +110,7 @@ public class ControladorSistema implements ActionListener {
             ventanaPrincipal.dispose();
         }
         
-//EN CADA IF AGREGAR CADA BOTON
+        //EN CADA IF AGREGAR CADA BOTON
         // SI LA ACCION == SUBITEM 
         //INSTANCIO VENTANA -> SELECCIONO BOTON -> AGREGO LISTENER
         
@@ -364,8 +364,8 @@ public class ControladorSistema implements ActionListener {
         else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonAgregar()){
             Object lector;
             String lectorString;
-            String ID = modificador.toUppercase(vAgregarCarrera.getjTextFieldID().getText().toString());
-            String nombre = modificador.capitalize(vAgregarCarrera.getjTextFieldNombre().getText().toString());
+            String ID = modificador.toUppercase(vAgregarCarrera.getjTextFieldID().getText());
+            String nombre = modificador.toUppercase(vAgregarCarrera.getjTextFieldNombre().getText());
             
             //TRY, CATCH PARA SEMESTRES
             lector = vAgregarCarrera.getjTextFieldSemestres().getText();
@@ -407,6 +407,7 @@ public class ControladorSistema implements ActionListener {
                 lector = vAgregarCarrera.getjTableLectura().getValueAt(i, 2);
                 int creditos = 0;
                 
+                //TRY, CATCH PARA CADA CREDITO
                 if(lector != null){
                     lectorString = lector.toString();
                     try{
@@ -438,7 +439,7 @@ public class ControladorSistema implements ActionListener {
             vBuscarCarrera.dispose();
         }
         else if(vBuscarCarrera != null && ae.getSource() == vBuscarCarrera.getjButtonBuscar()){
-            String ID = vBuscarCarrera.getjTextFieldBuscarID().getText();
+            String ID = modificador.toUppercase(vBuscarCarrera.getjTextFieldBuscarID().getText());
             Carrera actual = instituto.obtenerCarrera(ID);
             if(actual != null)
             {
@@ -468,7 +469,7 @@ public class ControladorSistema implements ActionListener {
             vEliminarCarrera.dispose();
         }
         else if(vEliminarCarrera != null && ae.getSource() == vEliminarCarrera.getjButtonEliminar()){
-            String ID = vEliminarCarrera.getjTextFieldBuscarID().getText();
+            String ID = modificador.toUppercase(vEliminarCarrera.getjTextFieldBuscarID().getText());
             if(instituto.eliminarCarrera(ID))
                 vEliminarCarrera.getjTextFieldMensaje().setText("Carrera eliminada exitosamente");
             else
@@ -499,26 +500,6 @@ public class ControladorSistema implements ActionListener {
             ventanaPrincipal.setVisible(true);
             vMostrarCarreras.dispose();
         }
-        //PRUEBA
-        else if(vMostrarCarreras != null && ae.getSource() == vMostrarCarreras.getjButtonLectura()){
-            System.out.println("LECTURA");
-            JTable tabla = vMostrarCarreras.getjTableMostrar();
-            int filasTabla = tabla.getRowCount();
-            int columTabla = tabla.getColumnCount();
-            System.out.println(filasTabla + " " + columTabla);
-            String cadena = tabla.getValueAt(1, 1).toString();
-            System.out.println("lectura" + cadena);
-        }
-        
-        /* LECTURA DESDE UN PANEL
-            System.out.println("LECTURA");
-            JTable tabla = vMostrarCarreras.getjTableMostrar();
-            int filasTabla = tabla.getRowCount();
-            int columTabla = tabla.getColumnCount();
-            System.out.println(filasTabla + " " + columTabla);
-            String cadena = tabla.getValueAt(1, 1).toString();
-            System.out.println("lectura" + cadena);
-        */
         
         //EVENTOS ALUMNOS
         //ACTUALIZACION ESTADO AGREGAR Y INTERACCION EN AGREGAR
