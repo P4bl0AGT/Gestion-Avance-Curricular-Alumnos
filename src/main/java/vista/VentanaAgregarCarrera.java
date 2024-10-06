@@ -108,6 +108,8 @@ public class VentanaAgregarCarrera extends javax.swing.JFrame {
 
         jButtonAgregar.setText("Agregar");
 
+        jTextFieldMensaje.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

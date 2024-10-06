@@ -608,6 +608,7 @@ public class ControladorSistema implements ActionListener {
             Carrera carrera = instituto.obtenerCarrera(ID);
             boolean hayAlumnosCarrera = false;
             int contador = 0;
+            
             if(carrera != null)
             {
                 if (instituto.cantidadAlumnos() != 0) {
@@ -636,10 +637,11 @@ public class ControladorSistema implements ActionListener {
                 } else {  // Si no hay alumnos en el instituto
                     vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO HAY ALUMNOS REGISTRADOS EN EL INSTITUTO");
                 }
-                } else {  // Si no se encontró la carrera con el ID especificado
-                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("CARRERA CON ID ESPECIFICADO NO SE ENCUENTRA");
-                }
+            } 
+            else {  // Si no se encontró la carrera con el ID especificado
+                vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("CARRERA CON ID ESPECIFICADO NO SE ENCUENTRA");
             }
+        }
     
         //ACTUALIZACION ESTADO BUSCAR POR CARRERA -> BOTON VOLVER
         else if(vBuscarAlumnoCarrera != null && ae.getSource() == vBuscarAlumnoCarrera.getjButtonVolver()){

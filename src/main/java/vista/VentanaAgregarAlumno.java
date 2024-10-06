@@ -86,15 +86,34 @@ public class VentanaAgregarAlumno extends javax.swing.JFrame {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null}
             },
             new String [] {
                 "ID", "CARRERA", "SEMESTRES"
             }
         ));
+        jTableMostrar.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTableMostrar);
 
         jLabel6.setText("ID CARRERA");
+
+        jTextFieldMensaje.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

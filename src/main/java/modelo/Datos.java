@@ -107,7 +107,7 @@ public class Datos {
     
     /**
      * Metodo encargado de cargar datos de alumnos desde un csv de alumnos
-     * @param instituto El instotuto donde cargaremos los datos
+     * @param instituto El instituto donde cargaremos los datos
      * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
      */
     public void cargarCsvAlumnos(Instituto instituto) throws IOException{
@@ -138,7 +138,7 @@ public class Datos {
     
     /**
      * Metodo encargado de cargar datos de profesores desde un csv de profesores
-    * @param instituto El instotuto donde cargaremos los datos
+    * @param instituto El instituto donde cargaremos los datos
     * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
     */
     public void cargarCsvProfesores(Instituto instituto) throws IOException{
@@ -173,8 +173,8 @@ public class Datos {
     
     /**
      * Metodo encargado de guardar datos de carreras a un csv de carreras
-    * @param instituto El instotuto desde donde guardaremos los datos
-    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * @param instituto El instituto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvCarreras(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zCarreras.csv");
@@ -195,8 +195,8 @@ public class Datos {
     
     /**
      * Metodo encargado de guardar datos de asignaturas a un csv de asignaturas
-    * @param instituto El instotuto desde donde guardaremos los datos
-    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * @param instituto El instituto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvAsignaturas(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zAsignaturas.csv");
@@ -217,8 +217,8 @@ public class Datos {
     
     /**
      * Metodo encargado de guardar datos de profesores a un csv de profesores
-    * @param instituto El instotuto desde donde guardaremos los datos
-    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * @param instituto El instituto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvProfesores(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zProfesores.csv");
@@ -239,8 +239,8 @@ public class Datos {
     
     /**
      * Metodo encargado de guardar datos de alumnos a un csv de alumnos
-    * @param instituto El instotuto desde donde guardaremos los datos
-    * @throws IOException exepcion por si ocurre un error al intentar leer el archivo.
+    * @param instituto El instituto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvAlumnos(Instituto instituto) throws IOException {
         File file = new File("src/main/java/datos/zAlumnos.csv");
@@ -256,6 +256,28 @@ public class Datos {
         bw.close();
         osw.close();
         fos.close();
+    }
+    
+    /**
+     * Metodo encargado de guardar un reporte general del sistema
+    * @param instituto El instituto desde donde guardaremos los datos
+    * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
+    */
+    public void generarInforme(Instituto instituto) throws IOException {
+        File file = new File("src/main/java/datos/reporte.txt");
+        FileOutputStream fos = new FileOutputStream(file);
+        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+        BufferedWriter bw = new BufferedWriter(osw);
+        PrintWriter pw = new PrintWriter(bw);
+        
+        String datos = instituto.obtenerDatosReporte();
+        pw.write(datos);
+        
+        pw.close();
+        bw.close();
+        osw.close();
+        fos.close();
+        
     }
     
 }

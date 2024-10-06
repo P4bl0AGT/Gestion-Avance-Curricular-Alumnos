@@ -60,6 +60,7 @@ public class VentanaMostrarAsignaturasProfesor extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jButtonBuscar.setText("Buscar");

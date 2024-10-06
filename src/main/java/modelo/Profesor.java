@@ -138,7 +138,7 @@ public class Profesor extends Persona{
             Asignatura asignatura = iterable.next();
             cc += (asignatura.getCodigo() + "-");
         }
-        cc = cc.replaceFirst(".$", "");
+        cc = cc.replaceFirst(".$", "\n");
         return cc;
     }
     

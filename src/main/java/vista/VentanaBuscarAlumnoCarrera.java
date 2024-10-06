@@ -82,11 +82,14 @@ public class VentanaBuscarAlumnoCarrera extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1Datos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1Datos);
 
         jButtonBuscar.setText("Buscar");
 
         jButtonVolver.setText("Volver");
+
+        jTextFieldMensaje.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

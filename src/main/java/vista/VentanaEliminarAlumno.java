@@ -44,6 +44,8 @@ public class VentanaEliminarAlumno extends javax.swing.JFrame {
 
         jLabel2.setText("Rut");
 
+        jTextFieldMensaje.setEditable(false);
+
         jButtonEliminar.setText("Eliminar");
 
         jButtonVolver.setText("Volver");

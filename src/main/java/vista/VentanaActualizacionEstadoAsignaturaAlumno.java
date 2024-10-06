@@ -92,6 +92,8 @@ public class VentanaActualizacionEstadoAsignaturaAlumno extends javax.swing.JFra
 
         jButtonVolver.setText("Volver");
 
+        jTextFieldMensaje.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

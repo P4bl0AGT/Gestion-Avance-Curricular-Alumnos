@@ -38,18 +38,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregarProfesor = new javax.swing.JMenuItem();
         jMenuItemMostrarProfesores = new javax.swing.JMenuItem();
-        jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
         jMenuItemBuscarProfesor = new javax.swing.JMenuItem();
+        jMenuItemEliminarProfesor = new javax.swing.JMenuItem();
         jMenuItemAgregarAsignaturaProfesor = new javax.swing.JMenuItem();
         jMenuItemEliminarAsignaturaProfesor = new javax.swing.JMenuItem();
         jMenuItemMostrarAsignaturasProfesor = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAgregarAlumno = new javax.swing.JMenuItem();
+        jMenuItemMostrarAlumnos = new javax.swing.JMenuItem();
         jMenuItemBuscarPorRut = new javax.swing.JMenuItem();
         jMenuItemBuscarPorCarrera = new javax.swing.JMenuItem();
         jMenuItemEliminarAlumno = new javax.swing.JMenuItem();
         jMenuItemEstadoAsignatura = new javax.swing.JMenuItem();
-        jMenuItemMostrarAlumnos = new javax.swing.JMenuItem();
         jMenuItemActualizacionEstado = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemAgregarCarrera = new javax.swing.JMenuItem();
@@ -78,11 +78,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemMostrarProfesores.setText("Mostrar Profesores");
         jMenu3.add(jMenuItemMostrarProfesores);
 
-        jMenuItemEliminarProfesor.setText("Eliminar Profesor");
-        jMenu3.add(jMenuItemEliminarProfesor);
-
         jMenuItemBuscarProfesor.setText("Buscar Profesor");
         jMenu3.add(jMenuItemBuscarProfesor);
+
+        jMenuItemEliminarProfesor.setText("Eliminar Profesor");
+        jMenu3.add(jMenuItemEliminarProfesor);
 
         jMenuItemAgregarAsignaturaProfesor.setText("Agregar Asignatura");
         jMenu3.add(jMenuItemAgregarAsignaturaProfesor);
@@ -97,8 +97,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Alumno");
 
-        jMenuItemAgregarAlumno.setText("Agregar");
+        jMenuItemAgregarAlumno.setText("Agregar Alumno");
         jMenu2.add(jMenuItemAgregarAlumno);
+
+        jMenuItemMostrarAlumnos.setText("Mostrar Alumnos");
+        jMenu2.add(jMenuItemMostrarAlumnos);
 
         jMenuItemBuscarPorRut.setText("Buscar Por Rut");
         jMenu2.add(jMenuItemBuscarPorRut);
@@ -106,14 +109,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuItemBuscarPorCarrera.setText("Buscar Por Carrera");
         jMenu2.add(jMenuItemBuscarPorCarrera);
 
-        jMenuItemEliminarAlumno.setText("Eliminar ");
+        jMenuItemEliminarAlumno.setText("Eliminar Alumno");
         jMenu2.add(jMenuItemEliminarAlumno);
 
         jMenuItemEstadoAsignatura.setText("Estado Asignatura");
         jMenu2.add(jMenuItemEstadoAsignatura);
-
-        jMenuItemMostrarAlumnos.setText("Mostrar Alumnos");
-        jMenu2.add(jMenuItemMostrarAlumnos);
 
         jMenuItemActualizacionEstado.setText("Actualizacion Estado");
         jMenu2.add(jMenuItemActualizacionEstado);

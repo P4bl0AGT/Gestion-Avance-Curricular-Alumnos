@@ -163,23 +163,12 @@ public class Instituto
     // - - - - - - - - - - ELIMINAR - - - - - - - - - -
     /**
      * Elimina una carrera del sistema por su identificador.
-     * @param ID el identificador de la carrera a eliminar.
+     * @param id el identificador de la carrera a eliminar.
      * @return true si la carrera fue eliminada exitosamente, false en caso contrario.
      */
-    public boolean eliminarCarrera(String ID){
-        Carrera actual = contenedorCarreras.eliminar(ID);
-        return actual != null;
-        /*falta logica eliminar carrera de alumnos inscritos
-        if null..
-        Iterator<Alumno> iterador = contenedorAlumnos.iterador();
-        while (iterador.hasNext()) {
-            Alumno alumnoActual = iterador.next();
-            String idCarreraAlumno = alumnoActual.getCarrera().getId();
-            if (idCarrera.equals(idCarreraAlumno)) {
-                alumnoActual.setCarrera(new Carrera());
-            }
-        }
-        */
+    public boolean eliminarCarrera(String id){
+        Carrera carreraEliminar = contenedorCarreras.eliminar(id);
+        return carreraEliminar != null;
     }
     
         /**
@@ -306,7 +295,7 @@ public class Instituto
     }
     
     /**
-     * Guarda los datos actuales del sistema en archivos CSV.
+     * Guarda los datos actuales del sistema en archivos CSV y genera un informe
      * @throws IOException si ocurre un error al escribir en los archivos CSV.
      */
     public void guardarDatos() throws IOException{
@@ -315,9 +304,94 @@ public class Instituto
         datos.guardarCsvAsignaturas(this);
         datos.guardarCsvProfesores(this);
         datos.guardarCsvAlumnos(this);
+        datos.generarInforme(this);
     }
     
     
+    /**
+     * Este metodo obtiene metricas del instituto.
+     * @return una cadena de texto que contiene la información requerida para generar un reporte
+     */
+    public String obtenerDatosReporte() {
+        String msj = "";
+        msj += ("Informe Instituto\n\n");
+        int cantAlum = this.cantidadAlumnos();
+        int cantProf = this.cantidadProfesores();
+        int cantCarr = this.cantidadCarreras();
+        
+        // Cantidades almacenada
+        msj += ("Cantidades:\n"); 
+        msj += ("***********\n");
+        msj += ("Cantidad Alumnos: " + cantAlum +"\n");
+        msj += ("Cantidad Profesores: " + cantProf +"\n");
+        msj += ("Cantidad Carreras: " + cantCarr +"\n");
+        msj += ("\n");
+        
+        // Detalles de los alumnos
+        msj += ("Detalles de Alumnos:\n");
+        msj += ("********************\n");
+        for (int i = 0; i <  cantAlum; i++) {
+            Alumno alumno = this.obtenerAlumno(i);
+            Carrera carrera = alumno.getCarrera();
+            int aprobados = alumno.getCreditosAprobados();
+            int totales = carrera.cantidadCreditos();
+            msj += ("   Rut: "+ alumno.getRut() +
+                    ", Carrera: "+ carrera.getNombre() +
+                    ", Creditos: "+ aprobados + " de " + totales);
+            if (aprobados >= totales/2)
+                msj += (" - SUPERO EL 50% MALLA \n");
+            else
+                msj += (" - AUN NO SUPERA EL 50% MALLA \n");
+        }
+        msj += ("\n");
+        
+        
+        // Detalles de los Profesores
+        msj += ("Detalles de Profesores:\n");
+        msj += ("***********************\n");
+        for (int i = 0; i <  cantProf; i++) {
+            Profesor profesor = this.obtenerProfesor(i);
+            int totalAsignaturas = profesor.contarAsignaturas();
+            msj += ("   Nombre: "+ profesor.getNombre() +
+                    ", Rut: "+ profesor.getRut() +
+                    ", Asignaturas: "+ totalAsignaturas);
+            if (totalAsignaturas > 3)
+                msj += (" - BONO POR CANTIDAD ASIGNATURAS \n");
+            else
+                msj += (" - NO CUMPLE REQUISITOS BONO \n");
+        }
+        msj += ("\n");
+        
+        
+        // Detalles de las carreras
+        msj += ("Detalles de Carreras:\n");
+        msj += ("**********************\n");
+        int mayor = 0;
+        int menor = 99;
+        int promedio = 0;
+        int posMayor = 0;
+        int posMenor = 0;
+        for (int i = 0; i <  cantCarr; i++) {
+            Carrera carrera = this.obtenerCarrera(i);
+            int totalAsignaturas = carrera.cantidadAsignaturas();
+            if (totalAsignaturas >= mayor) {
+                posMayor = i;
+                mayor = totalAsignaturas;
+            }
+            if (totalAsignaturas <= menor) {
+                posMenor = i;
+                menor = totalAsignaturas;
+            }
+            promedio += totalAsignaturas;
+        }
+        promedio = promedio / cantCarr;
+        msj += ("Carrera con menor cantidad de Asignaturas: " + this.obtenerCarrera(posMenor).getNombre() +" con "+ menor +"\n");
+        msj += ("Carrera con mayor cantidad de Asignaturas: " + this.obtenerCarrera(posMayor).getNombre() +" con "+ mayor +"\n");
+        msj += ("En promedio una carrera tiene: " + promedio +" Asignaturas\n");
+        msj += ("\n");
+
+        return msj;
+    }
     
     
     // =========================================================================

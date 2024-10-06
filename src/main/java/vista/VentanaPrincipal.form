@@ -34,14 +34,14 @@
                 <Property name="text" type="java.lang.String" value="Mostrar Profesores"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarProfesor">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar Profesor"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBuscarProfesor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Profesor"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarProfesor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar Profesor"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarAsignaturaProfesor">
@@ -68,7 +68,12 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAgregarAlumno">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="text" type="java.lang.String" value="Agregar Alumno"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMostrarAlumnos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mostrar Alumnos"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBuscarPorRut">
@@ -83,17 +88,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEliminarAlumno">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar "/>
+                <Property name="text" type="java.lang.String" value="Eliminar Alumno"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEstadoAsignatura">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Estado Asignatura"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMostrarAlumnos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar Alumnos"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemActualizacionEstado">
