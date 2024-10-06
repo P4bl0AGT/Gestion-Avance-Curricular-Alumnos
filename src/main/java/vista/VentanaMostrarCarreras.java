@@ -33,7 +33,6 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
         jTableMostrar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
-        jButtonLectura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,8 +76,6 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
 
         jButtonVolver.setText("Volver");
 
-        jButtonLectura.setText("Leer panel");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,9 +90,7 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addComponent(jButtonVolver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonLectura)
-                        .addGap(15, 15, 15))
+                        .addGap(15, 161, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -108,9 +103,7 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonVolver)
-                    .addComponent(jButtonLectura))
+                .addComponent(jButtonVolver)
                 .addContainerGap())
         );
 
@@ -126,13 +119,9 @@ public class VentanaMostrarCarreras extends javax.swing.JFrame {
         return jTableMostrar;
     }
     
-    public JButton getjButtonLectura(){
-        return jButtonLectura;
-    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonLectura;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

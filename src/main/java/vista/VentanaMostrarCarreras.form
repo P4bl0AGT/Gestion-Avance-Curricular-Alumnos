@@ -34,9 +34,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                       <Component id="jButtonVolver" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButtonLectura" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace min="15" pref="161" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
@@ -54,10 +52,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="221" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonLectura" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jButtonVolver" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -117,11 +112,6 @@
     <Component class="javax.swing.JButton" name="jButtonVolver">
       <Properties>
         <Property name="text" type="java.lang.String" value="Volver"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonLectura">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Leer panel"/>
       </Properties>
     </Component>
   </SubComponents>

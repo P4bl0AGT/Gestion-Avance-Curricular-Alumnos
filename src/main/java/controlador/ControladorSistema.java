@@ -12,13 +12,13 @@ import javax.swing.JTable;
 import modelo.*;
 import vista.*;
 import java.io.*;
-import extras.*;
+//import extras.*;
 
 
 public class ControladorSistema implements ActionListener {
     //ATRIBUTOS 
-    private Verificaciones verificar = new Verificaciones();
-    private ModificarCadenas modificador = new ModificarCadenas();
+    private final Verificaciones verificar = new Verificaciones();
+    private final ModificarCadenas modificador = new ModificarCadenas();
     private Instituto instituto;
     private VentanaPrincipal ventanaPrincipal;
 
@@ -202,7 +202,7 @@ public class ControladorSistema implements ActionListener {
             String rut = vBuscarProfesor.getjTextFieldRut().getText();
             Profesor profesor = instituto.obtenerProfesor(rut);
             if (profesor != null) {
-                vBuscarProfesor.rellenarTabla(profesor.toString());
+                vBuscarProfesor.rellenarTabla(profesor.obtenerString());
                 vBuscarProfesor.getjTextFieldMensaje().setText("Encontrado");
             }
             else
@@ -424,9 +424,11 @@ public class ControladorSistema implements ActionListener {
                         return;
                     }
                 }
+                creditos = Integer.parseInt(lectorString);
                 Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAs, creditos);
                 nuevaCarrera.agregarAsignatura(nuevaAsignatura);
             }
+            
             instituto.agregarCarrera(nuevaCarrera);
             vAgregarCarrera.getjTextFieldMensaje().setText("CARRERA INGRESADA CON EXITO");
         }
@@ -486,7 +488,6 @@ public class ControladorSistema implements ActionListener {
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarCarreras()){
             vMostrarCarreras = new VentanaMostrarCarreras();
             vMostrarCarreras.getjButtonVolver().addActionListener(this);
-            vMostrarCarreras.getjButtonLectura().addActionListener(this);
             vMostrarCarreras.setAlwaysOnTop(true);     
             vMostrarCarreras.setVisible(true);
             ventanaPrincipal.setVisible(false);

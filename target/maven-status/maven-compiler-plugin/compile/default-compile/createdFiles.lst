@@ -9,6 +9,7 @@ vista\VentanaMostrarAlumnos.class
 vista\VentanaMostrarProfesores$1.class
 vista\VentanaPrincipal.class
 modelo\Carrera.class
+extras\InvalidAgeException.class
 vista\VentanaBuscarCarrera.class
 vista\VentanaEstadoAsignaturaAlumno.class
 vista\VentanaBuscarProfesor.class
@@ -20,14 +21,16 @@ vista\VentanaEliminarAsignaturaProfesor$1.class
 modelo\Datos.class
 vista\VentanaEliminarAlumno.class
 vista\VentanaAgregarAsignaturaProfesor.class
+extras\NotCovertToNumericException.class
 modelo\Asignatura.class
+extras\Verificaciones.class
 vista\VentanaAgregarCarrera$1.class
 vista\VentanaMostrarAsignaturasProfesor.class
 controlador\ControladorSistema.class
 vista\VentanaMostrarCarreras.class
+extras\ModificarCadenas.class
 vista\VentanaBuscarAlumno$1.class
 vista\VentanaEliminarProfesor.class
-modelo\Verificaciones.class
 vista\VentanaBuscarAlumnoCarrera.class
 vista\VentanaEstadoAsignaturaAlumno$1.class
 vista\VentanaActualizacionEstadoAsignaturaAlumno.class
@@ -37,5 +40,4 @@ vista\VentanaMostrarProfesores.class
 modelo\Alumno.class
 modelo\Persona.class
 vista\VentanaEliminarAsignaturaProfesor.class
-modelo\NotCovertToNumericException.class
 vista\VentanaAgregarProfesor.class
