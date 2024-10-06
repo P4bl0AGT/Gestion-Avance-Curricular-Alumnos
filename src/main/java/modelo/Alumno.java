@@ -166,7 +166,6 @@ public class Alumno extends Persona{
     public String toString(boolean completo) {
        return (getNombre() + "," + getApellido() + "," + getRut() + "," + getEdad() + "," + creditosAprobados + "," + carrera.getId() + "\n");
     }
-    
 
 }
 
