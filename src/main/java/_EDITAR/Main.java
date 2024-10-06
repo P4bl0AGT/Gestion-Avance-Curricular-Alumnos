@@ -1,3 +1,4 @@
+/*
 package _EDITAR;
 
 import modelo.Instituto;
@@ -12,7 +13,6 @@ import java.io.*;
 import javax.xml.validation.Validator;
 
 public class Main {
-
     //LECTURAS
     public static void leerCarrera(BufferedReader lector, Instituto instituto) throws IOException {
 
@@ -463,7 +463,7 @@ public class Main {
 
     }
 
-
 }
+*/
 
 

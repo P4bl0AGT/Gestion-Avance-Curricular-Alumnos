@@ -1,16 +1,23 @@
 package modelo;
 
 /**
- * Esta clase representa a un alumno que hereda de persona
+ * Esta clase representa a un alumno que extiende de la clase {@code Persona}.
+ * Un alumno tiene un nombre, apellido, RUT, edad, carrera y cantidad de créditos aprobados.
  */
-
 public class Alumno extends Persona{
 
-    //=================================== ATRIBUTOS ===================================//
+    // =========================================================================
+    // ============================ ATRIBUTOS ==================================
+    // =========================================================================
     private int creditosAprobados;
     private Carrera carrera;
 
-    //=================================== CONSTRUCTORES ===================================//
+    
+    
+    
+    // =========================================================================
+    // ========================== CONSTRUCTOR ==================================
+    // =========================================================================
     /**
     * @param nombre El nombre del alumno
     * @param apellido El apellido del alumno
@@ -23,6 +30,8 @@ public class Alumno extends Persona{
         this.carrera = carrera;
         creditosAprobados = 0;
     }
+    
+    
     /**
     * @param nombre El nombre del alumno
     * @param apellido El apellido del alumno
@@ -34,6 +43,8 @@ public class Alumno extends Persona{
         carrera = null;
         creditosAprobados = 0;
     }
+    
+    
      /**
     * @param nombre El nombre del alumno
     * @param apellido El apellido del alumno
@@ -47,21 +58,33 @@ public class Alumno extends Persona{
         this.creditosAprobados = creditosAprobados;
     }
     
-    //=================================== GETTERS ===================================//    
+    
+    
+    
+    // =========================================================================
+    // ============================= GETTERS ===================================
+    // =========================================================================   
     /**
      * Metodo que obtiene la carrera del alumno
      * @return La carrera del alumno
      */
     public Carrera getCarrera() {
         return carrera;}
+    
+    
     /**
      * Metodo que obtiene los creditos aprobados del alumno
      * @return la cantidad de creditos aprobados del alumno
      */
     public int getCreditosAprobados() {
         return creditosAprobados;}
-
-    //=================================== SETTERS ===================================//  
+    
+    
+    
+    
+    // =========================================================================
+    // ============================= SETTERS ===================================
+    // =========================================================================
     /**
      * Metodo que establece la carrera del alumno
      * @param carrera La carrera del alumno
@@ -82,64 +105,31 @@ public class Alumno extends Persona{
         else
             this.creditosAprobados = 0;
     }
-
-
-    //=================================== METODOS ===================================//  
-    /**
-     * Metodo que muestra por consola los atributos del alumno
-     * @Override
-     */
-    public void mostrar() {
-        System.out.println("Nombre del Alumno: " + getNombre());
-        System.out.println("Apellido del Alumno: " + getApellido());
-        System.out.println("Edad del Alumno: " + getEdad());
-        System.out.println("Rut del Alumno: " + getRut());
-        System.out.println("Carrera del alumno: "+ carrera.getNombre());
-        System.out.println("Creditos aprovados: "+ creditosAprobados);
-    }
-
-    /**
-     * Metodo que muestra por consola los atributos del alumno simple
-     * @Override
-     * @param simple Boleano que indica si es simple o no
-     */
-    public void mostrar(boolean simple) {
-        System.out.println(" | " + getNombre() + " | " + getRut() + " | " + carrera.getNombre() + " | ");
-    }
-
-
-    /*
-    public AsignaturaInscrita incribirAsignatura(Asignatura asignatura) {
-        String codigo = asignatura.getCodigo();
-        String nombre = asignatura.getNombre();
-        int creditos = asignatura.getCreditos();
-        Enums.estadoAsignatura estado = Enums.estadoAsignatura.INSCRITO;
-        int nota = 0;
-        AsignaturaInscrita inscrita = new AsignaturaInscrita(codigo, nombre, creditos, estado, nota);
-        return inscrita;
-    }
-    */
-
-
-    //cuidado con asignatura y asignaturainscrita en contenedor
+    
+    
+    
+    
+    // =========================================================================
+    // ============================= METODOS ===================================
+    // =========================================================================
     /**
      * Metodo que inscribe una carrera a un alumno
-     * @param carrera Carrera del alumno
+     * @param carrera Carrera a inscribir al alumno
      */
     public void inscribirCarrera(Carrera carrera) {
 
-        Carrera nuevaCarrera = carrera.copiaParaInscribir();
+        Carrera carreraAlumno = carrera.copiaParaInscribir();
 
         for (int i = 0; i < carrera.cantidadAsignaturas(); i++) {
             Asignatura asignaturaActual = carrera.obtenerAsignatura(i);
-            AsignaturaInscrita inscrita = new AsignaturaInscrita();
-            inscrita.modificarParaInscribir(asignaturaActual);
+            AsignaturaInscrita inscrita = new AsignaturaInscrita(asignaturaActual);
 
-            nuevaCarrera.agregarAsignatura(inscrita);
+            carreraAlumno.agregarAsignatura(inscrita);
         }
-        setCarrera(nuevaCarrera);
+        setCarrera(carreraAlumno);
     }
 
+    
     /**
      * Metodo que obtiene la cantidad de asignaturas de un alumno
      * @return Cantidad de asignaturas del alumno
@@ -149,23 +139,58 @@ public class Alumno extends Persona{
     
     
     /**
-     * @Override
      * Metodo que obtiene una cadena con los atributos del alumno
+     * Sobrescribe Persona#obtenerString()
      * @return cadena con los atributos del alumno
      */
-    public String toString() {
+    @Override
+    public String obtenerString() {
        return (getNombre() + "," + getApellido() + "," + getRut() + "," + Integer.toString(getEdad()) + "," + carrera.getId() + "\n");
     }
     
+    
     /**
-     * @Override
-     * @param completo Indica si es una cadena mas compleja o no?¿
+     * @param completo Indica si incluye los creditos aprobados
      * Metodo que obtiene una cadena con los atributos del alumno
      * @return cadena con los atributos del alumno
      */
-    public String toString(boolean completo) {
+    public String obtenerString(boolean completo) {
        return (getNombre() + "," + getApellido() + "," + getRut() + "," + getEdad() + "," + creditosAprobados + "," + carrera.getId() + "\n");
     }
 
+    
+    
+    
+    // =========================================================================
+    // =========================== OBSOLETOS ===================================
+    // =========================================================================
+    {
+    /*
+        public void mostrar() {
+            System.out.println("Nombre del Alumno: " + getNombre());
+            System.out.println("Apellido del Alumno: " + getApellido());
+            System.out.println("Edad del Alumno: " + getEdad());
+            System.out.println("Rut del Alumno: " + getRut());
+            System.out.println("Carrera del alumno: "+ carrera.getNombre());
+            System.out.println("Creditos aprovados: "+ creditosAprobados);
+        }
+
+        public void mostrar(boolean simple) {
+            System.out.println(" | " + getNombre() + " | " + getRut() + " | " + carrera.getNombre() + " | ");
+        }
+
+
+
+        public AsignaturaInscrita incribirAsignatura(Asignatura asignatura) {
+            String codigo = asignatura.getCodigo();
+            String nombre = asignatura.getNombre();
+            int creditos = asignatura.getCreditos();
+            Enums.estadoAsignatura estado = Enums.estadoAsignatura.INSCRITO;
+            int nota = 0;
+            AsignaturaInscrita inscrita = new AsignaturaInscrita(codigo, nombre, creditos, estado, nota);
+            return inscrita;
+        }
+    */
+    } 
 }
 

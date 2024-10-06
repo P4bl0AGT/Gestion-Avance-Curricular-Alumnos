@@ -16,7 +16,6 @@ vista\VentanaMostrarAsignaturasProfesor$1.class
 vista\VentanaEliminarCarrera.class
 modelo\Profesor.class
 modelo\Instituto.class
-_EDITAR\Main.class
 vista\VentanaEliminarAsignaturaProfesor$1.class
 modelo\Datos.class
 vista\VentanaEliminarAlumno.class
@@ -37,7 +36,6 @@ modelo\AsignaturaInscrita.class
 vista\VentanaMostrarProfesores.class
 modelo\Alumno.class
 modelo\Persona.class
-_EDITAR\Main$opcionMsj.class
 vista\VentanaEliminarAsignaturaProfesor.class
 modelo\NotCovertToNumericException.class
 vista\VentanaAgregarProfesor.class
