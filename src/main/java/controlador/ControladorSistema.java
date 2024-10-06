@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//PACK
 package controlador;
 
+//LIBRERIAS
 import modelo.NotCovertToNumericException;
 import java.awt.event.*;
 import javax.swing.JFrame;
@@ -12,11 +10,9 @@ import modelo.*;
 import vista.*;
 import java.io.*;
 
-/**
- *
- * @author Note
- */
+
 public class ControladorSistema implements ActionListener {
+    //ATRIBUTOS 
     private Verificaciones verificar = new Verificaciones();
     private ModificarCadenas modificador = new ModificarCadenas();
     private Instituto instituto;
@@ -48,11 +44,10 @@ public class ControladorSistema implements ActionListener {
     private VentanaEliminarAlumno vEliminarAlumno;
     private VentanaEstadoAsignaturaAlumno vEstadoAsignaturaAlumno;
     private VentanaMostrarAlumnos vMostrarAlumnos;
-   
-    
-    //-------------------------------------------------------------------------------------------------------
 
-    
+    //-------------------------------------------------------------------------------------------------------//
+
+    //METODO INICIAR CON ACTION LISTENER
     public void iniciar() throws IOException {        
         //INSTITUTO
         instituto = new Instituto();
@@ -76,14 +71,12 @@ public class ControladorSistema implements ActionListener {
         ventanaPrincipal.getjMenuItemEliminarAsignaturaProfesor().addActionListener(this);
         ventanaPrincipal.getjMenuItemMostrarAsignaturasProfesor().addActionListener(this);
         
-        
         //ASOCIAR EVENTOS DE CARRERAS
         ventanaPrincipal.getjMenuItemAgregarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemBuscarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemEliminarCarrera().addActionListener(this);
         ventanaPrincipal.getjMenuItemMostrarCarreras().addActionListener(this);
-        
-        
+         
         // ASOCIAR EVENTOS DE ALUMNO
         ventanaPrincipal.getjMenuItemActualizacionEstadoAsignaturaAlumno().addActionListener(this);
         ventanaPrincipal.getjMenuItemAgregarAlumno().addActionListener(this);
@@ -92,29 +85,25 @@ public class ControladorSistema implements ActionListener {
         ventanaPrincipal.getjMenuItemEliminarAlumno().addActionListener(this);    
         ventanaPrincipal.getjMenuItemEstadoAsignatura().addActionListener(this); 
         ventanaPrincipal.getjMenuItemMostrarAlumnos().addActionListener(this);
-
-
-
-        
         //-------------------------------------------------------------------------------------------------------
-        
         ventanaPrincipal.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ventanaPrincipal.setVisible(true);
     }
 
 
     @Override
+    //METODO QUE ESCUCHA LAS ACCIONES
     public void actionPerformed(ActionEvent ae){
-        
-        if (ae.getSource() == ventanaPrincipal.getjButtonSalir()) {
+        //FINALIZAR CON LA VENTANA INICIAL
+        if (ae.getSource() == ventanaPrincipal.getjButtonSalir())
             ventanaPrincipal.dispose();
-        }
         
         //EN CADA IF AGREGAR CADA BOTON
         // SI LA ACCION == SUBITEM 
         //INSTANCIO VENTANA -> SELECCIONO BOTON -> AGREGO LISTENER
         
-        //MENU AGREGAR PROFESOR==================================================================================================
+        //==================================================== EVENTOS PROFESOR ====================================================//
+        //MENU AGREGAR PROFESOR *****************************************************************************************************
         if (ae.getSource() == ventanaPrincipal.getjMenuItemAgregarProfesor()){
             vAgregarProfesor = new VentanaAgregarProfesor();
             vAgregarProfesor.getjButtonAgregar().addActionListener(this);
@@ -123,7 +112,7 @@ public class ControladorSistema implements ActionListener {
             vAgregarProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON AGREGAR
+        //MENU AGREGAR PROFESOR -> BOTON AGREGAR
         else if (vAgregarProfesor != null && ae.getSource() == vAgregarProfesor.getjButtonAgregar()){
             Profesor pp = new Profesor(vAgregarProfesor.getjTextFieldNombre().getText(),
                                        vAgregarProfesor.getjTextFieldApellido().getText(),
@@ -132,14 +121,13 @@ public class ControladorSistema implements ActionListener {
             instituto.agregarProfesor(pp);
             vAgregarProfesor.getjTextFieldMensaje().setText("Agregado");
         }
-        //BOTON VOLVER
+        //MENU AGREGAR PROFESOR -> BOTON VOLVER
         else if (vAgregarProfesor != null && ae.getSource() == vAgregarProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarProfesor.dispose();
         }
-        
-        
-        //MENU MOSTRAR PROFESORES ==================================================================================================
+       
+        //MENU MOSTRAR PROFESORES *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarProfesores()) {
             vMostrarProfesores = new VentanaMostrarProfesores();
             vMostrarProfesores.rellenarTabla(instituto.listarProfesores());
@@ -148,14 +136,13 @@ public class ControladorSistema implements ActionListener {
             vMostrarProfesores.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON VOLVER
+        //MENU MOSTRAR PROFESORES -> BOTON VOLVER
         else if (vMostrarProfesores != null && ae.getSource() == vMostrarProfesores.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vMostrarProfesores.dispose();
         }
         
-        
-        //MENU ELIMINAR PROFESOR==================================================================================================
+        //MENU ELIMINAR PROFESOR *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarProfesor()) {
             vEliminarProfesor = new VentanaEliminarProfesor();
             vEliminarProfesor.getjButtonVolver().addActionListener(this);
@@ -164,7 +151,7 @@ public class ControladorSistema implements ActionListener {
             vEliminarProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON ELIMINAR
+        //MENU ELIMINAR PROFESOR -> BOTON ELIMINAR
         else if (vEliminarProfesor != null && ae.getSource() == vEliminarProfesor.getjButtonEliminar()){
             String rut = vEliminarProfesor.getjTextFieldRut().getText();
             if (instituto.eliminarProfesor(rut))
@@ -172,14 +159,14 @@ public class ControladorSistema implements ActionListener {
             else
                 vEliminarProfesor.getjTextFieldMensaje().setText("Profesor no encontrado");
         }
-        //BOTON VOLVER
+        //MENU ELIMINAR PROFESOR -> BOTON VOLVER
         else if (vEliminarProfesor != null && ae.getSource() == vEliminarProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vEliminarProfesor.dispose();
         }
         
         
-        //MENU BUSCAR PROFESOR==================================================================================================
+        //MENU BUSCAR PROFESOR *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarProfesor()) {
             vBuscarProfesor = new VentanaBuscarProfesor();
             vBuscarProfesor.getjButtonBuscar().addActionListener(this);
@@ -188,7 +175,7 @@ public class ControladorSistema implements ActionListener {
             vBuscarProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON BUSCAR
+        //MENU BUSCAR PROFESOR -> BOTON BUSCAR
         else if (vBuscarProfesor != null && ae.getSource() == vBuscarProfesor.getjButtonBuscar()){     
             String rut = vBuscarProfesor.getjTextFieldRut().getText();
             Profesor profesor = instituto.obtenerProfesor(rut);
@@ -199,14 +186,13 @@ public class ControladorSistema implements ActionListener {
             else
                 vBuscarProfesor.getjTextFieldMensaje().setText("Profesor no encontrado"); 
         }
-        //BOTON VOLVER
+        //MENU BUSCAR PROFESOR -> BOTON VOLVER
         else if (vBuscarProfesor != null && ae.getSource() == vBuscarProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vBuscarProfesor.dispose();
         }
         
-        
-        //MENU AGREGAR ASIGNATURA PROFESOR ==================================================================================================
+        //MENU AGREGAR ASIGNATURA PROFESOR *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemjMenuItemAgregarAsignaturaProfesor()) {
             vAgregarAsignaturaProfesor = new VentanaAgregarAsignaturaProfesor();
             vAgregarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
@@ -216,7 +202,7 @@ public class ControladorSistema implements ActionListener {
             vAgregarAsignaturaProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON BUSCAR
+        //MENU AGREGAR ASIGNATURA PROFESOR -> BOTON BUSCAR
         else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonBuscar()){
             String rut = vAgregarAsignaturaProfesor.getjTextFieldRut().getText();
             String id = vAgregarAsignaturaProfesor.getjTextFieldIDCarrera().getText();
@@ -232,7 +218,7 @@ public class ControladorSistema implements ActionListener {
             }
              
         }
-        //BOTON AGREGAR
+        //MENU AGREGAR ASIGNATURA PROFESOR -> BOTON AGREGAR
         else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonAgregar()){
             String idAsignatura = vAgregarAsignaturaProfesor.getjTextFieldIDAsignatura().getText();
             String rut = vAgregarAsignaturaProfesor.getjTextFieldRut().getText();
@@ -248,22 +234,20 @@ public class ControladorSistema implements ActionListener {
                     profesor.agregarAsignatura(asignatura);
                     vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("Agregado");
                 }
-                else {
+                else 
                     vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("Asignatura INCORRECTA");
-                }
             }
-            else {
+            else 
                 vAgregarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
-            }
         }
-        //BOTON VOLVER
+        //MENU AGREGAR ASIGNATURA PROFESOR -> BOTON VOLVER
         else if (vAgregarAsignaturaProfesor != null && ae.getSource() == vAgregarAsignaturaProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarAsignaturaProfesor.dispose();
         }
         
         
-        //MENU ELIMINAR ASIGNATURA PROFESOR ==================================================================================================
+        //MENU ELIMINAR ASIGNATURA PROFESOR *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarAsignaturaProfesor()) {
             vEliminarAsignaturaProfesor = new VentanaEliminarAsignaturaProfesor();
             vEliminarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
@@ -273,7 +257,7 @@ public class ControladorSistema implements ActionListener {
             vEliminarAsignaturaProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON BUSCAR
+        //MENU ELIMINAR ASIGNATURA PROFESOR -> BOTON BUSCAR
         else if (vEliminarAsignaturaProfesor != null && ae.getSource() == vEliminarAsignaturaProfesor.getjButtonBuscar()){
             String rut = vEliminarAsignaturaProfesor.getjTextFieldRut().getText();
             Profesor profesor = instituto.obtenerProfesor(rut);
@@ -286,7 +270,7 @@ public class ControladorSistema implements ActionListener {
                 vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
             }  
         }
-        //BOTON ELIMINAR
+        //MENU ELIMINAR ASIGNATURA PROFESOR -> BOTON ELIMINAR
         else if (vEliminarAsignaturaProfesor != null && ae.getSource() == vEliminarAsignaturaProfesor.getjButtonEliminar()){
             String idAsignatura = vEliminarAsignaturaProfesor.getjTextFieldIDAsignatura().getText();
             String rut = vEliminarAsignaturaProfesor.getjTextFieldRut().getText();
@@ -300,22 +284,20 @@ public class ControladorSistema implements ActionListener {
                     profesor.elimarAsignatura(asignatura.getCodigo());
                     vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("Eliminado");
                 }
-                else {
+                else
                     vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("Asignatura INCORRECTA");
-                }
             }
-            else {
+            else
                 vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("No encontrado");
-            }
         }
-        //BOTON VOLVER
+        //MENU ELIMINAR ASIGNATURA PROFESOR -> BOTON VOLVER
         else if (vEliminarAsignaturaProfesor != null && ae.getSource() == vEliminarAsignaturaProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vEliminarAsignaturaProfesor.dispose();
         }
         
         
-        //MENU MOSTRAR ASIGNATURAS PROFESORES ==================================================================================================
+        //MENU MOSTRAR ASIGNATURAS PROFESORES *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarAsignaturasProfesor()) {
             vMostrarAsignaturaProfesor = new VentanaMostrarAsignaturasProfesor();
             vMostrarAsignaturaProfesor.getjButtonBuscar().addActionListener(this);
@@ -324,7 +306,7 @@ public class ControladorSistema implements ActionListener {
             vMostrarAsignaturaProfesor.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        //BOTON BUSCAR
+        //MENU MOSTRAR ASIGNATURAS PROFESORES -> BOTON BUSCAR
         else if (vMostrarAsignaturaProfesor != null && ae.getSource() == vMostrarAsignaturaProfesor.getjButtonBuscar()){
             String rut = vMostrarAsignaturaProfesor.getjTextFieldRut().getText();
             Profesor profesor = instituto.obtenerProfesor(rut);
@@ -339,16 +321,14 @@ public class ControladorSistema implements ActionListener {
             }  
         }
         
-        //BOTON VOLVER
+        //MENU MOSTRAR ASIGNATURAS PROFESORES -> BOTON VOLVER
         else if (vMostrarAsignaturaProfesor != null && ae.getSource() == vMostrarAsignaturaProfesor.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vMostrarAsignaturaProfesor.dispose();
         }
-        
-        
- 
-        //===================== EVENTOS DE CARRERAS =====================//
-        //AGREGAR CARRERA
+
+        //==================================================== EVENTOS CARRERAS ====================================================//
+        //MENU AGREGAR CARRERA *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemAgregarCarrera()){
             vAgregarCarrera = new VentanaAgregarCarrera();
             vAgregarCarrera.getjButtonVolver().addActionListener(this);
@@ -357,10 +337,12 @@ public class ControladorSistema implements ActionListener {
             vAgregarCarrera.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        // MENU AGREGAR CARRERA -> BOTON VOLVER
         else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarCarrera.dispose();
         }
+        // MENU AGREGAR CARRERA -> BOTON AGREGAR
         else if(vAgregarCarrera != null && ae.getSource() == vAgregarCarrera.getjButtonAgregar()){
             Object lector;
             String lectorString;
@@ -416,16 +398,15 @@ public class ControladorSistema implements ActionListener {
                     }catch(NotCovertToNumericException mensajeError){
                         vAgregarCarrera.getjTextFieldMensaje().setText("ERROR: LA CELDA DE CREDITOS" + (i+1) + " ESPERA UN NUMERO NO UNA LETRA");
                         return;
+                    }
                 }
-                }
-
                 Asignatura nuevaAsignatura = new Asignatura(codigo, nombreAs, creditos);
                 nuevaCarrera.agregarAsignatura(nuevaAsignatura);
             }
             instituto.agregarCarrera(nuevaCarrera);
             vAgregarCarrera.getjTextFieldMensaje().setText("CARRERA INGRESADA CON EXITO");
         }
-        //BUSCAR CARRERA
+        //MENU BUSCAR CARRERA *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarCarrera()){
             vBuscarCarrera = new VentanaBuscarCarrera();
             vBuscarCarrera.getjButtonBuscar().addActionListener(this);
@@ -434,10 +415,12 @@ public class ControladorSistema implements ActionListener {
             vBuscarCarrera.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //MENU BUSCAR CARRERA -> VOLVER
         else if(vBuscarCarrera != null && ae.getSource() == vBuscarCarrera.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vBuscarCarrera.dispose();
         }
+        //MENU BUSCAR CARRERA -> BUSCAR
         else if(vBuscarCarrera != null && ae.getSource() == vBuscarCarrera.getjButtonBuscar()){
             String ID = modificador.toUppercase(vBuscarCarrera.getjTextFieldBuscarID().getText());
             Carrera actual = instituto.obtenerCarrera(ID);
@@ -450,12 +433,9 @@ public class ControladorSistema implements ActionListener {
             }
             else
                 vBuscarCarrera.getjTextFieldMensaje().setText("NO ENCONTADO");
-            
-            
-        
         }
             
-        //ELIMINAR CARRERA
+        //MENU ELIMINAR CARRERA *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarCarrera()){
             vEliminarCarrera = new VentanaEliminarCarrera();
             vEliminarCarrera.getjButtonEliminar().addActionListener(this);
@@ -464,10 +444,12 @@ public class ControladorSistema implements ActionListener {
             vEliminarCarrera.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //MENU ELIMINAR CARRERA -> BOTON VOLVER
         else if(vEliminarCarrera != null && ae.getSource() == vEliminarCarrera.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vEliminarCarrera.dispose();
         }
+        //MENU ELIMINAR CARRERA -> BOTON ELIMINAR
         else if(vEliminarCarrera != null && ae.getSource() == vEliminarCarrera.getjButtonEliminar()){
             String ID = modificador.toUppercase(vEliminarCarrera.getjTextFieldBuscarID().getText());
             if(instituto.eliminarCarrera(ID))
@@ -476,7 +458,7 @@ public class ControladorSistema implements ActionListener {
                 vEliminarCarrera.getjTextFieldMensaje().setText("No se encontro la carrera indicada");
         }    
         
-        //MOSTRAR CARRERAS
+        //MENU MOSTRAR CARRERAS *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarCarreras()){
             vMostrarCarreras = new VentanaMostrarCarreras();
             vMostrarCarreras.getjButtonVolver().addActionListener(this);
@@ -492,17 +474,16 @@ public class ControladorSistema implements ActionListener {
                 vMostrarCarreras.getjTableMostrar().setValueAt(actual.getId(), i, 0);
                 vMostrarCarreras.getjTableMostrar().setValueAt(actual.getNombre(), i, 1);
                 vMostrarCarreras.getjTableMostrar().setValueAt(actual.getSemestres(), i, 2);
-                
-                
             }
         }
+        //MENU MOSTRAR CARRERAS -> BOTON VOLVER
         else if(vMostrarCarreras != null && ae.getSource() == vMostrarCarreras.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vMostrarCarreras.dispose();
         }
         
-        //EVENTOS ALUMNOS
-        //ACTUALIZACION ESTADO AGREGAR Y INTERACCION EN AGREGAR
+        //==================================================== EVENTOS ALUMNOS ====================================================//
+        //MENU AGREGAR ALUMNO *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemAgregarAlumno()){
             vAgregarAlumno = new VentanaAgregarAlumno();
             vAgregarAlumno.rellenarTabla(instituto.listarCarreras());
@@ -512,6 +493,7 @@ public class ControladorSistema implements ActionListener {
             vAgregarAlumno.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //MENU AGREGAR ALUMNO -> BOTON AGREGAR
         else if (vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonAgregar()){
             Alumno alumno = new Alumno(vAgregarAlumno.getjTextFieldNombre().getText(),
                                        vAgregarAlumno.getjTextFieldApellido().getText(),
@@ -527,16 +509,16 @@ public class ControladorSistema implements ActionListener {
                 instituto.agregarAlumno(alumno);
                 vAgregarAlumno.getjTextFieldMensaje().setText("ALUMNO AGREGADO");
             }
-            else{
+            else
                 vAgregarAlumno.getjTextFieldMensaje().setText("ALUMNO NO AGREGADO");
-            }
         }
+        //MENU AGREGAR ALUMNO -> BOTON VOLVER
         else if(vAgregarAlumno != null && ae.getSource() == vAgregarAlumno.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vAgregarAlumno.dispose();
         }
         
-        //ACTUALIZACION ESTADO BUSCAR POR RUT
+        //MENU ACTUALIZACION ESTADO BUSCAR POR RUT *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarPorRut()){
             vBuscarAlumno = new VentanaBuscarAlumno();
             vBuscarAlumno.getjButtonBuscar().addActionListener(this);
@@ -545,6 +527,7 @@ public class ControladorSistema implements ActionListener {
             vBuscarAlumno.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //MENU ACTUALIZACION ESTADO BUSCAR POR RUT -> BOTON BUSCAR
         else if(vBuscarAlumno != null && ae.getSource() == vBuscarAlumno.getjButtonBuscar()){
             String rut = vBuscarAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
@@ -560,12 +543,13 @@ public class ControladorSistema implements ActionListener {
             else
                 vBuscarAlumno.getjTextFieldMensaje().setText("ALUMNO NO ENCONTADO");
         }
+        //MENU ACTUALIZACION ESTADO BUSCAR POR RUT -> BOTON VOLVER
         else if(vBuscarAlumno != null && ae.getSource() == vBuscarAlumno.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vBuscarAlumno.dispose();
         }
         
-        //ACTUALIZACION ESTADO BUSCAR POR CARRERA
+        //ACTUALIZACION ESTADO BUSCAR POR CARRERA *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemBuscarPorCarrera()){
             vBuscarAlumnoCarrera = new VentanaBuscarAlumnoCarrera();
             vBuscarAlumnoCarrera.getjButtonBuscar().addActionListener(this);
@@ -574,6 +558,7 @@ public class ControladorSistema implements ActionListener {
             vBuscarAlumnoCarrera.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //ACTUALIZACION ESTADO BUSCAR POR CARRERA -> BOTON BUSCAR
         else if(vBuscarAlumnoCarrera != null && ae.getSource() == vBuscarAlumnoCarrera.getjButtonBuscar()){
             String ID = vBuscarAlumnoCarrera.getjTextFieldIdCarrera().getText();
             Carrera carrera = instituto.obtenerCarrera(ID);
@@ -600,23 +585,21 @@ public class ControladorSistema implements ActionListener {
                         }
                     }
                 if(hayAlumnosCarrera)
-                {
                     vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("ALUMNOS INSCRITOS");
-                }
-                else{
+                else
                     vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO HAY ALUMNOS INSCRITOS EN ESTA CARRERA");
                 }
-            }
-            else
-                vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO ENCONTADO");
+                else
+                    vBuscarAlumnoCarrera.getjTextFieldMensaje().setText("NO ENCONTADO");
             }
         }
+        //ACTUALIZACION ESTADO BUSCAR POR CARRERA -> BOTON VOLVER
         else if(vBuscarAlumnoCarrera != null && ae.getSource() == vBuscarAlumnoCarrera.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vBuscarAlumnoCarrera.dispose();
         }
         
-        //ACTUALIZACION ESTADO ELIMINAR ALUMNO 
+        //MENU ACTUALIZACION ESTADO ELIMINAR ALUMNO *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEliminarAlumno()){
             vEliminarAlumno = new VentanaEliminarAlumno();
             vEliminarAlumno.getjButtonEliminar().addActionListener(this);
@@ -625,6 +608,7 @@ public class ControladorSistema implements ActionListener {
             vEliminarAlumno.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //MENU ACTUALIZACION ESTADO ELIMINAR ALUMNO -> BOTON ELIMINAR
         else if (vEliminarAlumno != null && ae.getSource() == vEliminarAlumno.getjButtonEliminar()){
             String rut = vEliminarAlumno.getjTextFieldRut().getText();
             if (instituto.eliminarAlumno(rut))
@@ -632,11 +616,13 @@ public class ControladorSistema implements ActionListener {
             else
                 vEliminarAlumno.getjTextFieldMensaje().setText("Alumno no encontrado");
         }
+        //MENU ACTUALIZACION ESTADO ELIMINAR ALUMNO -> BOTON VOLVER
         else if(vEliminarAlumno != null && ae.getSource() == vEliminarAlumno.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vEliminarAlumno.dispose();
         }
-        //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO
+        
+        //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemActualizacionEstadoAsignaturaAlumno()){
             vActualizarEstadoAsignaturaAlumno = new VentanaActualizacionEstadoAsignaturaAlumno();
             vActualizarEstadoAsignaturaAlumno.getjButtonActualizar().addActionListener(this);
@@ -646,10 +632,12 @@ public class ControladorSistema implements ActionListener {
             vActualizarEstadoAsignaturaAlumno.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO -> BOTON VOLVER
         else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vActualizarEstadoAsignaturaAlumno.dispose();
         }
+        //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO -> BOTON BUSCAR
         else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonBuscar()){
             String rut = vActualizarEstadoAsignaturaAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
@@ -667,8 +655,8 @@ public class ControladorSistema implements ActionListener {
             else
                 vActualizarEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("ALUMNO NO ENCONTADO");
         }
-        
-         else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonActualizar()){
+        //ACTUALIZACION ESTADO ACTUALIZACION ESTADO ASIGNATURA ALUMNO -> BOTON ACTUALIZAR ESTADO
+        else if(vActualizarEstadoAsignaturaAlumno != null && ae.getSource() == vActualizarEstadoAsignaturaAlumno.getjButtonActualizar()){
             JTable tabla = vActualizarEstadoAsignaturaAlumno.getjTableDatos();
             String rut = vActualizarEstadoAsignaturaAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
@@ -682,22 +670,15 @@ public class ControladorSistema implements ActionListener {
                 Object estadoInscrito = tabla.getValueAt(i, 3);
                 
                 if (estadoAprobado != null)
-                {
                     asignatura.aprobar();
-                }
                 else if (estadoReprobado != null)
-                {
                     asignatura.reprobar();
-                }
-                else if (estadoInscrito != null){
+                else if (estadoInscrito != null)
                     asignatura.inscribir();
-                }
-                
             }
-            
         }
         
-        //ACTUALIZACION ESTADO ASIGNATURA ALUMNO
+        //MENU ACTUALIZACION ESTADO ASIGNATURA ALUMNO *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemEstadoAsignatura()){
             vEstadoAsignaturaAlumno = new VentanaEstadoAsignaturaAlumno();
             vEstadoAsignaturaAlumno.getjButtonBuscar().addActionListener(this); 
@@ -706,6 +687,7 @@ public class ControladorSistema implements ActionListener {
             vEstadoAsignaturaAlumno.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
+        //MENU ACTUALIZACION ESTADO ASIGNATURA ALUMNO -> BOTON BUSCAR
         else if(vEstadoAsignaturaAlumno != null && ae.getSource() == vEstadoAsignaturaAlumno.getjButtonBuscar()){
             String rut = vEstadoAsignaturaAlumno.getjTextFieldRut().getText();
             Alumno actual = instituto.obtenerAlumno(rut);
@@ -723,11 +705,13 @@ public class ControladorSistema implements ActionListener {
             else
                 vEstadoAsignaturaAlumno.getjTextFieldMensaje().setText("ALUMNO NO ENCONTADO");
         }
+        //MENU ACTUALIZACION ESTADO ASIGNATURA ALUMNO -> BOTON VOLVER
         else if(vEstadoAsignaturaAlumno != null && ae.getSource() == vEstadoAsignaturaAlumno.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vEstadoAsignaturaAlumno.dispose();
         }
-        //ACTUALIZACION ESTADO MOSTRAR ALUMNO
+        
+        //MENU ACTUALIZACION ESTADO MOSTRAR ALUMNO *****************************************************************************************************
         if(ae.getSource() == ventanaPrincipal.getjMenuItemMostrarAlumnos()){
             vMostrarAlumnos = new VentanaMostrarAlumnos();
             vMostrarAlumnos.rellenarTabla(instituto.listarAlumnos());
@@ -736,8 +720,7 @@ public class ControladorSistema implements ActionListener {
             vMostrarAlumnos.setVisible(true);
             ventanaPrincipal.setVisible(false);
         }
-        
-        
+        //MENU ACTUALIZACION ESTADO MOSTRAR ALUMNO -> BOTON VOLVER
         else if(vMostrarAlumnos != null && ae.getSource() == vMostrarAlumnos.getjButtonVolver()){
             ventanaPrincipal.setVisible(true);
             vMostrarAlumnos.dispose();
