@@ -1,4 +1,4 @@
-package extras;
+package exception;
 
 public class ModificarCadenas {
     public String capitalize(String str) {

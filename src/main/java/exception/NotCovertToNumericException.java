@@ -1,4 +1,4 @@
-package extras;
+package exception;
 
 public class NotCovertToNumericException extends Exception{
     public NotCovertToNumericException(){

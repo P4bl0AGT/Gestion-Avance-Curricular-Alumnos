@@ -2,10 +2,10 @@
 package controlador;
 
 //LIBRERIAS
-import extras.ModificarCadenas;
-import extras.Verificaciones;
-import extras.InvalidAgeException;
-import extras.NotCovertToNumericException;
+import exception.ModificarCadenas;
+import exception.Verificaciones;
+import exception.InvalidAgeException;
+import exception.NotCovertToNumericException;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JTable;

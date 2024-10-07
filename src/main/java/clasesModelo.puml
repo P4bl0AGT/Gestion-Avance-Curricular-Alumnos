@@ -1,0 +1,172 @@
+@startuml
+
+class Instituto {
+    - Contenedor<String, Carrera> contenedorCarreras
+    - Contenedor<String, Profesor> contenedorProfesores
+    - Contenedor<String, Alumno> contenedorAlumnos
+    + Instituto()
+    + int cantidadCarreras()
+    + int cantidadProfesores()
+    + int cantidadAlumnos()
+    + Carrera obtenerCarrera(int i)
+    + Carrera obtenerCarrera(String id)
+    + Profesor obtenerProfesor(int i)
+    + Profesor obtenerProfesor(String rut)
+    + Alumno obtenerAlumno(int i)
+    + Alumno obtenerAlumno(String rut)
+    + Asignatura obtenerAsignatura(String id)
+    + boolean agregarCarrera(Carrera carrera)
+    + boolean agregarProfesor(Profesor profesor)
+    + boolean agregarAlumno(Alumno alumno)
+    + boolean eliminarCarrera(String id)
+    + boolean eliminarProfesor(String rutProfesor)
+    + boolean eliminarAlumno(String rutAlumno)
+    + String listarProfesores()
+    + String listarProfesores(boolean completo)
+    + String listarAlumnos()
+    + String listarAlumnos(boolean simple)
+    + String listarCarreras()
+    + String listarAsignaturas()
+    + void cargarDatosPredefinidos() throws IOException
+    + void guardarDatos() throws IOException
+    + String obtenerDatosReporte()
+}
+
+class Datos {
+    + Datos()
+    + void cargarCsvCarreras(Instituto instituto) throws IOException
+    + void cargarCsvAsignaturas(Carrera carrera) throws IOException
+    + void cargarCsvAlumnos(Instituto instituto) throws IOException
+    + void cargarCsvProfesores(Instituto instituto) throws IOException
+    + void guardarCsvCarreras(Instituto instituto) throws IOException
+    + void guardarCsvAsignaturas(Instituto instituto) throws IOException
+    + void guardarCsvProfesores(Instituto instituto) throws IOException
+    + void guardarCsvAlumnos(Instituto instituto) throws IOException
+    + void generarInforme(Instituto instituto) throws IOException
+}
+
+class Carrera {
+    - String id
+    - String nombre
+    - int semestres
+    - Contenedor<String, Asignatura> asignaturas
+    + Carrera()
+    + Carrera(String id, String nombre, int semestres)
+    + void setId(String id)
+    + void setNombre(String nombre)
+    + void setSemestres(int semestres)
+    + String getId()
+    + String getNombre()
+    + int getSemestres()
+    + int cantidadAsignaturas()
+    + boolean agregarAsignatura(Asignatura asignatura)
+    + Asignatura obtenerAsignatura(int i)
+    + Asignatura obtenerAsignatura(String codigo)
+    + int cantidadCreditos()
+    + Carrera copiaParaInscribir()
+    + String obtenerString()
+    + String listarAsignaturas()
+    + String listarAsignaturas(boolean completo)
+}
+
+class Profesor extends Persona {
+    - Contenedor<String, Asignatura> ContenedorAsignaturas
+    + Profesor(String nombre, String apellido, String rut, int edad)
+    + boolean agregarAsignatura(Asignatura asignatura)
+    + Asignatura eliminarAsignatura(String codigo)
+    + Asignatura obtenerAsignatura(String id)
+    + int contarAsignaturas()
+    + String obtenerString()
+    + String obtenerString(boolean sinSalto)
+    + String listarAsignaturas()
+    + String listarAsignaturas(boolean separador)
+}
+
+class Alumno extends Persona {
+    - int creditosAprobados
+    - Carrera carrera
+    + Alumno(String nombre, String apellido, String rut, int edad, Carrera carrera)
+    + Alumno(String nombre, String apellido, String rut, int edad)
+    + Alumno(String nombre, String apellido, String rut, int edad, int creditosAprobados)
+    + Carrera getCarrera()
+    + int getCreditosAprobados()
+    + void setCarrera(Carrera carrera)
+    + void setCreditosAprobados(int creditosAprobados)
+    + void inscribirCarrera(Carrera carrera)
+    + int obtenerCantidadAsignaturas()
+    + String obtenerString()
+    + String obtenerString(boolean completo)
+}
+
+class Persona {
+    - String nombre
+    - String apellido
+    - String rut
+    - int edad
+    + Persona(String nombre, String apellido, String rut, int edad)
+    + String getNombre()
+    + String getApellido()
+    + String getRut()
+    + int getEdad()
+    + void setNombre(String nombre)
+    + void setApellido(String apellido)
+    + void setEdad(int edad)
+    + void setRut(String rut)
+    + String obtenerString()
+}
+
+class Asignatura {
+    - String codigo
+    - String nombre
+    - int creditos
+    + Asignatura()
+    + Asignatura(String codigo, String nombre, int creditos)
+    + void setNombre(String nombre)
+    + void setCodigo(String codigo)
+    + void setCreditos(int creditos)
+    + String getCodigo()
+    + String getNombre()
+    + int getCreditos()
+    + String obtenerString()
+}
+
+class AsignaturaInscrita extends Asignatura {
+    - estadoAsignatura estado
+    - int nota
+    + AsignaturaInscrita()
+    + AsignaturaInscrita(String codigo, String nombre, int creditos, estadoAsignatura estado, int nota)
+    + AsignaturaInscrita(String codigo, String nombre, int creditos)
+    + AsignaturaInscrita(Asignatura asignatura)
+    + void setEstado(estadoAsignatura estado)
+    + void setNota(int nota)
+    + int getNota()
+    + estadoAsignatura getEstado()
+    + void inscribir()
+    + void aprobar()
+    + void reprobar()
+    + void modificarNotayEstado(estadoAsignatura estado, int nota)
+    + String obtenerString()
+    + enum estadoAsignatura { INSCRITO, APROBADO, REPROBADO }
+}
+
+class Contenedor<K, T> {
+    - HashMap<K, T> mapa
+    - ArrayList<T> lista
+    + Contenedor()
+    + boolean agregar(K clave, T objeto)
+    + T obtener(K clave)
+    + T obtener(int i)
+    + T eliminar(K clave)
+    + int talla()
+    + Iterator<T> iterador()
+}
+
+Instituto --> "0..*" Carrera : contiene >
+Instituto --> "0..*" Profesor : contiene >
+Instituto --> "0..*" Alumno : contiene >
+Carrera --> "0..*" Asignatura : contiene >
+Profesor --> "0..*" Asignatura : enseña >
+Alumno --> "1" Carrera : inscrito en > 
+Instituto --> Contenedor : utiliza >
+
+@enduml

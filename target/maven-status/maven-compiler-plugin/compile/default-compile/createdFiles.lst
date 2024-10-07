@@ -1,3 +1,4 @@
+exception\ModificarCadenas.class
 vista\VentanaBuscarAlumnoCarrera$1.class
 modelo\Contenedor.class
 vista\VentanaAgregarCarrera.class
@@ -9,9 +10,9 @@ vista\VentanaMostrarAlumnos.class
 vista\VentanaMostrarProfesores$1.class
 vista\VentanaPrincipal.class
 modelo\Carrera.class
-extras\InvalidAgeException.class
 vista\VentanaBuscarCarrera.class
 vista\VentanaEstadoAsignaturaAlumno.class
+exception\InvalidAgeException.class
 vista\VentanaBuscarProfesor.class
 vista\VentanaMostrarAsignaturasProfesor$1.class
 vista\VentanaEliminarCarrera.class
@@ -20,15 +21,14 @@ modelo\Instituto.class
 vista\VentanaEliminarAsignaturaProfesor$1.class
 modelo\Datos.class
 vista\VentanaEliminarAlumno.class
+exception\NotCovertToNumericException.class
+exception\Verificaciones.class
 vista\VentanaAgregarAsignaturaProfesor.class
-extras\NotCovertToNumericException.class
 modelo\Asignatura.class
-extras\Verificaciones.class
 vista\VentanaAgregarCarrera$1.class
 vista\VentanaMostrarAsignaturasProfesor.class
 controlador\ControladorSistema.class
 vista\VentanaMostrarCarreras.class
-extras\ModificarCadenas.class
 vista\VentanaBuscarAlumno$1.class
 vista\VentanaEliminarProfesor.class
 vista\VentanaBuscarAlumnoCarrera.class

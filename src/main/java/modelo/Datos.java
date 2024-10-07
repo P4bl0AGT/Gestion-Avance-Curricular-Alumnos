@@ -177,7 +177,7 @@ public class Datos {
     * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvCarreras(Instituto instituto) throws IOException {
-        File file = new File("src/main/java/datos/zCarreras.csv");
+        File file = new File("src/main/java/datos/Carreras.csv");
         FileOutputStream fos = new FileOutputStream(file);
         OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         BufferedWriter bw = new BufferedWriter(osw);
@@ -199,7 +199,7 @@ public class Datos {
     * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvAsignaturas(Instituto instituto) throws IOException {
-        File file = new File("src/main/java/datos/zAsignaturas.csv");
+        File file = new File("src/main/java/datos/Asignaturas.csv");
         FileOutputStream fos = new FileOutputStream(file);
         OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         BufferedWriter bw = new BufferedWriter(osw);
@@ -221,7 +221,7 @@ public class Datos {
     * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvProfesores(Instituto instituto) throws IOException {
-        File file = new File("src/main/java/datos/zProfesores.csv");
+        File file = new File("src/main/java/datos/Profesores.csv");
         FileOutputStream fos = new FileOutputStream(file);
         OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         BufferedWriter bw = new BufferedWriter(osw);
@@ -243,7 +243,7 @@ public class Datos {
     * @throws IOException exepcion por si ocurre un error al intentar guardar el archivo.
     */
     public void guardarCsvAlumnos(Instituto instituto) throws IOException {
-        File file = new File("src/main/java/datos/zAlumnos.csv");
+        File file = new File("src/main/java/datos/Alumnos.csv");
         FileOutputStream fos = new FileOutputStream(file);
         OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         BufferedWriter bw = new BufferedWriter(osw);
