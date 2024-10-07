@@ -313,7 +313,7 @@ public class ControladorSistema implements ActionListener {
                 Asignatura asignatura = profesor.obtenerAsignatura(idAsignatura);
                 
                 if (asignatura != null) {
-                    profesor.elimarAsignatura(asignatura.getCodigo());
+                    profesor.eliminarAsignatura(asignatura.getCodigo());
                     vEliminarAsignaturaProfesor.getjTextFieldMensaje().setText("Eliminado");
                 }
                 else

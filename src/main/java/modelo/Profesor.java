@@ -66,7 +66,7 @@ public class Profesor extends Persona{
      * @param codigo el código de la asignatura a eliminar.
      * @return la asignatura eliminada, o {@code null} si no se encontró.
      */
-    public Asignatura elimarAsignatura(String codigo) {
+    public Asignatura eliminarAsignatura(String codigo) {
         return ContenedorAsignaturas.eliminar(codigo);
     }
     
